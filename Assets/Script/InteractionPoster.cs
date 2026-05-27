@@ -1,323 +1,239 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+/// <summary>
+/// Script Interaksi Poster (dengan Efek Fade In/Out Premium)
+/// - Pasang script ini pada GameObject Picture/Poster (yang sudah punya Box Collider)
+/// - Isi field "Poster Panel" dengan GameObject Image/Panel UI yang ingin ditampilkan
+/// - Tekan E saat dekat poster → panel aktif dengan transisi Fade In
+/// - Tekan Q untuk menutup panel dengan transisi Fade Out
+/// </summary>
 public class InteractionPoster : MonoBehaviour
 {
     [Header("Poster Settings")]
-    [SerializeField] private Sprite posterImage;
     [SerializeField] private string posterTitle = "Poster";
-    
+
+    [Header("Panel UI")]
+    [Tooltip("Drag GameObject Image/Panel dari CanvasUI yang ingin muncul saat E ditekan")]
+    [SerializeField] private GameObject posterPanel;
+
     [Header("Interaksi")]
-    [SerializeField] private float interactionDistance = 3.0f;
+    [SerializeField] private float interactionDistance = 3.5f;
+    [Tooltip("Aktifkan: harus menatap poster dulu | Nonaktifkan: cukup dekat saja")]
+    [SerializeField] private bool requireGazeToInteract = false;
+
+    [Header("Efek Transisi")]
+    [SerializeField] private float fadeDuration = 0.3f; // Durasi fade dalam detik
     
-    [Header("UI Feedback")]
-    [SerializeField] private Material highlightMaterial;
-    [SerializeField] private Material normalMaterial;
-    
-    private Transform playerTransform;
+    // ─── State ───
     private VRWalkController playerController;
-    private bool isPlayerNearby = false;
+    private Transform playerTransform;
     private bool isPosterOpen = false;
-    private bool isPointerOnPoster = false;
-    
-    // UI untuk menampilkan poster
-    private Canvas posterCanvas;
-    private Image posterImageComponent;
-    private bool uiInitialized = false;
-    
-    // Renderer untuk highlight
-    private Renderer posterRenderer;
-    private Material[] originalMaterials;
+    private CanvasGroup canvasGroup;
+    private Coroutine fadeCoroutine;
+
+    // ─── Debug (tampil di Inspector saat Play) ───
+    [Header("Debug (Read Only)")]
+    [SerializeField] private bool dbg_isNearby = false;
+    [SerializeField] private bool dbg_isGazing = false;
+    [SerializeField] private float dbg_distance = 0f;
 
     void Start()
     {
-        // Dapatkan player transform dan controller
-        playerTransform = FindObjectOfType<VRWalkController>()?.transform;
+        // Cari VRWalkController di scene
         playerController = FindObjectOfType<VRWalkController>();
-        
-        Debug.Log("[InteractionPoster] Setup poster: " + posterTitle);
-        
-        if (playerTransform == null)
+        if (playerController != null)
         {
-            Debug.LogError("[InteractionPoster] VRWalkController tidak ditemukan di scene!");
+            playerTransform = playerController.transform;
+            Debug.Log("[" + posterTitle + "] ✓ Player ditemukan: " + playerTransform.name);
         }
         else
         {
-            Debug.Log("[InteractionPoster] Player ditemukan: " + playerTransform.name);
+            Debug.LogError("[" + posterTitle + "] ✗ VRWalkController tidak ditemukan di scene!");
         }
-        
-        // Setup collider trigger 3D
-        Collider col3D = GetComponent<Collider>();
-        if (col3D == null)
+
+        // Validasi Box Collider
+        Collider col = GetComponent<Collider>();
+        if (col == null)
+            Debug.LogError("[" + posterTitle + "] ✗ Tidak ada Collider! Tambahkan Box Collider.");
+        else
+            Debug.Log("[" + posterTitle + "] ✓ Collider ditemukan. Is Trigger: " + col.isTrigger);
+
+        // Validasi Poster Panel & Setup CanvasGroup untuk Fade
+        if (posterPanel == null)
         {
-            Debug.LogError("[InteractionPoster] Poster harus memiliki Collider 3D! Tambahkan Box Collider atau Sphere Collider.");
+            Debug.LogError("[" + posterTitle + "] ✗ Poster Panel belum di-assign di Inspector!");
         }
         else
         {
-            if (!col3D.isTrigger)
+            // Ambil atau tambahkan CanvasGroup secara otomatis agar bisa fade
+            canvasGroup = posterPanel.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
             {
-                Debug.LogWarning("[InteractionPoster] Collider belum di-set sebagai Trigger! Set 'Is Trigger' = true");
+                canvasGroup = posterPanel.AddComponent<CanvasGroup>();
             }
-            else
-            {
-                Debug.Log("[InteractionPoster] Collider 3D Trigger sudah aktif ✓");
-            }
-        }
-        
-        // Get renderer untuk highlight
-        posterRenderer = GetComponent<Renderer>();
-        if (posterRenderer != null)
-        {
-            originalMaterials = posterRenderer.materials;
-            Debug.Log("[InteractionPoster] Renderer ditemukan dengan " + originalMaterials.Length + " material");
-        }
-        
-        // Cek tag player
-        if (!string.IsNullOrEmpty(gameObject.tag))
-        {
-            Debug.Log("[InteractionPoster] Tag poster: " + gameObject.tag);
+            
+            // Set ke 0 di awal dan nonaktifkan
+            canvasGroup.alpha = 0f;
+            posterPanel.SetActive(false); 
+            Debug.Log("[" + posterTitle + "] ✓ Poster Panel & CanvasGroup Siap.");
         }
     }
 
     void Update()
     {
-        // Cek raycast dari kursor
-        CheckCursorPointer();
-        
-        if (!isPlayerNearby || playerTransform == null) return;
-        
-        // Cek apakah player masih dekat
-        float distance = Vector3.Distance(transform.position, playerTransform.position);
-        if (distance > interactionDistance)
+        if (playerTransform == null) return;
+
+        // ─── Hitung jarak player ke poster ───
+        dbg_distance = Vector3.Distance(transform.position, playerTransform.position);
+        dbg_isNearby = (dbg_distance <= interactionDistance);
+
+        // ─── Cek Gaze (raycast dari kamera) ───
+        dbg_isGazing = CheckGaze();
+
+        // ─── Kondisi bisa interact ───
+        bool canInteract = dbg_isNearby && (!requireGazeToInteract || dbg_isGazing);
+
+        // ─── Tekan E → Buka Poster ───
+        if (canInteract && Input.GetKeyDown(KeyCode.E) && !isPosterOpen)
         {
-            isPlayerNearby = false;
-            isPointerOnPoster = false;
-            Debug.Log("[InteractionPoster] Player terlalu jauh dari " + posterTitle + " (jarak: " + distance.ToString("F2") + "m)");
-            return;
-        }
-        
-        // Tekan E untuk membuka poster
-        if (Input.GetKeyDown(KeyCode.E) && !isPosterOpen)
-        {
-            Debug.Log("[InteractionPoster] Tombol E ditekan!");
             OpenPoster();
         }
-        
-        // Tekan Q untuk menutup poster
-        if (Input.GetKeyDown(KeyCode.Q) && isPosterOpen)
+
+        // ─── Tekan Q → Tutup Poster ───
+        if (isPosterOpen && Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("[InteractionPoster] Tombol Q ditekan!");
+            ClosePoster();
+        }
+
+        // ─── Auto tutup jika player terlalu jauh ───
+        if (isPosterOpen && !dbg_isNearby)
+        {
             ClosePoster();
         }
     }
 
     /// <summary>
-    /// Cek apakah crosshair (titik putih di tengah) menunjuk ke poster menggunakan raycast dari center screen
+    /// Raycast dari center kamera, return true jika mengenai poster ini
     /// </summary>
-    private void CheckCursorPointer()
+    private bool CheckGaze()
     {
-        // Raycast dari center screen (posisi crosshair)
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Camera cam = Camera.main;
+        if (cam == null) return false;
+
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hit;
-        
-        bool hitThisPoster = false;
-        
-        if (Physics.Raycast(ray, out hit))
+
+        if (Physics.Raycast(ray, out hit, interactionDistance + 2f))
         {
-            if (hit.collider.gameObject == gameObject)
+            // Cek object ini atau child-nya
+            if (hit.collider.gameObject == gameObject ||
+                hit.collider.transform.IsChildOf(transform))
             {
-                hitThisPoster = true;
+                return true;
             }
         }
-        
-        // Ubah highlight state
-        if (hitThisPoster != isPointerOnPoster)
-        {
-            isPointerOnPoster = hitThisPoster;
-            
-            if (isPointerOnPoster)
-            {
-                HighlightPoster();
-                Debug.Log("[InteractionPoster] ✓ Crosshair menunjuk poster: " + posterTitle + " | Klik/Tekan E untuk membuka");
-            }
-            else
-            {
-                UnhighlightPoster();
-            }
-        }
-        
-        // Klik mouse atau tombol untuk membuka poster
-        if (isPointerOnPoster && Input.GetMouseButtonDown(0) && !isPosterOpen)
-        {
-            Debug.Log("[InteractionPoster] Klik terdeteksi!");
-            OpenPoster();
-        }
+        return false;
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.CompareTag("Player") || collision.GetComponent<VRWalkController>() != null)
-        {
-            isPlayerNearby = true;
-            Debug.Log("[InteractionPoster] ✓ Player mendekat ke poster: " + posterTitle);
-        }
-    }
-
-    private void OnTriggerExit(Collider collision)
-    {
-        if (collision.CompareTag("Player") || collision.GetComponent<VRWalkController>() != null)
-        {
-            isPlayerNearby = false;
-            isPointerOnPoster = false;
-            // Jika poster sedang dibuka, tutup otomatis
-            if (isPosterOpen)
-            {
-                ClosePoster();
-            }
-            UnhighlightPoster();
-            Debug.Log("[InteractionPoster] Player pergi dari poster: " + posterTitle);
-        }
-    }
-
+    /// <summary>
+    /// Aktifkan panel UI poster & jalankan Fade In
+    /// </summary>
     private void OpenPoster()
     {
+        if (posterPanel == null || canvasGroup == null)
+        {
+            Debug.LogError("[" + posterTitle + "] ✗ UI Panel atau CanvasGroup NULL!");
+            return;
+        }
+
         isPosterOpen = true;
-        Debug.Log("[InteractionPoster] === MEMBUKA POSTER: " + posterTitle + " ===");
-        
-        // Inisialisasi UI jika belum
-        if (!uiInitialized)
-        {
-            Debug.Log("[InteractionPoster] Inisialisasi UI...");
-            InitializePosterUI();
-        }
-        
-        // Tampilkan poster
-        if (posterCanvas != null)
-        {
-            posterCanvas.gameObject.SetActive(true);
-            Debug.Log("[InteractionPoster] ✓ Canvas ditampilkan");
-        }
-        else
-        {
-            Debug.LogError("[InteractionPoster] posterCanvas adalah NULL!");
-        }
-        
-        // Kunci pergerakan player
+
+        // Kunci gerakan player
         if (playerController != null)
-        {
             playerController.LockMovement();
-            Debug.Log("[InteractionPoster] ✓ Movement player terkunci");
-        }
-        else
-        {
-            Debug.LogError("[InteractionPoster] playerController adalah NULL!");
-        }
-        
-        Debug.Log("[InteractionPoster] === POSTER TERBUKA ===");
+
+        // Hentikan fade yang sedang berjalan (jika ada)
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        // Aktifkan GameObject & mulai Fade In
+        posterPanel.SetActive(true);
+        fadeCoroutine = StartCoroutine(FadeCanvas(0f, 1f));
+
+        Debug.Log("[" + posterTitle + "] ✓ MEMBUKA POSTER (Fade In) → Tekan Q untuk tutup");
     }
 
+    /// <summary>
+    /// Jalankan Fade Out & nonaktifkan panel UI poster
+    /// </summary>
     private void ClosePoster()
     {
+        if (posterPanel == null || canvasGroup == null) return;
+
         isPosterOpen = false;
-        Debug.Log("[InteractionPoster] === MENUTUP POSTER: " + posterTitle + " ===");
-        
-        // Sembunyikan poster
-        if (posterCanvas != null)
-        {
-            posterCanvas.gameObject.SetActive(false);
-            Debug.Log("[InteractionPoster] ✓ Canvas disembunyikan");
-        }
-        
-        // Buka kembali pergerakan player
+
+        // Buka kembali gerakan player
         if (playerController != null)
-        {
             playerController.UnlockMovement();
-            Debug.Log("[InteractionPoster] ✓ Movement player dibuka");
-        }
-        
-        Debug.Log("[InteractionPoster] === POSTER TERTUTUP ===");
+
+        // Hentikan fade yang sedang berjalan (jika ada)
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        // Mulai Fade Out, lalu SetActive(false) setelah selesai
+        fadeCoroutine = StartCoroutine(FadeCanvas(canvasGroup.alpha, 0f, () => {
+            posterPanel.SetActive(false);
+        }));
+
+        Debug.Log("[" + posterTitle + "] ✓ MENUTUP POSTER (Fade Out)");
     }
 
-    private void HighlightPoster()
+    /// <summary>
+    /// Coroutine untuk mengubah alpha secara smooth (Fade)
+    /// </summary>
+    private IEnumerator FadeCanvas(float startAlpha, float targetAlpha, System.Action onComplete = null)
     {
-        if (posterRenderer != null && highlightMaterial != null)
+        float elapsedTime = 0f;
+        canvasGroup.alpha = startAlpha;
+
+        while (elapsedTime < fadeDuration)
         {
-            posterRenderer.material = highlightMaterial;
+            elapsedTime += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = targetAlpha;
+        onComplete?.Invoke();
+    }
+
+    // ─── Trigger fallback (backup jika collider pakai Is Trigger) ───
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") ||
+            other.GetComponent<VRWalkController>() != null ||
+            other.GetComponentInParent<VRWalkController>() != null)
+        {
+            Debug.Log("[" + posterTitle + "] Trigger: Player mendekat → Tekan E untuk melihat");
         }
     }
 
-    private void UnhighlightPoster()
+    private void OnTriggerExit(Collider other)
     {
-        if (posterRenderer != null && originalMaterials != null && originalMaterials.Length > 0)
+        if (other.CompareTag("Player") ||
+            other.GetComponent<VRWalkController>() != null ||
+            other.GetComponentInParent<VRWalkController>() != null)
         {
-            posterRenderer.materials = originalMaterials;
+            if (isPosterOpen) ClosePoster();
         }
     }
 
-    private void InitializePosterUI()
+    // ─── Gizmo di Scene View ───
+    void OnDrawGizmosSelected()
     {
-        Debug.Log("[InteractionPoster] Mulai inisialisasi UI...");
-        
-        // Cari atau buat Canvas untuk poster
-        posterCanvas = FindObjectOfType<Canvas>();
-        
-        if (posterCanvas == null)
-        {
-            Debug.Log("[InteractionPoster] Canvas tidak ditemukan, membuat Canvas baru...");
-            // Buat Canvas baru jika tidak ada
-            GameObject canvasObj = new GameObject("PosterCanvas");
-            posterCanvas = canvasObj.AddComponent<Canvas>();
-            posterCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            
-            CanvasScaler scaler = canvasObj.AddComponent<CanvasScaler>();
-            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        }
-        else
-        {
-            Debug.Log("[InteractionPoster] Canvas ditemukan: " + posterCanvas.name);
-        }
-        
-        // Cari atau buat Image component untuk menampilkan poster
-        posterImageComponent = posterCanvas.GetComponentInChildren<Image>();
-        
-        if (posterImageComponent == null)
-        {
-            Debug.Log("[InteractionPoster] Image component tidak ditemukan, membuat Image baru...");
-            // Buat Image baru
-            GameObject imageObj = new GameObject("PosterImage");
-            imageObj.transform.SetParent(posterCanvas.transform, false);
-            
-            posterImageComponent = imageObj.AddComponent<Image>();
-            RectTransform rectTransform = imageObj.GetComponent<RectTransform>();
-            rectTransform.anchorMin = Vector2.zero;
-            rectTransform.anchorMax = Vector2.one;
-            rectTransform.offsetMin = Vector2.zero;
-            rectTransform.offsetMax = Vector2.zero;
-            
-            Debug.Log("[InteractionPoster] ✓ Image baru dibuat dan di-set fullscreen");
-        }
-        else
-        {
-            Debug.Log("[InteractionPoster] Image component ditemukan");
-        }
-        
-        // Set gambar poster
-        if (posterImage != null)
-        {
-            posterImageComponent.sprite = posterImage;
-            Debug.Log("[InteractionPoster] ✓ Sprite assigned: " + posterImage.name);
-        }
-        else
-        {
-            Debug.LogWarning("[InteractionPoster] ⚠️ posterImage adalah NULL! Assign gambar di Inspector!");
-        }
-        
-        // Sembunyikan canvas di awal
-        posterCanvas.gameObject.SetActive(false);
-        
-        uiInitialized = true;
-        Debug.Log("[InteractionPoster] ✓ UI initialization selesai");
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, interactionDistance);
     }
 }
