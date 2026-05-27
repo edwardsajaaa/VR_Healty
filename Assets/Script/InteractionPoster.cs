@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Script Interaksi Poster (dengan Efek Fade In/Out Premium)
+/// Script Interaksi Poster
 /// - Pasang script ini pada GameObject Picture/Poster (yang sudah punya Box Collider)
 /// - Isi field "Poster Panel" dengan GameObject Image/Panel UI yang ingin ditampilkan
-/// - Tekan E saat dekat poster → panel aktif dengan transisi Fade In
-/// - Tekan Q untuk menutup panel dengan transisi Fade Out
+/// - Tekan E saat dekat poster → panel aktif
+/// - Tekan Q untuk menutup panel
 /// </summary>
 public class InteractionPoster : MonoBehaviour
 {
@@ -23,15 +23,10 @@ public class InteractionPoster : MonoBehaviour
     [Tooltip("Aktifkan: harus menatap poster dulu | Nonaktifkan: cukup dekat saja")]
     [SerializeField] private bool requireGazeToInteract = false;
 
-    [Header("Efek Transisi")]
-    [SerializeField] private float fadeDuration = 0.3f; // Durasi fade dalam detik
-    
     // ─── State ───
     private VRWalkController playerController;
     private Transform playerTransform;
     private bool isPosterOpen = false;
-    private CanvasGroup canvasGroup;
-    private Coroutine fadeCoroutine;
 
     // ─── Debug (tampil di Inspector saat Play) ───
     [Header("Debug (Read Only)")]
@@ -60,24 +55,13 @@ public class InteractionPoster : MonoBehaviour
         else
             Debug.Log("[" + posterTitle + "] ✓ Collider ditemukan. Is Trigger: " + col.isTrigger);
 
-        // Validasi Poster Panel & Setup CanvasGroup untuk Fade
+        // Validasi Poster Panel
         if (posterPanel == null)
-        {
             Debug.LogError("[" + posterTitle + "] ✗ Poster Panel belum di-assign di Inspector!");
-        }
         else
         {
-            // Ambil atau tambahkan CanvasGroup secara otomatis agar bisa fade
-            canvasGroup = posterPanel.GetComponent<CanvasGroup>();
-            if (canvasGroup == null)
-            {
-                canvasGroup = posterPanel.AddComponent<CanvasGroup>();
-            }
-            
-            // Set ke 0 di awal dan nonaktifkan
-            canvasGroup.alpha = 0f;
-            posterPanel.SetActive(false); 
-            Debug.Log("[" + posterTitle + "] ✓ Poster Panel & CanvasGroup Siap.");
+            posterPanel.SetActive(false); // Sembunyikan di awal
+            Debug.Log("[" + posterTitle + "] ✓ Poster Panel: " + posterPanel.name);
         }
     }
 
@@ -138,85 +122,50 @@ public class InteractionPoster : MonoBehaviour
     }
 
     /// <summary>
-    /// Aktifkan panel UI poster & jalankan Fade In
+    /// Aktifkan panel UI poster & kunci pergerakan player
     /// </summary>
     private void OpenPoster()
     {
-        if (posterPanel == null || canvasGroup == null)
+        if (posterPanel == null)
         {
-            Debug.LogError("[" + posterTitle + "] ✗ UI Panel atau CanvasGroup NULL!");
+            Debug.LogError("[" + posterTitle + "] ✗ Poster Panel NULL! Assign dulu di Inspector.");
             return;
         }
 
         isPosterOpen = true;
+        posterPanel.SetActive(true);
 
-        // Kunci gerakan player
         if (playerController != null)
             playerController.LockMovement();
 
-        // Hentikan fade yang sedang berjalan (jika ada)
-        if (fadeCoroutine != null)
-            StopCoroutine(fadeCoroutine);
-
-        // Aktifkan GameObject & mulai Fade In
-        posterPanel.SetActive(true);
-        fadeCoroutine = StartCoroutine(FadeCanvas(0f, 1f));
-
-        Debug.Log("[" + posterTitle + "] ✓ MEMBUKA POSTER (Fade In) → Tekan Q untuk tutup");
+        Debug.Log("[" + posterTitle + "] ✓ POSTER DIBUKA → Tekan Q untuk tutup");
     }
 
     /// <summary>
-    /// Jalankan Fade Out & nonaktifkan panel UI poster
+    /// Nonaktifkan panel UI poster & buka kembali pergerakan player
     /// </summary>
     private void ClosePoster()
     {
-        if (posterPanel == null || canvasGroup == null) return;
-
         isPosterOpen = false;
 
-        // Buka kembali gerakan player
+        if (posterPanel != null)
+            posterPanel.SetActive(false);
+
         if (playerController != null)
             playerController.UnlockMovement();
 
-        // Hentikan fade yang sedang berjalan (jika ada)
-        if (fadeCoroutine != null)
-            StopCoroutine(fadeCoroutine);
-
-        // Mulai Fade Out, lalu SetActive(false) setelah selesai
-        fadeCoroutine = StartCoroutine(FadeCanvas(canvasGroup.alpha, 0f, () => {
-            posterPanel.SetActive(false);
-        }));
-
-        Debug.Log("[" + posterTitle + "] ✓ MENUTUP POSTER (Fade Out)");
-    }
-
-    /// <summary>
-    /// Coroutine untuk mengubah alpha secara smooth (Fade)
-    /// </summary>
-    private IEnumerator FadeCanvas(float startAlpha, float targetAlpha, System.Action onComplete = null)
-    {
-        float elapsedTime = 0f;
-        canvasGroup.alpha = startAlpha;
-
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
-            yield return null;
-        }
-
-        canvasGroup.alpha = targetAlpha;
-        onComplete?.Invoke();
+        Debug.Log("[" + posterTitle + "] ✓ POSTER DITUTUP");
     }
 
     // ─── Trigger fallback (backup jika collider pakai Is Trigger) ───
     private void OnTriggerEnter(Collider other)
     {
+        // Deteksi player via tag atau komponen (termasuk parent)
         if (other.CompareTag("Player") ||
             other.GetComponent<VRWalkController>() != null ||
             other.GetComponentInParent<VRWalkController>() != null)
         {
-            Debug.Log("[" + posterTitle + "] Trigger: Player mendekat → Tekan E untuk melihat");
+            Debug.Log("[" + posterTitle + "] Trigger: Player masuk area → Tekan E untuk lihat poster");
         }
     }
 
