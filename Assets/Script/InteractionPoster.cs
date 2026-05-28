@@ -1,34 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-/// <summary>
-/// Script Interaksi Poster
-/// - Pasang script ini pada GameObject Picture/Poster (yang sudah punya Box Collider)
-/// - Isi field "Poster Panel" dengan GameObject Image/Panel UI yang ingin ditampilkan
-/// - Tekan E saat dekat poster → panel aktif
-/// - Tekan Q untuk menutup panel
-/// </summary>
 public class InteractionPoster : MonoBehaviour
 {
     [Header("Poster Settings")]
     [SerializeField] private string posterTitle = "Poster";
 
     [Header("Panel UI")]
-    [Tooltip("Drag GameObject Image/Panel dari CanvasUI yang ingin muncul saat E ditekan")]
     [SerializeField] private GameObject posterPanel;
 
     [Header("Interaksi")]
     [SerializeField] private float interactionDistance = 3.5f;
-    [Tooltip("Aktifkan: harus menatap poster dulu | Nonaktifkan: cukup dekat saja")]
     [SerializeField] private bool requireGazeToInteract = false;
 
-    // ─── State ───
+    [Header("Transisi")]
+    [SerializeField] private float transitionDuration = 0.35f;
+
     private VRWalkController playerController;
     private Transform playerTransform;
     private bool isPosterOpen = false;
+    private bool isTransitioning = false;
 
-    // ─── Debug (tampil di Inspector saat Play) ───
+    private CanvasGroup canvasGroup;
+    private RectTransform panelRect;
+    private Coroutine transitionCoroutine;
+
     [Header("Debug (Read Only)")]
     [SerializeField] private bool dbg_isNearby = false;
     [SerializeField] private bool dbg_isGazing = false;
@@ -36,32 +34,21 @@ public class InteractionPoster : MonoBehaviour
 
     void Start()
     {
-        // Cari VRWalkController di scene
         playerController = FindObjectOfType<VRWalkController>();
         if (playerController != null)
-        {
             playerTransform = playerController.transform;
-            Debug.Log("[" + posterTitle + "] ✓ Player ditemukan: " + playerTransform.name);
-        }
-        else
-        {
-            Debug.LogError("[" + posterTitle + "] ✗ VRWalkController tidak ditemukan di scene!");
-        }
 
-        // Validasi Box Collider
-        Collider col = GetComponent<Collider>();
-        if (col == null)
-            Debug.LogError("[" + posterTitle + "] ✗ Tidak ada Collider! Tambahkan Box Collider.");
-        else
-            Debug.Log("[" + posterTitle + "] ✓ Collider ditemukan. Is Trigger: " + col.isTrigger);
-
-        // Validasi Poster Panel
-        if (posterPanel == null)
-            Debug.LogError("[" + posterTitle + "] ✗ Poster Panel belum di-assign di Inspector!");
-        else
+        if (posterPanel != null)
         {
-            posterPanel.SetActive(false); // Sembunyikan di awal
-            Debug.Log("[" + posterTitle + "] ✓ Poster Panel: " + posterPanel.name);
+            canvasGroup = posterPanel.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+                canvasGroup = posterPanel.AddComponent<CanvasGroup>();
+
+            panelRect = posterPanel.GetComponent<RectTransform>();
+
+            canvasGroup.alpha = 0f;
+            if (panelRect != null) panelRect.localScale = Vector3.zero;
+            posterPanel.SetActive(false);
         }
     }
 
@@ -69,38 +56,22 @@ public class InteractionPoster : MonoBehaviour
     {
         if (playerTransform == null) return;
 
-        // ─── Hitung jarak player ke poster ───
         dbg_distance = Vector3.Distance(transform.position, playerTransform.position);
         dbg_isNearby = (dbg_distance <= interactionDistance);
-
-        // ─── Cek Gaze (raycast dari kamera) ───
         dbg_isGazing = CheckGaze();
 
-        // ─── Kondisi bisa interact ───
         bool canInteract = dbg_isNearby && (!requireGazeToInteract || dbg_isGazing);
 
-        // ─── Tekan E → Buka Poster ───
-        if (canInteract && Input.GetKeyDown(KeyCode.E) && !isPosterOpen)
-        {
+        if (canInteract && Input.GetKeyDown(KeyCode.E) && !isPosterOpen && !isTransitioning)
             OpenPoster();
-        }
 
-        // ─── Tekan Q → Tutup Poster ───
-        if (isPosterOpen && Input.GetKeyDown(KeyCode.Q))
-        {
+        if (isPosterOpen && Input.GetKeyDown(KeyCode.Q) && !isTransitioning)
             ClosePoster();
-        }
 
-        // ─── Auto tutup jika player terlalu jauh ───
-        if (isPosterOpen && !dbg_isNearby)
-        {
+        if (isPosterOpen && !dbg_isNearby && !isTransitioning)
             ClosePoster();
-        }
     }
 
-    /// <summary>
-    /// Raycast dari center kamera, return true jika mengenai poster ini
-    /// </summary>
     private bool CheckGaze()
     {
         Camera cam = Camera.main;
@@ -111,61 +82,123 @@ public class InteractionPoster : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactionDistance + 2f))
         {
-            // Cek object ini atau child-nya
             if (hit.collider.gameObject == gameObject ||
                 hit.collider.transform.IsChildOf(transform))
-            {
                 return true;
-            }
         }
         return false;
     }
 
-    /// <summary>
-    /// Aktifkan panel UI poster & kunci pergerakan player
-    /// </summary>
     private void OpenPoster()
     {
-        if (posterPanel == null)
-        {
-            Debug.LogError("[" + posterTitle + "] ✗ Poster Panel NULL! Assign dulu di Inspector.");
-            return;
-        }
+        if (posterPanel == null || canvasGroup == null) return;
 
         isPosterOpen = true;
-        posterPanel.SetActive(true);
 
         if (playerController != null)
             playerController.LockMovement();
 
-        Debug.Log("[" + posterTitle + "] ✓ POSTER DIBUKA → Tekan Q untuk tutup");
+        if (transitionCoroutine != null)
+            StopCoroutine(transitionCoroutine);
+
+        posterPanel.SetActive(true);
+        transitionCoroutine = StartCoroutine(TransitionOpen());
     }
 
-    /// <summary>
-    /// Nonaktifkan panel UI poster & buka kembali pergerakan player
-    /// </summary>
     private void ClosePoster()
     {
-        isPosterOpen = false;
+        if (posterPanel == null || canvasGroup == null) return;
 
-        if (posterPanel != null)
-            posterPanel.SetActive(false);
+        isPosterOpen = false;
 
         if (playerController != null)
             playerController.UnlockMovement();
 
-        Debug.Log("[" + posterTitle + "] ✓ POSTER DITUTUP");
+        if (transitionCoroutine != null)
+            StopCoroutine(transitionCoroutine);
+
+        transitionCoroutine = StartCoroutine(TransitionClose());
     }
 
-    // ─── Trigger fallback (backup jika collider pakai Is Trigger) ───
+    private IEnumerator TransitionOpen()
+    {
+        isTransitioning = true;
+        float elapsed = 0f;
+
+        canvasGroup.alpha = 0f;
+        if (panelRect != null) panelRect.localScale = new Vector3(0.85f, 0.85f, 1f);
+
+        while (elapsed < transitionDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / transitionDuration;
+            float eased = EaseOutBack(t);
+
+            canvasGroup.alpha = Mathf.Clamp01(t / 0.6f);
+
+            if (panelRect != null)
+            {
+                float scale = Mathf.LerpUnclamped(0.85f, 1f, eased);
+                panelRect.localScale = new Vector3(scale, scale, 1f);
+            }
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1f;
+        if (panelRect != null) panelRect.localScale = Vector3.one;
+        isTransitioning = false;
+    }
+
+    private IEnumerator TransitionClose()
+    {
+        isTransitioning = true;
+        float elapsed = 0f;
+
+        float startAlpha = canvasGroup.alpha;
+        Vector3 startScale = panelRect != null ? panelRect.localScale : Vector3.one;
+
+        while (elapsed < transitionDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / transitionDuration;
+            float eased = EaseInCubic(t);
+
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, 0f, eased);
+
+            if (panelRect != null)
+            {
+                float scale = Mathf.Lerp(startScale.x, 0.85f, eased);
+                panelRect.localScale = new Vector3(scale, scale, 1f);
+            }
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
+        if (panelRect != null) panelRect.localScale = new Vector3(0.85f, 0.85f, 1f);
+        posterPanel.SetActive(false);
+        isTransitioning = false;
+    }
+
+    private float EaseOutBack(float t)
+    {
+        float c1 = 1.70158f;
+        float c3 = c1 + 1f;
+        return 1f + c3 * Mathf.Pow(t - 1f, 3f) + c1 * Mathf.Pow(t - 1f, 2f);
+    }
+
+    private float EaseInCubic(float t)
+    {
+        return t * t * t;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        // Deteksi player via tag atau komponen (termasuk parent)
         if (other.CompareTag("Player") ||
             other.GetComponent<VRWalkController>() != null ||
             other.GetComponentInParent<VRWalkController>() != null)
         {
-            Debug.Log("[" + posterTitle + "] Trigger: Player masuk area → Tekan E untuk lihat poster");
         }
     }
 
@@ -179,7 +212,6 @@ public class InteractionPoster : MonoBehaviour
         }
     }
 
-    // ─── Gizmo di Scene View ───
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;

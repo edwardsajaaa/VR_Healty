@@ -22,59 +22,37 @@ public class DoorMechanic : MonoBehaviour
 
     void Start()
     {
-        // Get door collider untuk interaction
         doorCollider = GetComponent<Collider>();
-        
-        // Store initial rotation (closed position)
         closedRotation = transform.localEulerAngles;
         currentRotationZ = closedRotation.z;
         targetRotationZ = currentRotationZ;
-        
-        Debug.Log("DoorMechanic initialized. Initial rotation Z: " + currentRotationZ);
     }
 
     void Update()
     {
-        // Handle door rotation
         if (isRotating)
-        {
             RotateDoor();
-        }
 
-        // Check if player is looking at door
         CheckPlayerGaze();
         
-        // Check if E key pressed while looking at door
         if (isBeingLookedAt && Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("E pressed while looking at door - Toggling door");
             ToggleDoor();
-        }
     }
 
-    /// <summary>
-    /// Raycast dari camera untuk check jika player menatap pintu
-    /// </summary>
     private void CheckPlayerGaze()
     {
         Camera mainCamera = Camera.main;
         if (mainCamera == null) return;
 
-        // Raycast dari center of screen
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;
 
-        // Cek apakah raycast mengenai door collider ini dalam range
         if (Physics.Raycast(ray, out hit, interactionDistance))
         {
             if (hit.collider.gameObject == gameObject)
             {
-                // Player sedang menatap pintu dan dalam range
                 if (!isBeingLookedAt)
-                {
                     isBeingLookedAt = true;
-                    Debug.Log("Door in focus! Press E to interact");
-                }
             }
             else
             {
@@ -87,52 +65,33 @@ public class DoorMechanic : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Putar pintu menuju target rotation
-    /// </summary>
     private void RotateDoor()
     {
         currentRotationZ = Mathf.Lerp(currentRotationZ, targetRotationZ, Time.deltaTime * rotationSpeed);
         
-        // Apply rotation langsung ke door GameObject (Z axis)
         Vector3 eulerAngles = transform.localEulerAngles;
         eulerAngles.z = currentRotationZ;
         transform.localEulerAngles = eulerAngles;
         
-        // Cek apakah sudah mencapai target
         if (Mathf.Abs(currentRotationZ - targetRotationZ) < rotationThreshold)
         {
             currentRotationZ = targetRotationZ;
             Vector3 finalEuler = transform.localEulerAngles;
             finalEuler.z = targetRotationZ;
             transform.localEulerAngles = finalEuler;
-            
             isRotating = false;
-            Debug.Log("Door rotation complete. Door is " + (isOpen ? "OPEN" : "CLOSED"));
         }
     }
 
-    /// <summary>
-    /// Toggle pintu antara terbuka dan tertutup
-    /// </summary>
     public void ToggleDoor()
     {
-        if (isRotating)
-        {
-            Debug.Log("Door is already rotating!");
-            return;
-        }
+        if (isRotating) return;
         
         isOpen = !isOpen;
         targetRotationZ = isOpen ? (closedRotation.z + openAngle) : closedRotation.z;
         isRotating = true;
-        
-        Debug.Log("Door toggle - Opening: " + isOpen + ", Target angle: " + targetRotationZ);
     }
 
-    /// <summary>
-    /// Buka pintu
-    /// </summary>
     public void OpenDoor()
     {
         if (isOpen || isRotating) return;
@@ -140,13 +99,8 @@ public class DoorMechanic : MonoBehaviour
         isOpen = true;
         targetRotationZ = closedRotation.z + openAngle;
         isRotating = true;
-        
-        Debug.Log("Opening door...");
     }
 
-    /// <summary>
-    /// Tutup pintu
-    /// </summary>
     public void CloseDoor()
     {
         if (!isOpen || isRotating) return;
@@ -154,41 +108,11 @@ public class DoorMechanic : MonoBehaviour
         isOpen = false;
         targetRotationZ = closedRotation.z;
         isRotating = true;
-        
-        Debug.Log("Closing door...");
     }
 
-    /// <summary>
-    /// Cek apakah pintu sedang terbuka
-    /// </summary>
-    public bool IsOpen()
-    {
-        return isOpen;
-    }
+    public bool IsOpen() { return isOpen; }
+    public bool IsRotating() { return isRotating; }
 
-    /// <summary>
-    /// Cek apakah pintu sedang bergerak
-    /// </summary>
-    public bool IsRotating()
-    {
-        return isRotating;
-    }
-
-    /// <summary>
-    /// Set sudut pembukaan pintu
-    /// </summary>
-    public void SetOpenAngle(float angle)
-    {
-        openAngle = angle;
-        Debug.Log("Open angle set to: " + angle);
-    }
-
-    /// <summary>
-    /// Set kecepatan rotasi
-    /// </summary>
-    public void SetRotationSpeed(float speed)
-    {
-        rotationSpeed = speed;
-        Debug.Log("Rotation speed set to: " + speed);
-    }
+    public void SetOpenAngle(float angle) { openAngle = angle; }
+    public void SetRotationSpeed(float speed) { rotationSpeed = speed; }
 }

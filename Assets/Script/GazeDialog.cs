@@ -4,16 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-/// <summary>
-/// Script Dialog Q&A dengan NPC (Mendukung Custom UI Sprite)
-/// - Pasang pada GameObject NPC (Dokter, dll) yang memiliki Collider
-/// - Assign sprite panel dan tombol di Inspector
-/// - Arahkan kursor ke NPC → muncul teks "Tekan E untuk berbicara"
-/// - Tekan E → Panel dialog Q&A muncul dengan daftar pertanyaan
-/// - Klik pertanyaan → NPC menjawab
-/// - Tombol "Kembali" → kembali ke daftar pertanyaan
-/// - Tekan Q atau klik "Tutup" → keluar dari dialog
-/// </summary>
 public class GazeDialog : MonoBehaviour
 {
     [Header("NPC Settings")]
@@ -24,9 +14,7 @@ public class GazeDialog : MonoBehaviour
     [SerializeField] private float fadeDuration = 0.25f;
 
     [Header("Custom UI Sprites")]
-    [Tooltip("Sprite untuk panel utama dialog (rounded rectangle besar)")]
     [SerializeField] private Sprite panelSprite;
-    [Tooltip("Sprite untuk tombol pertanyaan (rounded rectangle kecil)")]
     [SerializeField] private Sprite buttonSprite;
 
     [Header("Warna UI")]
@@ -37,13 +25,11 @@ public class GazeDialog : MonoBehaviour
     [SerializeField] private Color headerColor = new Color(0.08f, 0.35f, 0.55f);
     [SerializeField] private Color headerTextColor = Color.white;
 
-    // ─── State ───
     private bool isGazingAtNPC = false;
     private bool isDialogOpen = false;
     private Camera mainCamera;
     private VRWalkController playerController;
 
-    // ─── UI References (dibuat otomatis) ───
     private Canvas dialogCanvas;
     private CanvasGroup canvasGroup;
     private GameObject hintPanel;
@@ -53,7 +39,6 @@ public class GazeDialog : MonoBehaviour
     private Text answerText;
     private Coroutine fadeCoroutine;
 
-    // ─── Data Q&A ───
     private List<QAData> qaList = new List<QAData>();
 
     [System.Serializable]
@@ -68,10 +53,6 @@ public class GazeDialog : MonoBehaviour
     {
         mainCamera = Camera.main;
         playerController = FindObjectOfType<VRWalkController>();
-
-        if (GetComponent<Collider>() == null)
-            Debug.LogError("[GazeDialog] " + gameObject.name + " membutuhkan Collider!");
-
         InitializeQAData();
         BuildUI();
     }
@@ -82,7 +63,6 @@ public class GazeDialog : MonoBehaviour
 
         bool gazing = CheckGaze();
 
-        // Hint muncul/hilang saat menatap NPC
         if (gazing && !isGazingAtNPC && !isDialogOpen)
         {
             isGazingAtNPC = true;
@@ -94,22 +74,12 @@ public class GazeDialog : MonoBehaviour
             if (hintPanel != null) hintPanel.SetActive(false);
         }
 
-        // Tekan E → Buka Dialog
         if (isGazingAtNPC && Input.GetKeyDown(KeyCode.E) && !isDialogOpen)
-        {
             OpenDialog();
-        }
 
-        // Tekan Q → Tutup Dialog
         if (isDialogOpen && Input.GetKeyDown(KeyCode.Q))
-        {
             CloseDialog();
-        }
     }
-
-    // ════════════════════════════════════════════
-    //  DATA Q&A
-    // ════════════════════════════════════════════
 
     private void InitializeQAData()
     {
@@ -139,10 +109,6 @@ public class GazeDialog : MonoBehaviour
         ));
     }
 
-    // ════════════════════════════════════════════
-    //  RAYCAST GAZE
-    // ════════════════════════════════════════════
-
     private bool CheckGaze()
     {
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
@@ -154,10 +120,6 @@ public class GazeDialog : MonoBehaviour
         }
         return false;
     }
-
-    // ════════════════════════════════════════════
-    //  BUKA / TUTUP DIALOG
-    // ════════════════════════════════════════════
 
     private void OpenDialog()
     {
@@ -171,7 +133,6 @@ public class GazeDialog : MonoBehaviour
         fadeCoroutine = StartCoroutine(FadeCanvas(0f, 1f));
 
         if (playerController != null) playerController.LockMovement();
-        Debug.Log("[GazeDialog] Dialog dibuka dengan " + npcName);
     }
 
     private void CloseDialog()
@@ -185,7 +146,6 @@ public class GazeDialog : MonoBehaviour
         }));
 
         if (playerController != null) playerController.UnlockMovement();
-        Debug.Log("[GazeDialog] Dialog ditutup");
     }
 
     private void ShowQuestionList()
@@ -201,10 +161,6 @@ public class GazeDialog : MonoBehaviour
         answerText.text = qaList[index].answer;
     }
 
-    // ════════════════════════════════════════════
-    //  FADE
-    // ════════════════════════════════════════════
-
     private IEnumerator FadeCanvas(float from, float to, System.Action onComplete = null)
     {
         float elapsed = 0f;
@@ -219,13 +175,8 @@ public class GazeDialog : MonoBehaviour
         onComplete?.Invoke();
     }
 
-    // ════════════════════════════════════════════
-    //  BUILD UI
-    // ════════════════════════════════════════════
-
     private void BuildUI()
     {
-        // ─── EventSystem ───
         if (FindObjectOfType<EventSystem>() == null)
         {
             GameObject esObj = new GameObject("EventSystem");
@@ -233,7 +184,6 @@ public class GazeDialog : MonoBehaviour
             esObj.AddComponent<StandaloneInputModule>();
         }
 
-        // ─── Canvas ───
         GameObject canvasObj = new GameObject("DialogCanvas_" + npcName);
         dialogCanvas = canvasObj.AddComponent<Canvas>();
         dialogCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -245,39 +195,35 @@ public class GazeDialog : MonoBehaviour
         scaler.matchWidthOrHeight = 0.5f;
         canvasObj.AddComponent<GraphicRaycaster>();
 
-        // ─── Hint "Tekan E untuk berbicara" ───
         hintPanel = CreateSpritePanel(canvasObj.transform, "HintPanel",
-            new Vector2(500, 55), new Vector2(0.5f, 0.12f), new Vector2(0.5f, 0.12f),
+            new Vector2(600, 70), new Vector2(0.5f, 0.12f), new Vector2(0.5f, 0.12f),
             buttonSprite, panelColor);
 
         Text hintText = CreateText(hintPanel.transform, "HintText",
             "Tekan E untuk berbicara dengan " + npcName,
-            18, TextAnchor.MiddleCenter, textColor);
+            24, TextAnchor.MiddleCenter, textColor);
         StretchRect(hintText.rectTransform, 15, 5, -15, -5);
         hintPanel.SetActive(false);
 
-        // ─── Main Dialog Panel ───
         mainDialogPanel = CreateSpritePanel(canvasObj.transform, "MainDialogPanel",
-            new Vector2(950, 620), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+            new Vector2(1050, 720), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             panelSprite, panelColor);
 
         canvasGroup = mainDialogPanel.AddComponent<CanvasGroup>();
         canvasGroup.alpha = 0f;
         mainDialogPanel.SetActive(false);
 
-        // ─── Header Bar ───
         GameObject headerBar = CreateSpritePanel(mainDialogPanel.transform, "HeaderBar",
             Vector2.zero, Vector2.zero, Vector2.zero, buttonSprite, headerColor);
         RectTransform hbRect = headerBar.GetComponent<RectTransform>();
         hbRect.anchorMin = new Vector2(0, 1);
         hbRect.anchorMax = new Vector2(1, 1);
         hbRect.pivot = new Vector2(0.5f, 1);
-        hbRect.sizeDelta = new Vector2(-20, 60);
+        hbRect.sizeDelta = new Vector2(-20, 75);
         hbRect.anchoredPosition = new Vector2(0, -10);
 
-        // Nama NPC di header
         Text nameText = CreateText(headerBar.transform, "NameText", npcName,
-            24, TextAnchor.MiddleLeft, headerTextColor);
+            32, TextAnchor.MiddleLeft, headerTextColor);
         nameText.fontStyle = FontStyle.Bold;
         RectTransform ntRect = nameText.rectTransform;
         ntRect.anchorMin = Vector2.zero;
@@ -285,14 +231,9 @@ public class GazeDialog : MonoBehaviour
         ntRect.offsetMin = new Vector2(25, 0);
         ntRect.offsetMax = Vector2.zero;
 
-        // Tombol X (Tutup)
         CreateSpriteButton(headerBar.transform, "CloseX", "✕",
-            new Vector2(50, 40), new Vector2(1, 0.5f), new Vector2(1, 0.5f), new Vector2(-35, 0),
-            buttonSprite, new Color(0.9f, 0.25f, 0.25f), Color.white, 22, () => { CloseDialog(); });
-
-        // ════════════════════════════════════════
-        //  QUESTION LIST PANEL
-        // ════════════════════════════════════════
+            new Vector2(60, 50), new Vector2(1, 0.5f), new Vector2(1, 0.5f), new Vector2(-40, 0),
+            buttonSprite, new Color(0.9f, 0.25f, 0.25f), Color.white, 28, () => { CloseDialog(); });
 
         questionListPanel = new GameObject("QuestionListPanel");
         questionListPanel.transform.SetParent(mainDialogPanel.transform, false);
@@ -300,30 +241,27 @@ public class GazeDialog : MonoBehaviour
         qlRect.anchorMin = Vector2.zero;
         qlRect.anchorMax = Vector2.one;
         qlRect.offsetMin = new Vector2(25, 25);
-        qlRect.offsetMax = new Vector2(-25, -80);
+        qlRect.offsetMax = new Vector2(-25, -95);
 
-        // Label
         Text qlLabel = CreateText(questionListPanel.transform, "Label",
-            "Pilih pertanyaan:", 18, TextAnchor.MiddleLeft, new Color(0.3f, 0.3f, 0.3f));
+            "Pilih pertanyaan:", 24, TextAnchor.MiddleLeft, new Color(0.3f, 0.3f, 0.3f));
         qlLabel.fontStyle = FontStyle.Bold;
         RectTransform lblRect = qlLabel.rectTransform;
         lblRect.anchorMin = new Vector2(0, 1);
         lblRect.anchorMax = new Vector2(1, 1);
         lblRect.pivot = new Vector2(0.5f, 1);
-        lblRect.sizeDelta = new Vector2(0, 30);
+        lblRect.sizeDelta = new Vector2(0, 38);
         lblRect.anchoredPosition = Vector2.zero;
 
-        // Tombol-tombol pertanyaan
-        float btnY = -38f;
-        float btnH = 68f;
-        float btnGap = 8f;
+        float btnY = -45f;
+        float btnH = 80f;
+        float btnGap = 10f;
 
         for (int i = 0; i < qaList.Count; i++)
         {
             int idx = i;
             float yPos = btnY - (i * (btnH + btnGap));
 
-            // Panel tombol dengan sprite custom
             GameObject btnObj = CreateSpritePanel(questionListPanel.transform, "QBtn_" + i,
                 new Vector2(0, btnH), Vector2.zero, Vector2.zero, buttonSprite, buttonColor);
             RectTransform bRect = btnObj.GetComponent<RectTransform>();
@@ -333,9 +271,8 @@ public class GazeDialog : MonoBehaviour
             bRect.sizeDelta = new Vector2(0, btnH);
             bRect.anchoredPosition = new Vector2(0, yPos);
 
-            // Nomor
             Text numText = CreateText(btnObj.transform, "Num", (i + 1) + ".",
-                17, TextAnchor.UpperLeft, headerColor);
+                22, TextAnchor.UpperLeft, headerColor);
             numText.fontStyle = FontStyle.Bold;
             RectTransform nRect = numText.rectTransform;
             nRect.anchorMin = Vector2.zero;
@@ -344,16 +281,14 @@ public class GazeDialog : MonoBehaviour
             nRect.offsetMin = new Vector2(15, 10);
             nRect.offsetMax = new Vector2(45, -10);
 
-            // Teks pertanyaan
             Text qText = CreateText(btnObj.transform, "QText", qaList[i].question,
-                15, TextAnchor.UpperLeft, textColor);
+                20, TextAnchor.UpperLeft, textColor);
             RectTransform qRect = qText.rectTransform;
             qRect.anchorMin = Vector2.zero;
             qRect.anchorMax = Vector2.one;
             qRect.offsetMin = new Vector2(50, 8);
             qRect.offsetMax = new Vector2(-15, -8);
 
-            // Button behavior
             Button btn = btnObj.AddComponent<Button>();
             Image btnImg = btnObj.GetComponent<Image>();
             ColorBlock cb = btn.colors;
@@ -366,30 +301,24 @@ public class GazeDialog : MonoBehaviour
             btn.onClick.AddListener(() => { ShowAnswer(idx); });
         }
 
-        // ════════════════════════════════════════
-        //  ANSWER PANEL
-        // ════════════════════════════════════════
-
         answerPanel = new GameObject("AnswerPanel");
         answerPanel.transform.SetParent(mainDialogPanel.transform, false);
         RectTransform apRect = answerPanel.AddComponent<RectTransform>();
         apRect.anchorMin = Vector2.zero;
         apRect.anchorMax = Vector2.one;
         apRect.offsetMin = new Vector2(25, 25);
-        apRect.offsetMax = new Vector2(-25, -80);
+        apRect.offsetMax = new Vector2(-25, -95);
 
-        // Label jawaban
         Text ansLabel = CreateText(answerPanel.transform, "AnsLabel",
-            npcName + " menjawab:", 18, TextAnchor.MiddleLeft, headerColor);
+            npcName + " menjawab:", 24, TextAnchor.MiddleLeft, headerColor);
         ansLabel.fontStyle = FontStyle.Bold;
         RectTransform alRect = ansLabel.rectTransform;
         alRect.anchorMin = new Vector2(0, 1);
         alRect.anchorMax = new Vector2(1, 1);
         alRect.pivot = new Vector2(0.5f, 1);
-        alRect.sizeDelta = new Vector2(0, 30);
+        alRect.sizeDelta = new Vector2(0, 38);
         alRect.anchoredPosition = Vector2.zero;
 
-        // Kotak jawaban (pakai sprite custom)
         GameObject ansBox = CreateSpritePanel(answerPanel.transform, "AnsBox",
             Vector2.zero, Vector2.zero, Vector2.zero, panelSprite, new Color(0.96f, 0.96f, 0.96f));
         RectTransform abRect = ansBox.GetComponent<RectTransform>();
@@ -398,9 +327,8 @@ public class GazeDialog : MonoBehaviour
         abRect.offsetMin = new Vector2(0, 0);
         abRect.offsetMax = new Vector2(0, -40);
 
-        // Teks jawaban
         answerText = CreateText(ansBox.transform, "AnsText", "",
-            17, TextAnchor.UpperLeft, textColor);
+            22, TextAnchor.UpperLeft, textColor);
         answerText.lineSpacing = 1.4f;
         RectTransform atRect = answerText.rectTransform;
         atRect.anchorMin = Vector2.zero;
@@ -408,26 +336,17 @@ public class GazeDialog : MonoBehaviour
         atRect.offsetMin = new Vector2(25, 20);
         atRect.offsetMax = new Vector2(-25, -20);
 
-        // Tombol Kembali
         CreateSpriteButton(answerPanel.transform, "BackBtn", "← Kembali ke Pertanyaan",
-            new Vector2(300, 48), new Vector2(0, 0), new Vector2(0, 0), new Vector2(150, 24),
-            buttonSprite, headerColor, headerTextColor, 16, () => { ShowQuestionList(); });
+            new Vector2(360, 55), new Vector2(0, 0), new Vector2(0, 0), new Vector2(180, 28),
+            buttonSprite, headerColor, headerTextColor, 20, () => { ShowQuestionList(); });
 
-        // Tombol Tutup
         CreateSpriteButton(answerPanel.transform, "CloseBtn2", "Tutup (Q)",
-            new Vector2(170, 48), new Vector2(1, 0), new Vector2(1, 0), new Vector2(-85, 24),
-            buttonSprite, new Color(0.7f, 0.2f, 0.2f), Color.white, 16, () => { CloseDialog(); });
+            new Vector2(200, 55), new Vector2(1, 0), new Vector2(1, 0), new Vector2(-100, 28),
+            buttonSprite, new Color(0.7f, 0.2f, 0.2f), Color.white, 20, () => { CloseDialog(); });
 
         answerPanel.SetActive(false);
     }
 
-    // ════════════════════════════════════════════
-    //  UI HELPER METHODS
-    // ════════════════════════════════════════════
-
-    /// <summary>
-    /// Membuat panel dengan sprite custom (9-slice compatible)
-    /// </summary>
     private GameObject CreateSpritePanel(Transform parent, string name,
         Vector2 size, Vector2 anchorMin, Vector2 anchorMax, Sprite sprite, Color color)
     {
@@ -438,7 +357,7 @@ public class GazeDialog : MonoBehaviour
         if (sprite != null)
         {
             img.sprite = sprite;
-            img.type = Image.Type.Sliced; // 9-slice agar sudut rounded tetap bagus
+            img.type = Image.Type.Sliced;
         }
         img.color = color;
 
@@ -451,9 +370,6 @@ public class GazeDialog : MonoBehaviour
         return obj;
     }
 
-    /// <summary>
-    /// Membuat tombol dengan sprite custom
-    /// </summary>
     private void CreateSpriteButton(Transform parent, string name, string label,
         Vector2 size, Vector2 anchorMin, Vector2 anchorMax, Vector2 position,
         Sprite sprite, Color bgColor, Color txtColor, int fontSize,
