@@ -2,24 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// Script interaksi poster untuk HP Android (VR Cardboard).
-/// Semua interaksi berbasis CURSOR (gaze) + TAP layar.
+/// Menggunakan IPointerClickHandler agar kompatibel dengan CardboardReticlePointer.
 ///
 /// === CARA KERJA ===
-/// 1. Player mengarahkan cursor ke poster → terdeteksi gaze
-/// 2. Player tap layar saat melihat poster → panel poster terbuka
-/// 3. Player tap tombol "✕ Tutup" → panel poster tertutup
-/// 4. Otomatis tutup jika player pergi terlalu jauh
+/// 1. Player arahkan cursor (reticle) ke poster
+/// 2. Tap layar (Cardboard trigger) → panel poster terbuka
+/// 3. Tap tombol "✕ Tutup" → panel poster tertutup
 ///
 /// === SETUP ===
 /// 1. Pasang script ini pada GameObject poster
-/// 2. Pastikan poster punya Collider (Box Collider)
-/// 3. Assign posterPanel di Inspector (panel UI yang muncul)
-/// 4. Tombol tutup otomatis dibuat, atau assign manual di Inspector
+/// 2. Pastikan poster punya Collider (Box Collider) — JANGAN centang Is Trigger
+/// 3. Pastikan Main Camera punya komponen PhysicsRaycaster
+///    (script ini auto-tambah jika belum ada)
+/// 4. Assign posterPanel di Inspector (panel UI yang muncul)
 /// </summary>
-public class InteractionPoster : MonoBehaviour
+public class InteractionPoster : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Poster Settings")]
     [SerializeField] private string posterTitle = "Poster";
@@ -31,12 +32,9 @@ public class InteractionPoster : MonoBehaviour
     [Tooltip("Jika dikosongkan, tombol tutup akan dibuat otomatis di bawah panel.")]
     [SerializeField] private Button closeButton;
 
-    [Header("Interaksi Gaze")]
-    [Tooltip("Jarak maksimal cursor bisa mendeteksi poster")]
-    [SerializeField] private float gazeDistance = 5f;
-
-    [Tooltip("Jarak maksimal sebelum poster auto-tutup")]
-    [SerializeField] private float autoCloseDistance = 6f;
+    [Header("Interaksi")]
+    [Tooltip("Jarak auto-close jika player menjauh")]
+    [SerializeField] private float autoCloseDistance = 8f;
 
     [Header("Transisi")]
     [SerializeField] private float transitionDuration = 0.35f;
@@ -47,7 +45,7 @@ public class InteractionPoster : MonoBehaviour
     private Camera mainCamera;
     private bool isPosterOpen = false;
     private bool isTransitioning = false;
-    private bool isGazingAtPoster = false;
+    private bool isGazing = false;
 
     private CanvasGroup canvasGroup;
     private RectTransform panelRect;
@@ -68,12 +66,25 @@ public class InteractionPoster : MonoBehaviour
         if (playerController != null)
             playerTransform = playerController.transform;
 
-        // Pastikan poster punya collider
+        // Pastikan poster punya collider untuk raycast
         if (GetComponent<Collider>() == null)
         {
             BoxCollider col = gameObject.AddComponent<BoxCollider>();
-            Debug.LogWarning("[InteractionPoster] " + posterTitle + 
-                " tidak punya Collider, auto-tambah BoxCollider. Atur ukurannya manual di Inspector.");
+            Debug.LogWarning("[InteractionPoster] " + posterTitle +
+                " tidak punya Collider, auto-tambah BoxCollider.");
+        }
+
+        // ══ PENTING: Pastikan kamera punya PhysicsRaycaster ══
+        // Tanpa ini, IPointerClickHandler TIDAK BISA menerima event dari
+        // Cardboard reticle pointer pada object 3D.
+        if (mainCamera != null)
+        {
+            PhysicsRaycaster pr = mainCamera.GetComponent<PhysicsRaycaster>();
+            if (pr == null)
+            {
+                pr = mainCamera.gameObject.AddComponent<PhysicsRaycaster>();
+                Debug.Log("[InteractionPoster] Auto-tambah PhysicsRaycaster ke Main Camera.");
+            }
         }
 
         if (posterPanel != null)
@@ -94,21 +105,10 @@ public class InteractionPoster : MonoBehaviour
 
     void Update()
     {
-        if (mainCamera == null) { mainCamera = Camera.main; return; }
-
-        // ── Cek gaze (cursor mengarah ke poster) ──
-        isGazingAtPoster = CheckGaze();
-        dbg_isGazing = isGazingAtPoster;
+        dbg_isGazing = isGazing;
 
         if (playerTransform != null)
             dbg_distance = Vector3.Distance(transform.position, playerTransform.position);
-
-        // ── Buka poster: gaze + tap layar ──
-        if (isGazingAtPoster && !isPosterOpen && !isTransitioning)
-        {
-            if (DetectTap())
-                OpenPoster();
-        }
 
         // ── Auto-tutup jika terlalu jauh ──
         if (isPosterOpen && playerTransform != null && !isTransitioning)
@@ -116,24 +116,65 @@ public class InteractionPoster : MonoBehaviour
             if (dbg_distance > autoCloseDistance)
                 ClosePoster();
         }
+
+        // ── Fallback: buka poster dengan tap manual (jaga-jaga IPointer tidak jalan) ──
+        if (!isPosterOpen && !isTransitioning && CheckGazeFallback() && DetectTapFallback())
+        {
+            Debug.Log("[InteractionPoster] Fallback tap detected untuk: " + posterTitle);
+            OpenPoster();
+        }
     }
 
     // ═══════════════════════════════════════════════════════════════════
-    //  GAZE DETECTION (CURSOR)
+    //  CARDBOARD POINTER EVENTS (CARA UTAMA)
     // ═══════════════════════════════════════════════════════════════════
 
     /// <summary>
-    /// Cek apakah cursor (tengah layar / gaze) mengarah ke poster ini.
-    /// Menggunakan raycast dari kamera ke depan.
+    /// Dipanggil oleh Cardboard EventSystem saat player tap layar
+    /// sambil reticle mengarah ke poster ini.
+    /// INI ADALAH CARA UTAMA INTERAKSI.
     /// </summary>
-    private bool CheckGaze()
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("[InteractionPoster] OnPointerClick pada: " + posterTitle);
+
+        if (!isPosterOpen && !isTransitioning)
+            OpenPoster();
+    }
+
+    /// <summary>
+    /// Dipanggil saat reticle/cursor masuk ke area poster.
+    /// </summary>
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isGazing = true;
+        Debug.Log("[InteractionPoster] Gaze MASUK ke: " + posterTitle);
+    }
+
+    /// <summary>
+    /// Dipanggil saat reticle/cursor keluar dari area poster.
+    /// </summary>
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isGazing = false;
+        Debug.Log("[InteractionPoster] Gaze KELUAR dari: " + posterTitle);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  FALLBACK DETECTION (KALAU EVENTSYSTEM TIDAK JALAN)
+    // ═══════════════════════════════════════════════════════════════════
+
+    /// <summary>
+    /// Fallback gaze check manual pakai raycast, jaga-jaga EventSystem tidak bekerja.
+    /// </summary>
+    private bool CheckGazeFallback()
     {
         if (mainCamera == null) return false;
 
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, gazeDistance))
+        if (Physics.Raycast(ray, out hit, 10f))
         {
             if (hit.collider.gameObject == gameObject ||
                 hit.collider.transform.IsChildOf(transform))
@@ -142,24 +183,21 @@ public class InteractionPoster : MonoBehaviour
         return false;
     }
 
-    // ═══════════════════════════════════════════════════════════════════
-    //  TAP DETECTION (ANDROID + EDITOR)
-    // ═══════════════════════════════════════════════════════════════════
-
     /// <summary>
-    /// Deteksi tap layar. TIDAK pakai IsPointerOverGameObject
-    /// karena bermasalah di Cardboard Android.
-    /// Filtering dilakukan via gaze check — jika player sudah melihat poster,
-    /// maka tap = buka poster.
+    /// Fallback tap detection — cek SEMUA jenis input yang mungkin.
     /// </summary>
-    private bool DetectTap()
+    private bool DetectTapFallback()
     {
-        // Android touch
+        // Touch (Android)
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             return true;
 
-        // Editor fallback: klik kiri mouse
+        // Mouse click (Editor + Cardboard trigger yang di-map ke mouse)
         if (Input.GetMouseButtonDown(0))
+            return true;
+
+        // Cardboard trigger button (beberapa versi SDK)
+        if (Input.GetButtonDown("Fire1"))
             return true;
 
         return false;
@@ -171,8 +209,13 @@ public class InteractionPoster : MonoBehaviour
 
     private void OpenPoster()
     {
-        if (posterPanel == null || canvasGroup == null) return;
+        if (posterPanel == null || canvasGroup == null)
+        {
+            Debug.LogError("[InteractionPoster] posterPanel atau canvasGroup NULL pada: " + posterTitle);
+            return;
+        }
 
+        Debug.Log("[InteractionPoster] MEMBUKA poster: " + posterTitle);
         isPosterOpen = true;
 
         if (playerController != null)
@@ -187,7 +230,9 @@ public class InteractionPoster : MonoBehaviour
 
     public void ClosePoster()
     {
-        // Selalu unlock movement dulu, apapun yang terjadi (fix bug terkunci)
+        Debug.Log("[InteractionPoster] MENUTUP poster: " + posterTitle);
+
+        // Selalu unlock movement dulu (fix bug terkunci)
         if (playerController != null)
             playerController.UnlockMovement();
 
@@ -205,10 +250,6 @@ public class InteractionPoster : MonoBehaviour
     //  TOMBOL TUTUP
     // ═══════════════════════════════════════════════════════════════════
 
-    /// <summary>
-    /// Setup tombol tutup. Jika sudah di-assign di Inspector, pakai itu.
-    /// Jika tidak, buat otomatis di bawah panel.
-    /// </summary>
     private void SetupCloseButton()
     {
         if (closeButton != null)
@@ -337,7 +378,7 @@ public class InteractionPoster : MonoBehaviour
     }
 
     // ═══════════════════════════════════════════════════════════════════
-    //  TRIGGER EVENTS (BACKUP)
+    //  TRIGGER EVENTS (BACKUP AUTO-CLOSE)
     // ═══════════════════════════════════════════════════════════════════
 
     private void OnTriggerExit(Collider other)
@@ -352,8 +393,6 @@ public class InteractionPoster : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, gazeDistance);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, autoCloseDistance);
     }
