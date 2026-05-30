@@ -81,29 +81,18 @@ public class GazeDialog : MonoBehaviour
 
     /// <summary>
     /// Mendeteksi tap layar (sentuh di Android, klik kiri di Editor).
-    /// Mengabaikan tap yang mengenai UI element.
+    /// Gaze check sudah jadi filter, tidak perlu IsPointerOverGameObject
+    /// yang bermasalah di Cardboard Android.
     /// </summary>
     private bool DetectScreenTap()
     {
-        // Cek touch di Android
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
-                    return false;
-                return true;
-            }
-        }
-
-        // Fallback: klik kiri mouse (untuk testing di Editor)
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return false;
+        // Android touch
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             return true;
-        }
+
+        // Editor fallback: klik kiri mouse
+        if (Input.GetMouseButtonDown(0))
+            return true;
 
         return false;
     }

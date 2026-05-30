@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 10904136}
-  - component: {fileID: 10904135}
+  - component: {fileID: 10904137}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -139,22 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &10904135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10904134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b8b31bf672f2d4f92b5c5c81cb8c7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: Gameplay
-  useGazeTimer: 1
-  gazeTime: 2
-  gazeLoadingImage: {fileID: 0}
 --- !u!4 &10904136
 Transform:
   m_ObjectHideFlags: 0
@@ -170,6 +154,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &10904137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10904134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c497dde5f4faa46bf0a3b7e5a0521b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonAction: 0
+  sceneName: Gamepaly
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  hoverColor: {r: 0.75, g: 0.92, b: 1, a: 1}
+  pressedColor: {r: 0.5, g: 0.82, b: 1, a: 1}
+  hoverScale: 1.08
+  animDuration: 0.15
+  useGazeTimer: 0
+  gazeTime: 2
+  gazeProgressImage: {fileID: 0}
 --- !u!1 &145655735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,16 +1235,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 10904135}
-        m_TargetAssemblyTypeName: SwitchScene, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 1
+      - m_Target: {fileID: 10904137}
+        m_TargetAssemblyTypeName: MainMenuButton, Assembly-CSharp
+        m_MethodName: LoadSceneByName
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Gameplay
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1168490179
@@ -1661,8 +1667,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1945466806}
-        m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
+      - m_Target: {fileID: 10904137}
+        m_TargetAssemblyTypeName: MainMenuButton, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -2489,7 +2495,6 @@ GameObject:
   - component: {fileID: 1945466803}
   - component: {fileID: 1945466805}
   - component: {fileID: 1945466804}
-  - component: {fileID: 1945466806}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2558,18 +2563,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945466802}
   m_CullTransparentMesh: 1
---- !u!114 &1945466806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945466802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2b3c08ad14b4646b2ae5c4c4703d0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1948983801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,7 +2868,7 @@ Transform:
   m_GameObject: {fileID: 1405834967492965127}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9866915, z: -0, w: -0.16260356}
-  m_LocalPosition: {x: -22.59, y: 2.22, z: -51.27}
+  m_LocalPosition: {x: -22.59, y: 2.22, z: -52.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3126,7 +3119,7 @@ Transform:
   m_GameObject: {fileID: 704910160420191726}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.42, y: 0.486, z: 1.41}
+  m_LocalPosition: {x: 0.052, y: 0.486, z: 0.018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
