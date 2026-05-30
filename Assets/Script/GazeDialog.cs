@@ -74,11 +74,38 @@ public class GazeDialog : MonoBehaviour
             if (hintPanel != null) hintPanel.SetActive(false);
         }
 
-        if (isGazingAtNPC && Input.GetKeyDown(KeyCode.E) && !isDialogOpen)
+        // Buka dialog dengan tap layar (touch/klik)
+        if (isGazingAtNPC && !isDialogOpen && DetectScreenTap())
             OpenDialog();
+    }
 
-        if (isDialogOpen && Input.GetKeyDown(KeyCode.Q))
-            CloseDialog();
+    /// <summary>
+    /// Mendeteksi tap layar (sentuh di Android, klik kiri di Editor).
+    /// Mengabaikan tap yang mengenai UI element.
+    /// </summary>
+    private bool DetectScreenTap()
+    {
+        // Cek touch di Android
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                    return false;
+                return true;
+            }
+        }
+
+        // Fallback: klik kiri mouse (untuk testing di Editor)
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return false;
+            return true;
+        }
+
+        return false;
     }
 
     private void InitializeQAData()
@@ -200,7 +227,7 @@ public class GazeDialog : MonoBehaviour
             buttonSprite, panelColor);
 
         Text hintText = CreateText(hintPanel.transform, "HintText",
-            "Tekan E untuk berbicara dengan " + npcName,
+            "Ketuk layar untuk berbicara dengan " + npcName,
             24, TextAnchor.MiddleCenter, textColor);
         StretchRect(hintText.rectTransform, 15, 5, -15, -5);
         hintPanel.SetActive(false);
@@ -340,7 +367,7 @@ public class GazeDialog : MonoBehaviour
             new Vector2(360, 55), new Vector2(0, 0), new Vector2(0, 0), new Vector2(180, 28),
             buttonSprite, headerColor, headerTextColor, 20, () => { ShowQuestionList(); });
 
-        CreateSpriteButton(answerPanel.transform, "CloseBtn2", "Tutup (Q)",
+        CreateSpriteButton(answerPanel.transform, "CloseBtn2", "✕ Tutup",
             new Vector2(200, 55), new Vector2(1, 0), new Vector2(1, 0), new Vector2(-100, 28),
             buttonSprite, new Color(0.7f, 0.2f, 0.2f), Color.white, 20, () => { CloseDialog(); });
 

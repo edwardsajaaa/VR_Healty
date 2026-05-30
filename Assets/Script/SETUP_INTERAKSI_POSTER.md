@@ -2,10 +2,11 @@
 
 ## Fitur
 ✅ Deteksi player mendekat ke poster  
-✅ Tekan **E** untuk melihat gambar poster dalam pop-up  
+✅ **Tap layar** untuk melihat gambar poster dalam pop-up  
 ✅ Movement player dikunci saat melihat poster  
-✅ Tekan **Q** untuk menutup poster dan lanjut berjalan  
+✅ Tekan **tombol Tutup** (✕) untuk menutup poster dan lanjut berjalan  
 ✅ Otomatis tutup jika player pergi jauh dari poster  
+✅ Kompatibel dengan HP Android (touch screen)  
 
 ---
 
@@ -46,8 +47,8 @@
 | Aksi | Hasil |
 |------|-------|
 | Player mendekat ke poster (jarak < 3m) | Siap untuk interaksi |
-| Tekan **E** | Tampil pop-up gambar, movement terkunci |
-| Tekan **Q** | Pop-up ditutup, movement normal kembali |
+| **Tap layar** (atau klik kiri di Editor) | Tampil pop-up gambar, movement terkunci |
+| Tekan **tombol ✕ Tutup** di panel | Pop-up ditutup, movement normal kembali |
 | Pergi jauh dari poster | Auto-tutup jika sedang dibuka |
 
 ---

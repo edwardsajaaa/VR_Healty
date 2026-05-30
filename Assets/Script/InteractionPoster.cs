@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class InteractionPoster : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class InteractionPoster : MonoBehaviour
 
     [Header("Panel UI")]
     [SerializeField] private GameObject posterPanel;
+
+    [Header("Tombol Tutup (Opsional)")]
+    [Tooltip("Jika dikosongkan, tombol tutup akan dibuat otomatis di pojok kanan atas panel.")]
+    [SerializeField] private Button closeButton;
 
     [Header("Interaksi")]
     [SerializeField] private float interactionDistance = 3.5f;
@@ -49,7 +54,70 @@ public class InteractionPoster : MonoBehaviour
             canvasGroup.alpha = 0f;
             if (panelRect != null) panelRect.localScale = Vector3.zero;
             posterPanel.SetActive(false);
+
+            // Setup tombol tutup
+            SetupCloseButton();
         }
+    }
+
+    /// <summary>
+    /// Membuat atau meng-setup tombol tutup pada poster panel.
+    /// Jika closeButton sudah di-assign di Inspector, gunakan itu.
+    /// Jika tidak, buat tombol "✕" otomatis di pojok kanan atas panel.
+    /// </summary>
+    private void SetupCloseButton()
+    {
+        if (closeButton != null)
+        {
+            // Gunakan tombol yang sudah di-assign
+            closeButton.onClick.RemoveAllListeners();
+            closeButton.onClick.AddListener(() => { ClosePoster(); });
+            return;
+        }
+
+        // Buat tombol tutup otomatis — posisi di BAWAH panel (di luar gambar)
+        GameObject btnObj = new GameObject("CloseButton_Auto");
+        btnObj.transform.SetParent(posterPanel.transform, false);
+
+        // Background image
+        Image btnImg = btnObj.AddComponent<Image>();
+        btnImg.color = new Color(0.85f, 0.2f, 0.2f, 0.95f);
+
+        // Posisi di bawah panel, di luar area gambar
+        RectTransform btnRect = btnObj.GetComponent<RectTransform>();
+        btnRect.anchorMin = new Vector2(0.5f, 0);
+        btnRect.anchorMax = new Vector2(0.5f, 0);
+        btnRect.pivot = new Vector2(0.5f, 1);
+        btnRect.sizeDelta = new Vector2(180, 55);
+        btnRect.anchoredPosition = new Vector2(0, -15);
+
+        // Tombol component
+        Button btn = btnObj.AddComponent<Button>();
+        ColorBlock cb = btn.colors;
+        cb.normalColor = new Color(0.85f, 0.2f, 0.2f, 0.95f);
+        cb.highlightedColor = new Color(1f, 0.3f, 0.3f, 1f);
+        cb.pressedColor = new Color(0.65f, 0.15f, 0.15f, 1f);
+        btn.colors = cb;
+        btn.targetGraphic = btnImg;
+        btn.onClick.AddListener(() => { ClosePoster(); });
+
+        // Teks label
+        GameObject textObj = new GameObject("Label");
+        textObj.transform.SetParent(btnObj.transform, false);
+        Text btnText = textObj.AddComponent<Text>();
+        btnText.text = "✕ Tutup";
+        btnText.fontSize = 22;
+        btnText.alignment = TextAnchor.MiddleCenter;
+        btnText.color = Color.white;
+        btnText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+        RectTransform textRect = textObj.GetComponent<RectTransform>();
+        textRect.anchorMin = Vector2.zero;
+        textRect.anchorMax = Vector2.one;
+        textRect.offsetMin = Vector2.zero;
+        textRect.offsetMax = Vector2.zero;
+
+        closeButton = btn;
     }
 
     void Update()
@@ -62,14 +130,46 @@ public class InteractionPoster : MonoBehaviour
 
         bool canInteract = dbg_isNearby && (!requireGazeToInteract || dbg_isGazing);
 
-        if (canInteract && Input.GetKeyDown(KeyCode.E) && !isPosterOpen && !isTransitioning)
-            OpenPoster();
+        // Buka poster dengan tap layar (touch atau klik kiri)
+        if (canInteract && !isPosterOpen && !isTransitioning)
+        {
+            if (DetectScreenTap())
+                OpenPoster();
+        }
 
-        if (isPosterOpen && Input.GetKeyDown(KeyCode.Q) && !isTransitioning)
-            ClosePoster();
-
+        // Tutup otomatis jika terlalu jauh
         if (isPosterOpen && !dbg_isNearby && !isTransitioning)
             ClosePoster();
+    }
+
+    /// <summary>
+    /// Mendeteksi tap layar (sentuh di Android, klik kiri di Editor).
+    /// Mengabaikan tap yang mengenai UI (agar tombol tutup tidak konflik).
+    /// </summary>
+    private bool DetectScreenTap()
+    {
+        // Cek touch di Android
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                // Abaikan jika tap mengenai UI element
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                    return false;
+                return true;
+            }
+        }
+
+        // Fallback: klik kiri mouse (untuk testing di Editor)
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return false;
+            return true;
+        }
+
+        return false;
     }
 
     private bool CheckGaze()
@@ -105,7 +205,7 @@ public class InteractionPoster : MonoBehaviour
         transitionCoroutine = StartCoroutine(TransitionOpen());
     }
 
-    private void ClosePoster()
+    public void ClosePoster()
     {
         if (posterPanel == null || canvasGroup == null) return;
 

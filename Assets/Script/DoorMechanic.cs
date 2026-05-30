@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DoorMechanic : MonoBehaviour
 {
@@ -35,8 +36,38 @@ public class DoorMechanic : MonoBehaviour
 
         CheckPlayerGaze();
         
-        if (isBeingLookedAt && Input.GetKeyDown(KeyCode.E))
+        // Interaksi dengan tap layar (touch/klik) saat sedang melihat pintu
+        if (isBeingLookedAt && DetectScreenTap())
             ToggleDoor();
+    }
+
+    /// <summary>
+    /// Mendeteksi tap layar (sentuh di Android, klik kiri di Editor).
+    /// Mengabaikan tap yang mengenai UI element.
+    /// </summary>
+    private bool DetectScreenTap()
+    {
+        // Cek touch di Android
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                    return false;
+                return true;
+            }
+        }
+
+        // Fallback: klik kiri mouse (untuk testing di Editor)
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return false;
+            return true;
+        }
+
+        return false;
     }
 
     private void CheckPlayerGaze()
@@ -116,3 +147,4 @@ public class DoorMechanic : MonoBehaviour
     public void SetOpenAngle(float angle) { openAngle = angle; }
     public void SetRotationSpeed(float speed) { rotationSpeed = speed; }
 }
+
