@@ -331,8 +331,8 @@ public class InteractionPoster : MonoBehaviour
     // ─── Poster Panel Utama ───
     private void BuildPosterPanel(Transform parent)
     {
-        float panelW = 900f;
-        float panelH = 700f;
+        float panelW = 1200f;
+        float panelH = 850f;
 
         posterPanel = CreatePanel(parent, "PosterPanel",
             new Vector2(panelW, panelH),
@@ -366,15 +366,14 @@ public class InteractionPoster : MonoBehaviour
         hbRect.anchorMin = new Vector2(0, 1);
         hbRect.anchorMax = new Vector2(1, 1);
         hbRect.pivot = new Vector2(0.5f, 1);
-        hbRect.sizeDelta = new Vector2(0, 65);
+        hbRect.sizeDelta = new Vector2(0, 100);
         hbRect.anchoredPosition = Vector2.zero;
 
-        // ─ Tombol "← Kembali" (tersembunyi di gallery, tampil di detail) ─
         backButton = CreatePanel(headerBar.transform, "BackBtn",
-            new Vector2(130, 38),
+            new Vector2(300, 75),
             new Vector2(0, 0.5f), new Vector2(0, 0.5f),
             buttonSprite, backBtnColor);
-        backButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(15, 0);
+        backButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(20, 0);
 
         Button backBtnComp = backButton.AddComponent<Button>();
         Image backBtnImg = backButton.GetComponent<Image>();
@@ -387,41 +386,21 @@ public class InteractionPoster : MonoBehaviour
         backBtnComp.onClick.AddListener(() => ShowGalleryView());
 
         Text backLabel = CreateText(backButton.transform, "BackLabel",
-            "\u2190 Kembali", 16, TextAnchor.MiddleCenter, Color.white);
+            "\u2190 Kembali", 32, TextAnchor.MiddleCenter, Color.white);
         StretchRect(backLabel.rectTransform, 5, 2, -5, -2);
         backButton.SetActive(false);
 
         // ─ Judul poster (tengah) ─
         Text titleText = CreateText(headerBar.transform, "TitleText",
-            posterTitle, 24, TextAnchor.MiddleCenter, headerTextColor);
+            posterTitle, 32, TextAnchor.MiddleCenter, headerTextColor);
         titleText.fontStyle = FontStyle.Bold;
         RectTransform ttRect = titleText.rectTransform;
         ttRect.anchorMin = Vector2.zero;
         ttRect.anchorMax = Vector2.one;
-        ttRect.offsetMin = new Vector2(150, 0);
-        ttRect.offsetMax = new Vector2(-70, 0);
+        ttRect.offsetMin = new Vector2(340, 0);
+        ttRect.offsetMax = new Vector2(-15, 0);
 
-        // ─ Tombol Close ✕ (pojok kanan) ─
-        GameObject closeXObj = CreatePanel(headerBar.transform, "CloseX",
-            new Vector2(44, 36),
-            new Vector2(1, 0.5f), new Vector2(1, 0.5f),
-            buttonSprite, closeBtnColor);
-        closeXObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(-15, 0);
-
-        Button closeXBtn = closeXObj.AddComponent<Button>();
-        Image closeXImg = closeXObj.GetComponent<Image>();
-        ColorBlock xcb = closeXBtn.colors;
-        xcb.normalColor = closeBtnColor;
-        xcb.highlightedColor = closeBtnColor * 1.15f;
-        xcb.pressedColor = closeBtnColor * 0.85f;
-        closeXBtn.colors = xcb;
-        closeXBtn.targetGraphic = closeXImg;
-        closeXBtn.onClick.AddListener(() => ClosePoster());
-
-        Text closeXLabel = CreateText(closeXObj.transform, "CloseXLabel",
-            "\u2715", 22, TextAnchor.MiddleCenter, Color.white);
-        closeXLabel.fontStyle = FontStyle.Bold;
-        StretchRect(closeXLabel.rectTransform, 0, 0, 0, 0);
+        // (Tombol Close ✕ pojok kanan dihapus — cukup gunakan tombol besar di bawah)
 
         // ─ Accent line (garis tipis berwarna di bawah header) ─
         GameObject accentLine = CreatePanel(parent, "AccentLine",
@@ -432,7 +411,7 @@ public class InteractionPoster : MonoBehaviour
         alRect.anchorMax = new Vector2(1, 1);
         alRect.pivot = new Vector2(0.5f, 1);
         alRect.sizeDelta = new Vector2(0, 3);
-        alRect.anchoredPosition = new Vector2(0, -65);
+        alRect.anchoredPosition = new Vector2(0, -100);
     }
 
     // ─── Gallery View (ScrollRect + Grid 3 Kolom) ───
@@ -444,7 +423,7 @@ public class InteractionPoster : MonoBehaviour
         gvRect.anchorMin = Vector2.zero;
         gvRect.anchorMax = Vector2.one;
         gvRect.offsetMin = new Vector2(10, 58);   // di atas tombol tutup
-        gvRect.offsetMax = new Vector2(-10, -73);  // di bawah header + accent
+        gvRect.offsetMax = new Vector2(-10, -108);  // di bawah header + accent
 
         // ── ScrollRect (scroll vertikal) ──
         ScrollRect scrollRect = galleryView.AddComponent<ScrollRect>();
@@ -482,9 +461,9 @@ public class InteractionPoster : MonoBehaviour
         GridLayoutGroup grid = content.AddComponent<GridLayoutGroup>();
         grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         grid.constraintCount = 3;
-        grid.cellSize = new Vector2(268f, 215f);
-        grid.spacing = new Vector2(10, 10);
-        grid.padding = new RectOffset(8, 8, 8, 8);
+        grid.cellSize = new Vector2(350f, 490f);
+        grid.spacing = new Vector2(20, 20);
+        grid.padding = new RectOffset(16, 16, 16, 16);
         grid.childAlignment = TextAnchor.UpperCenter;
 
         // ContentSizeFitter agar tinggi content mengikuti jumlah poster
@@ -564,15 +543,15 @@ public class InteractionPoster : MonoBehaviour
 
         // ── Number badge (pojok kiri bawah) ──
         GameObject badge = CreatePanel(card.transform, "Badge",
-            new Vector2(30, 22),
+            new Vector2(40, 30),
             new Vector2(0, 0), new Vector2(0, 0),
             null, accentColor);
-        badge.GetComponent<RectTransform>().anchoredPosition = new Vector2(6, 4);
+        badge.GetComponent<RectTransform>().anchoredPosition = new Vector2(6, 6);
         badge.GetComponent<Image>().raycastTarget = false;
 
         Text badgeText = CreateText(badge.transform, "BadgeNum",
             (index + 1).ToString(),
-            13, TextAnchor.MiddleCenter, Color.white);
+            16, TextAnchor.MiddleCenter, Color.white);
         badgeText.fontStyle = FontStyle.Bold;
         badgeText.raycastTarget = false;
         StretchRect(badgeText.rectTransform, 0, 0, 0, 0);
@@ -587,7 +566,7 @@ public class InteractionPoster : MonoBehaviour
         dvRect.anchorMin = Vector2.zero;
         dvRect.anchorMax = Vector2.one;
         dvRect.offsetMin = new Vector2(15, 58);
-        dvRect.offsetMax = new Vector2(-15, -73);
+        dvRect.offsetMax = new Vector2(-15, -108);
 
         // Background area detail (sedikit lebih gelap)
         Image dvBg = detailView.AddComponent<Image>();
@@ -612,11 +591,12 @@ public class InteractionPoster : MonoBehaviour
     // ─── Tombol Tutup (bawah panel) ───
     private void BuildBottomClose(Transform parent)
     {
+        // Tombol besar agar mudah ditekan di VR
         GameObject closeBtn = CreatePanel(parent, "CloseBtn",
-            new Vector2(170, 44),
+            new Vector2(400, 80),
             new Vector2(0.5f, 0), new Vector2(0.5f, 0),
             buttonSprite, closeBtnColor);
-        closeBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 12);
+        closeBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 10);
 
         Button closeBtnComp = closeBtn.AddComponent<Button>();
         Image closeBtnImg = closeBtn.GetComponent<Image>();
@@ -629,9 +609,9 @@ public class InteractionPoster : MonoBehaviour
         closeBtnComp.onClick.AddListener(() => ClosePoster());
 
         Text closeBtnLabel = CreateText(closeBtn.transform, "CloseBtnLabel",
-            "\u2715  Tutup", 18, TextAnchor.MiddleCenter, Color.white);
+            "\u2715  Tutup", 28, TextAnchor.MiddleCenter, Color.white);
         closeBtnLabel.fontStyle = FontStyle.Bold;
-        StretchRect(closeBtnLabel.rectTransform, 5, 2, -5, -2);
+        StretchRect(closeBtnLabel.rectTransform, 10, 4, -10, -4);
     }
 
     // ═════════════════════════════════════════════

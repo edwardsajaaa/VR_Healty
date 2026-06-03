@@ -197,6 +197,364 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4340201}
   m_CullTransparentMesh: 1
+--- !u!1 &15997877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 15997878}
+  - component: {fileID: 15997881}
+  - component: {fileID: 15997880}
+  - component: {fileID: 15997879}
+  m_Layer: 0
+  m_Name: Tugas Keluarga Dengan Anak Remaja
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &15997878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15997877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.06, y: -0.689, z: -26.53}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 547817709}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &15997879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15997877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: 9422f3b7334c8344cbfceb4be871e788, type: 3}
+  - {fileID: 21300000, guid: 95a56e47b8d8ff445b4b50c1935ca980, type: 3}
+  - {fileID: 21300000, guid: f7f3444b33fa79a41a4c0bd5d339e2c7, type: 3}
+  posterTitle: Tugas Keluarga Dengan Anak Remaja
+  floatingTitleObject: {fileID: 547817708}
+  interactionDistance: 1
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &15997880
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15997877}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 11.539841, z: 0.2}
+  m_Center: {x: -0.0067851143, y: -0.012788765, z: 0}
+--- !u!212 &15997881
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15997877}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 9422f3b7334c8344cbfceb4be871e788, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &39046868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39046869}
+  - component: {fileID: 39046871}
+  - component: {fileID: 39046870}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &39046869
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39046868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 414762848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &39046870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39046868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &39046871
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39046868}
+  m_CullTransparentMesh: 1
+--- !u!1 &63517505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63517506}
+  - component: {fileID: 63517509}
+  - component: {fileID: 63517508}
+  - component: {fileID: 63517507}
+  m_Layer: 0
+  m_Name: Perkembangan Psikososial Remaja
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &63517506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63517505}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.06, y: -0.689, z: 0.67}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 88850782}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &63517507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63517505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: badd859090ce74442a79ad99b51dfec4, type: 3}
+  - {fileID: 21300000, guid: a1bd808ecfa19ec46aecf901385b3fec, type: 3}
+  posterTitle: Perkembangan Psikososial Remaja
+  floatingTitleObject: {fileID: 88850781}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &63517508
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63517505}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 11.539841, z: 0.2}
+  m_Center: {x: -0.0067851143, y: -0.012788765, z: 0}
+--- !u!212 &63517509
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63517505}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: badd859090ce74442a79ad99b51dfec4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &66012310
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,13 +674,127 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1815334381}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &80896252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 80896253}
+  - component: {fileID: 80896256}
+  - component: {fileID: 80896255}
+  - component: {fileID: 80896254}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &80896253
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80896252}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 981471044}
+  m_Father: {fileID: 743829586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 9.84}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &80896254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80896252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &80896255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80896252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &80896256
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80896252}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &87332105
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +889,457 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &88850781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 88850782}
+  - component: {fileID: 88850785}
+  - component: {fileID: 88850784}
+  - component: {fileID: 88850783}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &88850782
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88850781}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1124364347}
+  - {fileID: 1042225083}
+  m_Father: {fileID: 63517506}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 8.65}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &88850783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88850781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &88850784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88850781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &88850785
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88850781}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!1 &88888438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 88888439}
+  - component: {fileID: 88888442}
+  - component: {fileID: 88888441}
+  - component: {fileID: 88888440}
+  m_Layer: 0
+  m_Name: Faktor dan Dampak Perilaku Seksual Berisiko serta Kiat Pencegahannya
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &88888439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88888438}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: -0.7071068}
+  m_LocalPosition: {x: 4.843, y: -0.72, z: -12.08}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 110689165}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -270, z: 0}
+--- !u!114 &88888440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88888438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: bdc815f0af7982b499b498f9dfb3455e, type: 3}
+  - {fileID: 21300000, guid: 3ae85611854ae8c4ba5a7bdc92efd573, type: 3}
+  - {fileID: 21300000, guid: 17ee9e395bb2ef649b31a8358bc808c8, type: 3}
+  posterTitle: Faktor dan Dampak Perilaku Seksual Berisiko serta Kiat Pencegahannya
+  floatingTitleObject: {fileID: 110689164}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &88888441
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88888438}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 11.539841, z: 0.2}
+  m_Center: {x: -0.0067851143, y: -0.012788765, z: 0}
+--- !u!212 &88888442
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88888438}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f6a902c9eeef58144a34d962fb763424, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &105388071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 105388072}
+  - component: {fileID: 105388075}
+  - component: {fileID: 105388074}
+  - component: {fileID: 105388073}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &105388072
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105388071}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1486143062}
+  - {fileID: 1143864683}
+  m_Father: {fileID: 368209604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 8.65}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &105388073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105388071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &105388074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105388071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &105388075
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105388071}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!1 &110689164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110689165}
+  - component: {fileID: 110689168}
+  - component: {fileID: 110689167}
+  - component: {fileID: 110689166}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &110689165
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110689164}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 299547852}
+  - {fileID: 731534573}
+  m_Father: {fileID: 88888439}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 8.65}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &110689166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110689164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &110689167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110689164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &110689168
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110689164}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &154911618
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,13 +1534,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 389077456}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &194133394
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,13 +1747,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 355544261}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &205497354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,13 +1960,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1170224517}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &219458593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,13 +2098,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 463679194}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &235582260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +2342,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256242033}
   m_CullTransparentMesh: 1
+--- !u!1 &262941658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 262941659}
+  - component: {fileID: 262941662}
+  - component: {fileID: 262941661}
+  - component: {fileID: 262941660}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &262941659
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262941658}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1800703968}
+  - {fileID: 1516118416}
+  m_Father: {fileID: 2011032855}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 8.65}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &262941660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262941658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &262941661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262941658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &262941662
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262941658}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &270715728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,6 +2594,215 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293661451}
+  m_CullTransparentMesh: 1
+--- !u!1 &299547851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 299547852}
+  - component: {fileID: 299547854}
+  - component: {fileID: 299547853}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &299547852
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299547851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110689165}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &299547853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299547851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &299547854
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299547851}
+  m_CullTransparentMesh: 1
+--- !u!1 &311627722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 311627723}
+  - component: {fileID: 311627725}
+  - component: {fileID: 311627724}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &311627723
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311627722}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 547817709}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &311627724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311627722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Tugas Keluarga Dengan Anak Remaja
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &311627725
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311627722}
   m_CullTransparentMesh: 1
 --- !u!1 &313804815
 GameObject:
@@ -1918,13 +3201,167 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 270715728}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &368209603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368209604}
+  - component: {fileID: 368209607}
+  - component: {fileID: 368209606}
+  - component: {fileID: 368209605}
+  m_Layer: 0
+  m_Name: Kesehatan Reproduksi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &368209604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368209603}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.06, y: -0.689, z: -19.1}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 105388072}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &368209605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368209603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: f6a902c9eeef58144a34d962fb763424, type: 3}
+  - {fileID: 21300000, guid: e1ca9901bdee0684b89e4d35b9203c07, type: 3}
+  - {fileID: 21300000, guid: 06f4908074dbf1c46942a229bb8dc423, type: 3}
+  posterTitle: 'Kesehatan Reproduksi '
+  floatingTitleObject: {fileID: 105388071}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &368209606
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368209603}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 11.539841, z: 0.2}
+  m_Center: {x: -0.0067851143, y: -0.012788765, z: 0}
+--- !u!212 &368209607
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368209603}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f6a902c9eeef58144a34d962fb763424, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &371964911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,6 +3512,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389077456}
   m_CullTransparentMesh: 1
+--- !u!1 &394189966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394189967}
+  - component: {fileID: 394189969}
+  - component: {fileID: 394189968}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &394189967
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394189966}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 414762848}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &394189968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394189966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Masalah Kesehatan yang berkaitan dengan Kesehatan Reproduksi Remaja
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &394189969
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394189966}
+  m_CullTransparentMesh: 1
 --- !u!1 &414335978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,13 +3765,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 251599377}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &414762847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414762848}
+  - component: {fileID: 414762851}
+  - component: {fileID: 414762850}
+  - component: {fileID: 414762849}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &414762848
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414762847}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 39046869}
+  - {fileID: 394189967}
+  m_Father: {fileID: 626450403}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 8.65}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &414762849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414762847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &414762850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414762847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &414762851
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414762847}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &463679194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,6 +4112,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506086717}
   m_CullTransparentMesh: 1
+--- !u!1 &525911564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 525911565}
+  - component: {fileID: 525911567}
+  - component: {fileID: 525911566}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &525911565
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525911564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 573625499}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &525911566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525911564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &525911567
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525911564}
+  m_CullTransparentMesh: 1
 --- !u!1 &536193309
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +4262,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536193309}
   m_CullTransparentMesh: 1
+--- !u!1 &547817708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 547817709}
+  - component: {fileID: 547817712}
+  - component: {fileID: 547817711}
+  - component: {fileID: 547817710}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &547817709
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547817708}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1088480444}
+  - {fileID: 311627723}
+  m_Father: {fileID: 15997878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 8.65}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &547817710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547817708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &547817711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547817708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &547817712
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547817708}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &551271147
 GameObject:
   m_ObjectHideFlags: 0
@@ -2532,6 +4396,109 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2242641472285885999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &573625498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 573625499}
+  - component: {fileID: 573625502}
+  - component: {fileID: 573625501}
+  - component: {fileID: 573625500}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &573625499
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573625498}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 525911565}
+  - {fileID: 1995612449}
+  m_Father: {fileID: 1210468824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 8.65}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &573625500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573625498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &573625501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573625498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &573625502
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573625498}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &606356279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,6 +4574,148 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606356279}
   m_CullTransparentMesh: 1
+--- !u!1 &626450402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626450403}
+  - component: {fileID: 626450406}
+  - component: {fileID: 626450405}
+  - component: {fileID: 626450404}
+  m_Layer: 0
+  m_Name: Masalah Kesehatan yang berkaitan dengan Kesehatan Reproduksi Remaja
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &626450403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626450402}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.06, y: -0.689, z: -5.34}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 414762848}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &626450404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626450402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: 68943a46b5537d045b5ff30873a6a6b2, type: 3}
+  - {fileID: 21300000, guid: dd47f64c45959134d9491ac2e49370fa, type: 3}
+  - {fileID: 21300000, guid: e758f7c4adb28fb4f8d7c237d05c730a, type: 3}
+  posterTitle: asalah Kesehatan yang berkaitan dengan Kesehatan Reproduksi Remaja
+  floatingTitleObject: {fileID: 414762847}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &626450405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626450402}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 11.539841, z: 0.2}
+  m_Center: {x: -0.0067851143, y: -0.012788765, z: 0}
+--- !u!212 &626450406
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626450402}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 68943a46b5537d045b5ff30873a6a6b2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &679592945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,13 +4835,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1413184300}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &682387019
 GameObject:
   m_ObjectHideFlags: 0
@@ -3022,13 +5143,159 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1475818922}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &725486162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 725486163}
+  - component: {fileID: 725486165}
+  - component: {fileID: 725486164}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &725486163
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725486162}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1446989649}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &725486164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725486162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Dukungan Keluarga
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &725486165
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725486162}
+  m_CullTransparentMesh: 1
 --- !u!1 &727523662
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,13 +5415,446 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1943316764}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &731534572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 731534573}
+  - component: {fileID: 731534575}
+  - component: {fileID: 731534574}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &731534573
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731534572}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 110689165}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &731534574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731534572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Faktor dan Dampak Perilaku Seksual Berisiko serta Kiat Pencegahannya
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &731534575
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731534572}
+  m_CullTransparentMesh: 1
+--- !u!1 &743829585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743829586}
+  - component: {fileID: 743829589}
+  - component: {fileID: 743829588}
+  - component: {fileID: 743829587}
+  m_Layer: 0
+  m_Name: Tentang HIV-AIDS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &743829586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743829585}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: -0.7071068}
+  m_LocalPosition: {x: 4.843, y: -0.51, z: -1.99}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 80896253}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -270, z: 0}
+--- !u!114 &743829587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743829585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: 271b31ec5acf0f44c8e14389c9de6f64, type: 3}
+  posterTitle: Tentang HIV-AIDS
+  floatingTitleObject: {fileID: 80896252}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &743829588
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743829585}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 12.574588, z: 0.2}
+  m_Center: {x: -0.006785094, y: 0.50458354, z: -2.9921406e-18}
+--- !u!212 &743829589
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743829585}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 271b31ec5acf0f44c8e14389c9de6f64, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &749587633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749587634}
+  - component: {fileID: 749587637}
+  - component: {fileID: 749587636}
+  - component: {fileID: 749587635}
+  m_Layer: 0
+  m_Name: Dukungan Keluarga
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749587634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749587633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.984, y: -0.79, z: -31.669}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1446989649}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &749587635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749587633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: 03dc811891114cb48963d9d3918e3396, type: 3}
+  - {fileID: 21300000, guid: 2ce458015e7d5fd4b80658ea9bcba957, type: 3}
+  - {fileID: 21300000, guid: a11622a096e0e2342a208aab2a9442b1, type: 3}
+  - {fileID: 21300000, guid: 686ad36d9b4c3924184eb41bb9245d94, type: 3}
+  - {fileID: 21300000, guid: 5af070ccf9e539a418de7a5f6be79996, type: 3}
+  - {fileID: 21300000, guid: 257b33a42e7b20449826fe6e02bd8782, type: 3}
+  - {fileID: 21300000, guid: 4ea4c431136fd3a4ca33df2250352ac2, type: 3}
+  - {fileID: 21300000, guid: df0599cf65e4daa46b24f236a0fc837b, type: 3}
+  posterTitle: Dukungan Keluarga
+  floatingTitleObject: {fileID: 1446989648}
+  interactionDistance: 1
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &749587636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749587633}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.7047176, y: 8.7038, z: 0.20000002}
+  m_Center: {x: -0.017724037, y: -0.008099675, z: 0}
+--- !u!212 &749587637
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749587633}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 03dc811891114cb48963d9d3918e3396, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &757978310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3368,13 +6068,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 606356279}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &825636547
 GameObject:
   m_ObjectHideFlags: 0
@@ -3450,6 +6162,140 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825636547}
+  m_CullTransparentMesh: 1
+--- !u!1 &856066510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 856066511}
+  - component: {fileID: 856066513}
+  - component: {fileID: 856066512}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &856066511
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856066510}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 981471044}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &856066512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856066510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Tentang HIV-AIDS
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &856066513
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856066510}
   m_CullTransparentMesh: 1
 --- !u!1 &864598817
 GameObject:
@@ -3570,13 +6416,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1936267249}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &930995561
 GameObject:
   m_ObjectHideFlags: 0
@@ -3790,13 +6648,142 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1084879247}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &981471043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 981471044}
+  - component: {fileID: 981471046}
+  - component: {fileID: 981471045}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &981471044
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981471043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 856066511}
+  m_Father: {fileID: 80896253}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &981471045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981471043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &981471046
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981471043}
+  m_CullTransparentMesh: 1
+--- !u!1 &1014503017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1014503018}
+  m_Layer: 0
+  m_Name: Poster (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1014503018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014503017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.26459, y: 3.8969202, z: -24.696741}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2011032855}
+  - {fileID: 63517506}
+  - {fileID: 368209604}
+  - {fileID: 626450403}
+  - {fileID: 1066420339}
+  - {fileID: 15997878}
+  - {fileID: 749587634}
+  - {fileID: 1210468824}
+  - {fileID: 88888439}
+  - {fileID: 743829586}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014720442
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,6 +6859,385 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014720442}
   m_CullTransparentMesh: 1
+--- !u!1 &1042225082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1042225083}
+  - component: {fileID: 1042225085}
+  - component: {fileID: 1042225084}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1042225083
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042225082}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 88850782}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1042225084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042225082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Perkembangan Psikososial Remaja
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1042225085
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042225082}
+  m_CullTransparentMesh: 1
+--- !u!1 &1066420338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066420339}
+  - component: {fileID: 1066420342}
+  - component: {fileID: 1066420341}
+  - component: {fileID: 1066420340}
+  m_Layer: 0
+  m_Name: Peran Pendidikan Kesehatan dalam Kesehatan Reproduksi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066420339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066420338}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 4.851, y: -0.689, z: -15.65}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1073000634}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1066420340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066420338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: 957ac906a2c302c48a2041dc40d82a62, type: 3}
+  - {fileID: 21300000, guid: 5657ba9ab1c9a624e9e88a220baa039a, type: 3}
+  - {fileID: 21300000, guid: 23dbbf6bdf5f64f4b84a58dfa5d804f6, type: 3}
+  posterTitle: Peran Pendidikan Kesehatan dalam Kesehatan Reproduksi
+  floatingTitleObject: {fileID: 1073000633}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &1066420341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066420338}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 11.539841, z: 0.2}
+  m_Center: {x: -0.0067851143, y: -0.012788765, z: 0}
+--- !u!212 &1066420342
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066420338}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 957ac906a2c302c48a2041dc40d82a62, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1073000633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073000634}
+  - component: {fileID: 1073000637}
+  - component: {fileID: 1073000636}
+  - component: {fileID: 1073000635}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1073000634
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073000633}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1933361310}
+  - {fileID: 1822989772}
+  m_Father: {fileID: 1066420339}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.01, y: 8.65}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1073000635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073000633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1073000636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073000633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &1073000637
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073000633}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1084879247
 GameObject:
   m_ObjectHideFlags: 0
@@ -3947,6 +7313,156 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084879247}
   m_CullTransparentMesh: 1
+--- !u!1 &1088480443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1088480444}
+  - component: {fileID: 1088480446}
+  - component: {fileID: 1088480445}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1088480444
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088480443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 547817709}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1088480445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088480443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1088480446
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088480443}
+  m_CullTransparentMesh: 1
+--- !u!1 &1124364346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1124364347}
+  - component: {fileID: 1124364349}
+  - component: {fileID: 1124364348}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1124364347
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124364346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 88850782}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1124364348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124364346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1124364349
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124364346}
+  m_CullTransparentMesh: 1
 --- !u!1 &1140583222
 GameObject:
   m_ObjectHideFlags: 0
@@ -4021,6 +7537,140 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140583222}
+  m_CullTransparentMesh: 1
+--- !u!1 &1143864682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1143864683}
+  - component: {fileID: 1143864685}
+  - component: {fileID: 1143864684}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1143864683
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143864682}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 105388072}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1143864684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143864682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Kesehatan Reproduksi
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1143864685
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143864682}
   m_CullTransparentMesh: 1
 --- !u!1 &1149719693
 GameObject:
@@ -4141,13 +7791,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 256242033}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1164795857
 GameObject:
   m_ObjectHideFlags: 0
@@ -4355,6 +8017,148 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170224517}
   m_CullTransparentMesh: 1
+--- !u!1 &1210468823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1210468824}
+  - component: {fileID: 1210468827}
+  - component: {fileID: 1210468826}
+  - component: {fileID: 1210468825}
+  m_Layer: 0
+  m_Name: Perilaku Seksual Berisiko Remaja
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1210468824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210468823}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: -0.7071068}
+  m_LocalPosition: {x: 4.843, y: -0.72, z: -27.59}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 573625499}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -270, z: 0}
+--- !u!114 &1210468825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210468823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: 9cd70e2499ef7b84295cf940d482f732, type: 3}
+  - {fileID: 21300000, guid: ee9b543839d40b7499a8fd25c767d687, type: 3}
+  - {fileID: 21300000, guid: b7f2fd12a0bc4ae4aaa5d5450e359b18, type: 3}
+  posterTitle: Perilaku Seksual Berisiko Remaja
+  floatingTitleObject: {fileID: 573625498}
+  interactionDistance: 1
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &1210468826
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210468823}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 11.539841, z: 0.2}
+  m_Center: {x: -0.0067851143, y: -0.012788765, z: 0}
+--- !u!212 &1210468827
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210468823}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 9cd70e2499ef7b84295cf940d482f732, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1233818542
 GameObject:
   m_ObjectHideFlags: 0
@@ -4474,13 +8278,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1140583222}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1252180845
 GameObject:
   m_ObjectHideFlags: 0
@@ -4675,13 +8491,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 492649365}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1307856770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4801,13 +8629,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 536193309}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1396311155
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,13 +8917,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1396311155}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &1446989648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1446989649}
+  - component: {fileID: 1446989652}
+  - component: {fileID: 1446989651}
+  - component: {fileID: 1446989650}
+  m_Layer: 0
+  m_Name: FloatingText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1446989649
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446989648}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
+  m_LocalScale: {x: 10.40162, y: 11.27571, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1922023840}
+  - {fileID: 725486163}
+  m_Father: {fileID: 749587634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.08, y: 5.79}
+  m_SizeDelta: {x: 0.711, y: 0.179}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1446989650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446989648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1446989651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446989648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &1446989652
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446989648}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1459120858
 GameObject:
   m_ObjectHideFlags: 0
@@ -5142,7 +9097,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1459120862
 Canvas:
   m_ObjectHideFlags: 0
@@ -5152,8 +9107,8 @@ Canvas:
   m_GameObject: {fileID: 1459120858}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 2
+  m_Camera: {fileID: 8275093286074832654}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -5175,7 +9130,7 @@ RectTransform:
   m_GameObject: {fileID: 1459120858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 682387022}
@@ -5183,9 +9138,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1475818922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5260,6 +9215,215 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475818922}
+  m_CullTransparentMesh: 1
+--- !u!1 &1486143061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486143062}
+  - component: {fileID: 1486143064}
+  - component: {fileID: 1486143063}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1486143062
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486143061}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 105388072}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1486143063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486143061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1486143064
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486143061}
+  m_CullTransparentMesh: 1
+--- !u!1 &1516118415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516118416}
+  - component: {fileID: 1516118418}
+  - component: {fileID: 1516118417}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1516118416
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516118415}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 262941659}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1516118417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516118415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Tumbuh Kembang Remaja
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1516118418
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516118415}
   m_CullTransparentMesh: 1
 --- !u!1 &1532178807
 GameObject:
@@ -5474,13 +9638,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 154911618}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1570136253
 GameObject:
   m_ObjectHideFlags: 0
@@ -5600,13 +9776,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 194133394}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1587948215
 GameObject:
   m_ObjectHideFlags: 0
@@ -5726,13 +9914,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1867923368}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1600745900
 GameObject:
   m_ObjectHideFlags: 0
@@ -5852,13 +10052,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 371964911}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1639193293
 GameObject:
   m_ObjectHideFlags: 0
@@ -5978,13 +10190,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1014720442}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1667196525
 GameObject:
   m_ObjectHideFlags: 0
@@ -6104,13 +10328,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 506086717}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1764571772
 GameObject:
   m_ObjectHideFlags: 0
@@ -6230,13 +10466,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 205497354}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1764914386
 GameObject:
   m_ObjectHideFlags: 0
@@ -6356,13 +10604,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1781363166}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1770904227
 GameObject:
   m_ObjectHideFlags: 0
@@ -6726,13 +10986,100 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1252180845}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &1800703967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800703968}
+  - component: {fileID: 1800703970}
+  - component: {fileID: 1800703969}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1800703968
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800703967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 262941659}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1800703969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800703967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1800703970
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800703967}
+  m_CullTransparentMesh: 1
 --- !u!1 &1815334381
 GameObject:
   m_ObjectHideFlags: 0
@@ -6807,6 +11154,140 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815334381}
+  m_CullTransparentMesh: 1
+--- !u!1 &1822989771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1822989772}
+  - component: {fileID: 1822989774}
+  - component: {fileID: 1822989773}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1822989772
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822989771}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1073000634}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1822989773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822989771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Peran Pendidikan Kesehatan dalam Kesehatan Reproduksi
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1822989774
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822989771}
   m_CullTransparentMesh: 1
 --- !u!1 &1852567644
 GameObject:
@@ -7096,13 +11577,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 293661451}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1870458298
 GameObject:
   m_ObjectHideFlags: 0
@@ -7222,13 +11715,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 313804815}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1920341016
 GameObject:
   m_ObjectHideFlags: 0
@@ -7348,13 +11853,175 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 235582260}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!1 &1922023839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1922023840}
+  - component: {fileID: 1922023842}
+  - component: {fileID: 1922023841}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1922023840
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922023839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1446989649}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1922023841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922023839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1922023842
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922023839}
+  m_CullTransparentMesh: 1
+--- !u!1 &1933361309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933361310}
+  - component: {fileID: 1933361312}
+  - component: {fileID: 1933361311}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1933361310
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933361309}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1073000634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1933361311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933361309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.972549}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 800b2955a673c984ab791e1be980889a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1933361312
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933361309}
+  m_CullTransparentMesh: 1
 --- !u!1 &1936267249
 GameObject:
   m_ObjectHideFlags: 0
@@ -7624,13 +12291,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posterImages: []
   posterTitle: Poster
-  posterPanel: {fileID: 1770904227}
-  closeButton: {fileID: 0}
-  autoCloseDistance: 6
-  transitionDuration: 0.35
-  dbg_isGazing: 0
-  dbg_distance: 0
+  floatingTitleObject: {fileID: 0}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
 --- !u!1 &1981172287
 GameObject:
   m_ObjectHideFlags: 0
@@ -7699,6 +12378,140 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1995612448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1995612449}
+  - component: {fileID: 1995612451}
+  - component: {fileID: 1995612450}
+  m_Layer: 0
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1995612449
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995612448}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 573625499}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0000018999, y: -0.00000011548}
+  m_SizeDelta: {x: 0.723, y: 0.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1995612450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995612448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Perilaku Seksual Berisiko Remaja
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_sharedMaterial: {fileID: 4638328217081397882, guid: a7650c3950c2e8a419e2cdb9de2e98ca, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: -0.0055801845, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1995612451
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995612448}
+  m_CullTransparentMesh: 1
 --- !u!1 &2008252879
 GameObject:
   m_ObjectHideFlags: 0
@@ -7734,6 +12547,148 @@ Transform:
   - {fileID: 1532178808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2011032854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011032855}
+  - component: {fileID: 2011032858}
+  - component: {fileID: 2011032857}
+  - component: {fileID: 2011032856}
+  m_Layer: 0
+  m_Name: Tumbuh Kembang Remaja
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011032855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011032854}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.06, y: -0.689, z: -9.794}
+  m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 262941659}
+  m_Father: {fileID: 1014503018}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &2011032856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011032854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4197c85c3dfdd1643b7bed0c72150786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posterImages:
+  - {fileID: 21300000, guid: a0adacfdb779a54478918c0c489b3d47, type: 3}
+  - {fileID: 21300000, guid: c3b06c9e299739240946314957c5c9ec, type: 3}
+  - {fileID: 21300000, guid: 4e714a38f518635429ccaea9113b278c, type: 3}
+  posterTitle: Tumbuh Kembang Remaja
+  floatingTitleObject: {fileID: 262941658}
+  interactionDistance: 3
+  fadeDuration: 0.25
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  panelSprite: {fileID: 0}
+  buttonSprite: {fileID: 0}
+  panelColor: {r: 1, g: 1, b: 1, a: 1}
+  headerColor: {r: 0.08, g: 0.35, b: 0.55, a: 1}
+  accentColor: {r: 0.35, g: 0.55, b: 0.95, a: 1}
+  headerTextColor: {r: 1, g: 1, b: 1, a: 1}
+  hintTextColor: {r: 0.15, g: 0.15, b: 0.15, a: 1}
+  hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
+  cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
+  cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
+  backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+--- !u!65 &2011032857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011032854}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.6029787, y: 11.539841, z: 0.2}
+  m_Center: {x: -0.0067851143, y: -0.012788765, z: 0}
+--- !u!212 &2011032858
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011032854}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: a0adacfdb779a54478918c0c489b3d47, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.58, y: 11.56}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2054057966
 GameObject:
   m_ObjectHideFlags: 0
@@ -7843,7 +12798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2116495823
 Transform:
   m_ObjectHideFlags: 0
@@ -8554,7 +13509,7 @@ Transform:
   m_GameObject: {fileID: 2578007089415859467}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9866915, z: -0, w: -0.16260356}
-  m_LocalPosition: {x: -33.38, y: 2.477, z: -36.28}
+  m_LocalPosition: {x: -23.53, y: 2.477, z: -53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10279,8 +15234,21 @@ MonoBehaviour:
   npcName: Dokter
   viewDistance: 2
   fadeDuration: 0.2
-  panelSprite: {fileID: 0}
-  buttonSprite: {fileID: 0}
+  canvasDistance: 0.8
+  canvasScale: 0.001
+  typingSpeed: 0.03
+  audioSource: {fileID: 0}
+  answerAudios:
+  - {fileID: 8300000, guid: bbd34fc09b8708740ae6d457acb2b6cf, type: 3}
+  - {fileID: 8300000, guid: 162c4b06eae866246963aef077569734, type: 3}
+  - {fileID: 8300000, guid: 9ead7fc12963e1d42a76960d190c41bb, type: 3}
+  - {fileID: 8300000, guid: 4d6aa190aa7e6fa43ba1cf116f85ab0a, type: 3}
+  - {fileID: 8300000, guid: 6761a81ed34290f43b5a6098ce99f647, type: 3}
+  - {fileID: 8300000, guid: b25d4d891d976e84da3ff3b2f087c661, type: 3}
+  bgmSource: {fileID: 317802217}
+  duckedVolume: 0.2
+  panelSprite: {fileID: 21300000, guid: 728b1b57956acf84aaa7ca74c78576d5, type: 3}
+  buttonSprite: {fileID: 21300000, guid: 8ed4333a648cff3418f1b1022b16f311, type: 3}
   panelColor: {r: 1, g: 1, b: 1, a: 1}
   buttonColor: {r: 1, g: 1, b: 1, a: 1}
   buttonHoverColor: {r: 0.85, g: 0.92, b: 1, a: 1}
@@ -11633,6 +16601,7 @@ SceneRoots:
   - {fileID: 2008252880}
   - {fileID: 2131034680}
   - {fileID: 2116495823}
+  - {fileID: 1014503018}
   - {fileID: 1164795861}
   - {fileID: 543450653669375309}
   - {fileID: 1459120863}

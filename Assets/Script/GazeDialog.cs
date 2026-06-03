@@ -12,6 +12,26 @@ public class GazeDialog : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] private float viewDistance = 5.0f;
     [SerializeField] private float fadeDuration = 0.25f;
+    [SerializeField] private float canvasDistance = 0.8f;
+    [SerializeField] private float canvasScale = 0.001f;
+    [Tooltip("Kecepatan efek mengetik teks (detik/karakter).")]
+    [SerializeField] private float typingSpeed = 0.03f;
+
+    [Header("Voice Over (Opsional)")]
+    [Tooltip("AudioSource untuk memutar suara dokter. Jika kosong, akan dibuat otomatis.")]
+    [SerializeField] private AudioSource audioSource;
+    [Tooltip("Masukkan rekaman suara jawaban dokter secara berurutan sesuai pertanyaan.")]
+    [SerializeField] private AudioClip[] answerAudios;
+
+    [Header("BGM Ducking (Opsional)")]
+    [Tooltip("Masukkan AudioSource musik latar/BGM jika ingin suaranya mengecil saat dokter bicara.")]
+    [SerializeField] private AudioSource bgmSource;
+    [Tooltip("Pengali volume BGM saat dokter bicara (misal 0.2 untuk 20% dari volume asli).")]
+    [Range(0f, 1f)]
+    [SerializeField] private float duckedVolume = 0.2f;
+
+    private float originalBgmVolume = 1f;
+    private bool isDucking = false;
 
     [Header("Custom UI Sprites")]
     [SerializeField] private Sprite panelSprite;
@@ -38,6 +58,7 @@ public class GazeDialog : MonoBehaviour
     private GameObject answerPanel;
     private Text answerText;
     private Coroutine fadeCoroutine;
+    private Coroutine typingCoroutine;
 
     private List<QAData> qaList = new List<QAData>();
 
@@ -53,6 +74,18 @@ public class GazeDialog : MonoBehaviour
     {
         mainCamera = Camera.main;
         playerController = FindObjectOfType<VRWalkController>();
+
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+        }
+
+        if (bgmSource != null)
+        {
+            originalBgmVolume = bgmSource.volume;
+        }
+
         InitializeQAData();
         BuildUI();
     }
@@ -77,6 +110,21 @@ public class GazeDialog : MonoBehaviour
         // Buka dialog dengan tap layar (touch/klik)
         if (isGazingAtNPC && !isDialogOpen && DetectScreenTap())
             OpenDialog();
+
+        // Kembalikan volume BGM jika suara dokter sudah selesai bicara
+        if (isDucking && audioSource != null && !audioSource.isPlaying)
+        {
+            RestoreBGM();
+        }
+    }
+
+    private void RestoreBGM()
+    {
+        if (isDucking && bgmSource != null)
+        {
+            bgmSource.volume = originalBgmVolume;
+            isDucking = false;
+        }
     }
 
     /// <summary>
@@ -88,11 +136,20 @@ public class GazeDialog : MonoBehaviour
     {
         // Android touch
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            int fingerId = Input.GetTouch(0).fingerId;
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
+                return false;
             return true;
+        }
 
         // Editor fallback: klik kiri mouse
         if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return false;
             return true;
+        }
 
         return false;
     }
@@ -156,6 +213,13 @@ public class GazeDialog : MonoBehaviour
         isDialogOpen = false;
         isGazingAtNPC = false;
 
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Stop();
+
+        RestoreBGM();
+
         if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
         fadeCoroutine = StartCoroutine(FadeCanvas(canvasGroup.alpha, 0f, () => {
             mainDialogPanel.SetActive(false);
@@ -168,13 +232,48 @@ public class GazeDialog : MonoBehaviour
     {
         questionListPanel.SetActive(true);
         answerPanel.SetActive(false);
+
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Stop();
+
+        RestoreBGM();
     }
 
     private void ShowAnswer(int index)
     {
         questionListPanel.SetActive(false);
         answerPanel.SetActive(true);
-        answerText.text = qaList[index].answer;
+
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine);
+        if (typingSpeed > 0f)
+            typingCoroutine = StartCoroutine(TypeAnswer(qaList[index].answer));
+        else
+            answerText.text = qaList[index].answer;
+
+        if (audioSource != null && answerAudios != null && index < answerAudios.Length && answerAudios[index] != null)
+        {
+            audioSource.clip = answerAudios[index];
+            audioSource.Play();
+
+            if (bgmSource != null && !isDucking)
+            {
+                originalBgmVolume = bgmSource.volume;
+                bgmSource.volume = originalBgmVolume * duckedVolume;
+                isDucking = true;
+            }
+        }
+    }
+
+    private IEnumerator TypeAnswer(string fullText)
+    {
+        answerText.text = "";
+        for (int i = 0; i <= fullText.Length; i++)
+        {
+            answerText.text = fullText.Substring(0, i);
+            yield return new WaitForSeconds(typingSpeed);
+        }
     }
 
     private IEnumerator FadeCanvas(float from, float to, System.Action onComplete = null)
@@ -202,7 +301,16 @@ public class GazeDialog : MonoBehaviour
 
         GameObject canvasObj = new GameObject("DialogCanvas_" + npcName);
         dialogCanvas = canvasObj.AddComponent<Canvas>();
-        dialogCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        
+        // WorldSpace agar berfungsi di VR Cardboard
+        dialogCanvas.renderMode = RenderMode.WorldSpace;
+        canvasObj.transform.SetParent(mainCamera.transform, false);
+
+        // Posisikan canvas lebih dekat ke kamera
+        canvasObj.transform.localPosition = new Vector3(0, 0, canvasDistance);
+        canvasObj.transform.localRotation = Quaternion.identity;
+        canvasObj.transform.localScale = new Vector3(canvasScale, canvasScale, canvasScale);
+
         dialogCanvas.sortingOrder = 100;
 
         CanvasScaler scaler = canvasObj.AddComponent<CanvasScaler>();
@@ -217,12 +325,12 @@ public class GazeDialog : MonoBehaviour
 
         Text hintText = CreateText(hintPanel.transform, "HintText",
             "Ketuk layar untuk berbicara dengan " + npcName,
-            24, TextAnchor.MiddleCenter, textColor);
+            28, TextAnchor.MiddleCenter, textColor);
         StretchRect(hintText.rectTransform, 15, 5, -15, -5);
         hintPanel.SetActive(false);
 
         mainDialogPanel = CreateSpritePanel(canvasObj.transform, "MainDialogPanel",
-            new Vector2(1050, 720), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+            new Vector2(1050, 850), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             panelSprite, panelColor);
 
         canvasGroup = mainDialogPanel.AddComponent<CanvasGroup>();
@@ -239,7 +347,7 @@ public class GazeDialog : MonoBehaviour
         hbRect.anchoredPosition = new Vector2(0, -10);
 
         Text nameText = CreateText(headerBar.transform, "NameText", npcName,
-            32, TextAnchor.MiddleLeft, headerTextColor);
+            40, TextAnchor.MiddleLeft, headerTextColor);
         nameText.fontStyle = FontStyle.Bold;
         RectTransform ntRect = nameText.rectTransform;
         ntRect.anchorMin = Vector2.zero;
@@ -260,7 +368,7 @@ public class GazeDialog : MonoBehaviour
         qlRect.offsetMax = new Vector2(-25, -95);
 
         Text qlLabel = CreateText(questionListPanel.transform, "Label",
-            "Pilih pertanyaan:", 24, TextAnchor.MiddleLeft, new Color(0.3f, 0.3f, 0.3f));
+            "Pilih pertanyaan:", 30, TextAnchor.MiddleLeft, new Color(0.3f, 0.3f, 0.3f));
         qlLabel.fontStyle = FontStyle.Bold;
         RectTransform lblRect = qlLabel.rectTransform;
         lblRect.anchorMin = new Vector2(0, 1);
@@ -270,8 +378,8 @@ public class GazeDialog : MonoBehaviour
         lblRect.anchoredPosition = Vector2.zero;
 
         float btnY = -45f;
-        float btnH = 80f;
-        float btnGap = 10f;
+        float btnH = 95f;
+        float btnGap = 12f;
 
         for (int i = 0; i < qaList.Count; i++)
         {
@@ -288,7 +396,7 @@ public class GazeDialog : MonoBehaviour
             bRect.anchoredPosition = new Vector2(0, yPos);
 
             Text numText = CreateText(btnObj.transform, "Num", (i + 1) + ".",
-                22, TextAnchor.UpperLeft, headerColor);
+                28, TextAnchor.UpperLeft, headerColor);
             numText.fontStyle = FontStyle.Bold;
             RectTransform nRect = numText.rectTransform;
             nRect.anchorMin = Vector2.zero;
@@ -298,7 +406,7 @@ public class GazeDialog : MonoBehaviour
             nRect.offsetMax = new Vector2(45, -10);
 
             Text qText = CreateText(btnObj.transform, "QText", qaList[i].question,
-                20, TextAnchor.UpperLeft, textColor);
+                26, TextAnchor.UpperLeft, textColor);
             RectTransform qRect = qText.rectTransform;
             qRect.anchorMin = Vector2.zero;
             qRect.anchorMax = Vector2.one;
@@ -326,7 +434,7 @@ public class GazeDialog : MonoBehaviour
         apRect.offsetMax = new Vector2(-25, -95);
 
         Text ansLabel = CreateText(answerPanel.transform, "AnsLabel",
-            npcName + " menjawab:", 24, TextAnchor.MiddleLeft, headerColor);
+            npcName + " menjawab:", 30, TextAnchor.MiddleLeft, headerColor);
         ansLabel.fontStyle = FontStyle.Bold;
         RectTransform alRect = ansLabel.rectTransform;
         alRect.anchorMin = new Vector2(0, 1);
@@ -344,7 +452,7 @@ public class GazeDialog : MonoBehaviour
         abRect.offsetMax = new Vector2(0, -40);
 
         answerText = CreateText(ansBox.transform, "AnsText", "",
-            22, TextAnchor.UpperLeft, textColor);
+            28, TextAnchor.UpperLeft, textColor);
         answerText.lineSpacing = 1.4f;
         RectTransform atRect = answerText.rectTransform;
         atRect.anchorMin = Vector2.zero;
@@ -354,11 +462,11 @@ public class GazeDialog : MonoBehaviour
 
         CreateSpriteButton(answerPanel.transform, "BackBtn", "← Kembali ke Pertanyaan",
             new Vector2(360, 55), new Vector2(0, 0), new Vector2(0, 0), new Vector2(180, 28),
-            buttonSprite, headerColor, headerTextColor, 20, () => { ShowQuestionList(); });
+            buttonSprite, headerColor, headerTextColor, 24, () => { ShowQuestionList(); });
 
         CreateSpriteButton(answerPanel.transform, "CloseBtn2", "✕ Tutup",
             new Vector2(200, 55), new Vector2(1, 0), new Vector2(1, 0), new Vector2(-100, 28),
-            buttonSprite, new Color(0.7f, 0.2f, 0.2f), Color.white, 20, () => { CloseDialog(); });
+            buttonSprite, new Color(0.7f, 0.2f, 0.2f), Color.white, 24, () => { CloseDialog(); });
 
         answerPanel.SetActive(false);
     }
