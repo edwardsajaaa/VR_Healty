@@ -48,15 +48,38 @@ public class DoorMechanic : MonoBehaviour
     /// </summary>
     private bool DetectScreenTap()
     {
-        // Deteksi gamepad (tombol apapun)
+        // Controller VR Park bisa terdeteksi sebagai Gamepad, Joystick, atau device lain.
+        // Kita cek SEMUA kemungkinan:
+
+        // 1. Cek Gamepad
         if (Gamepad.current != null)
         {
             foreach (var control in Gamepad.current.allControls)
             {
                 if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                {
                     return true;
-                }
+            }
+        }
+
+        // 2. Cek Joystick (VR Park sering terdeteksi sebagai ini!)
+        if (Joystick.current != null)
+        {
+            foreach (var control in Joystick.current.allControls)
+            {
+                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
+                    return true;
+            }
+        }
+
+        // 3. Cek semua device lain yang terhubung
+        foreach (var device in InputSystem.devices)
+        {
+            if (device is Gamepad || device is Joystick || device is Keyboard || device is Mouse || device is Touchscreen)
+                continue;
+            foreach (var control in device.allControls)
+            {
+                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
+                    return true;
             }
         }
 
