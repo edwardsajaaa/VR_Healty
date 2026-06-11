@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Script all-in-one untuk button di Main Menu.
@@ -60,6 +61,10 @@ public class MainMenuButton : MonoBehaviour
 
     [Tooltip("Durasi animasi transisi hover (detik)")]
     public float animDuration = 0.15f;
+
+    [Header("Pengaturan Deteksi (Gaze)")]
+    [Tooltip("Jarak maksimal button bisa dideteksi oleh pointer/pandangan")]
+    public float maxGazeDistance = 100f;
 
     // ═══════════════════════════════════════════════════════════════════
     //  GAZE TIMER (OPSIONAL)
@@ -171,7 +176,7 @@ public class MainMenuButton : MonoBehaviour
         Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 15f))
+        if (Physics.Raycast(ray, out hit, maxGazeDistance))
         {
             if (hit.collider.gameObject == gameObject ||
                 hit.collider.transform.IsChildOf(transform))
@@ -186,24 +191,19 @@ public class MainMenuButton : MonoBehaviour
 
     private bool DetectTap()
     {
-        // Android touch
-        if (Input.touchCount > 0)
+        // Android touch (menggunakan New Input System)
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                if (EventSystem.current != null &&
-                    EventSystem.current.IsPointerOverGameObject(touch.fingerId))
-                    return false;
-                return true;
-            }
+            int fingerId = Touchscreen.current.primaryTouch.touchId.ReadValue();
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
+                return false;
+            return true;
         }
 
         // Editor fallback: klik kiri mouse
-        if (Input.GetMouseButtonDown(0))
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (EventSystem.current != null &&
-                EventSystem.current.IsPointerOverGameObject())
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return false;
             return true;
         }

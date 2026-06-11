@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class InteractionPoster : MonoBehaviour
 {
@@ -107,39 +108,57 @@ public class InteractionPoster : MonoBehaviour
 
         // Tap untuk menutup poster — HANYA di Gallery View.
         // Di Detail View, player harus gunakan tombol "Kembali" atau "Tutup".
-        if (isPosterOpen && !isDetailView && !isClosing && DetectScreenTap())
+        // Buka poster dengan tombol controller saat player dekat.
+        if (isPosterOpen && !isDetailView && !isClosing && DetectControllerInteract())
         {
             ClosePoster();
         }
 
-        // Buka poster dengan tap layar saat player dekat.
-        // Guard: tidak membuka jika sedang menutup ATAU ada poster lain sedang terbuka,
-        // dan tidak memproses tap yang mengenai elemen UI (tombol, panel).
-        if (isPlayerNearby && !isPosterOpen && !isClosing && !anyPosterIsOpen && DetectScreenTap())
+        // Buka poster dengan tombol controller saat player dekat.
+        // Guard: tidak membuka jika sedang menutup ATAU ada poster lain sedang terbuka.
+        if (isPlayerNearby && !isPosterOpen && !isClosing && !anyPosterIsOpen && DetectControllerInteract())
             OpenPoster();
     }
 
     /// <summary>
-    /// Mendeteksi tap layar.
-    /// Tap diabaikan jika mengenai elemen UI (tombol Close, dll.) agar
-    /// poster lain di sekitarnya tidak ikut terbuka.
+    /// Mendeteksi penekanan tombol pada Controller VR.
+    /// Tombol 'C' pada remote VR murah biasanya dipetakan ke JoystickButton2.
     /// </summary>
-    private bool DetectScreenTap()
+    private bool DetectControllerInteract()
     {
-        // Android touch — abaikan jika menyentuh elemen UI
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        // Deteksi tombol di Controller VR (Gamepad)
+        if (Gamepad.current != null)
         {
-            int fingerId = Input.GetTouch(0).fingerId;
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
-                return false; // Sentuhan mengenai UI — abaikan
+            // Cek apakah ada tombol apapun yang ditekan di Gamepad
+            foreach (var control in Gamepad.current.allControls)
+            {
+                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
+                {
+                    return true;
+                }
+            }
+        }
+
+        // Fallback Keyboard (tekan C)
+        if (Keyboard.current != null && Keyboard.current.cKey.wasPressedThisFrame)
+        {
             return true;
         }
 
-        // Editor / PC: klik kiri mouse — abaikan jika di atas elemen UI
-        if (Input.GetMouseButtonDown(0))
+        // Editor / PC fallback: klik kiri mouse di luar UI
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return false; // Klik mengenai UI — abaikan
+                return false;
+            return true;
+        }
+
+        // Android Touch fallback: tap di luar UI
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        {
+            int fingerId = Touchscreen.current.primaryTouch.touchId.ReadValue();
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
+                return false;
             return true;
         }
 
@@ -161,6 +180,12 @@ public class InteractionPoster : MonoBehaviour
         isPosterOpen = true;
         anyPosterIsOpen = true; // Beritahu semua instance: ada poster terbuka
         if (hintPanel != null) hintPanel.SetActive(false);
+
+        // Aktifkan navigasi controller di EventSystem
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.sendNavigationEvents = true;
+        }
 
         // Sembunyikan floating title saat poster dibuka
         if (floatingTitleObject != null) floatingTitleObject.SetActive(false);
@@ -196,6 +221,26 @@ public class InteractionPoster : MonoBehaviour
         galleryView.SetActive(true);
         detailView.SetActive(false);
         if (backButton != null) backButton.SetActive(false);
+
+        // Pilih item pertama secara otomatis agar bisa discroll dengan analog
+        StartCoroutine(SelectFirstCardDelay());
+    }
+
+    private IEnumerator SelectFirstCardDelay()
+    {
+        yield return null; // Tunggu 1 frame sampai UI aktif
+        if (galleryView != null && galleryView.activeInHierarchy)
+        {
+            Transform content = galleryView.GetComponentInChildren<ScrollRect>().content;
+            if (content.childCount > 0)
+            {
+                Button firstBtn = content.GetChild(0).GetComponent<Button>();
+                if (firstBtn != null && EventSystem.current != null)
+                {
+                    EventSystem.current.SetSelectedGameObject(firstBtn.gameObject);
+                }
+            }
+        }
     }
 
     private void ShowDetailView(int index)
@@ -209,7 +254,13 @@ public class InteractionPoster : MonoBehaviour
 
         // Tampilkan tombol "Kembali" hanya jika ada lebih dari 1 poster
         if (backButton != null)
+        {
             backButton.SetActive(posterImages.Length > 1);
+            if (EventSystem.current != null && backButton.activeInHierarchy)
+            {
+                EventSystem.current.SetSelectedGameObject(backButton);
+            }
+        }
     }
 
     private void ClosePoster()
@@ -321,7 +372,7 @@ public class InteractionPoster : MonoBehaviour
         hintShadow.effectDistance = new Vector2(2, -2);
 
         Text hintText = CreateText(hintPanel.transform, "HintText",
-            "\u25C9  Ketuk layar untuk melihat poster",
+            "\u25C9 Tekan 'C' untuk melihat poster",
             20, TextAnchor.MiddleCenter, hintTextColor);
         StretchRect(hintText.rectTransform, 20, 5, -20, -5);
 

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class GazeDialog : MonoBehaviour
 {
     [Header("NPC Settings")]
-    [SerializeField] private string npcName = "Dokter";
+    [SerializeField] private string npcName = "Ners";
 
     [Header("Interaction")]
     [SerializeField] private float viewDistance = 5.0f;
@@ -18,15 +19,15 @@ public class GazeDialog : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.03f;
 
     [Header("Voice Over (Opsional)")]
-    [Tooltip("AudioSource untuk memutar suara dokter. Jika kosong, akan dibuat otomatis.")]
+    [Tooltip("AudioSource untuk memutar suara ners. Jika kosong, akan dibuat otomatis.")]
     [SerializeField] private AudioSource audioSource;
-    [Tooltip("Masukkan rekaman suara jawaban dokter secara berurutan sesuai pertanyaan.")]
+    [Tooltip("Masukkan rekaman suara jawaban ners secara berurutan sesuai pertanyaan.")]
     [SerializeField] private AudioClip[] answerAudios;
 
     [Header("BGM Ducking (Opsional)")]
-    [Tooltip("Masukkan AudioSource musik latar/BGM jika ingin suaranya mengecil saat dokter bicara.")]
+    [Tooltip("Masukkan AudioSource musik latar/BGM jika ingin suaranya mengecil saat ners bicara.")]
     [SerializeField] private AudioSource bgmSource;
-    [Tooltip("Pengali volume BGM saat dokter bicara (misal 0.2 untuk 20% dari volume asli).")]
+    [Tooltip("Pengali volume BGM saat ners bicara (misal 0.2 untuk 20% dari volume asli).")]
     [Range(0f, 1f)]
     [SerializeField] private float duckedVolume = 0.2f;
 
@@ -107,11 +108,11 @@ public class GazeDialog : MonoBehaviour
             if (hintPanel != null) hintPanel.SetActive(false);
         }
 
-        // Buka dialog dengan tap layar (touch/klik)
-        if (isGazingAtNPC && !isDialogOpen && DetectScreenTap())
+        // Buka dialog dengan tombol controller
+        if (isGazingAtNPC && !isDialogOpen && DetectControllerInteract())
             OpenDialog();
 
-        // Kembalikan volume BGM jika suara dokter sudah selesai bicara
+        // Kembalikan volume BGM jika suara ners sudah selesai bicara
         if (isDucking && audioSource != null && !audioSource.isPlaying)
         {
             RestoreBGM();
@@ -128,25 +129,43 @@ public class GazeDialog : MonoBehaviour
     }
 
     /// <summary>
-    /// Mendeteksi tap layar (sentuh di Android, klik kiri di Editor).
-    /// Gaze check sudah jadi filter, tidak perlu IsPointerOverGameObject
-    /// yang bermasalah di Cardboard Android.
+    /// Mendeteksi penekanan tombol Controller VR.
+    /// Tombol 'C' pada remote VR murah biasanya adalah JoystickButton2.
     /// </summary>
-    private bool DetectScreenTap()
+    private bool DetectControllerInteract()
     {
-        // Android touch
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        // Deteksi tombol di Controller VR (Gamepad)
+        if (Gamepad.current != null)
         {
-            int fingerId = Input.GetTouch(0).fingerId;
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
+            // Cek apakah ada tombol apapun yang ditekan di Gamepad
+            foreach (var control in Gamepad.current.allControls)
+            {
+                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
+                {
+                    return true;
+                }
+            }
+        }
+
+        // Fallback Keyboard (tekan C)
+        if (Keyboard.current != null && Keyboard.current.cKey.wasPressedThisFrame)
+        {
+            return true;
+        }
+
+        // Editor / PC fallback: klik kiri mouse
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return false;
             return true;
         }
 
-        // Editor fallback: klik kiri mouse
-        if (Input.GetMouseButtonDown(0))
+        // Android Touch fallback
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            int fingerId = Touchscreen.current.primaryTouch.touchId.ReadValue();
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
                 return false;
             return true;
         }
@@ -206,6 +225,11 @@ public class GazeDialog : MonoBehaviour
         fadeCoroutine = StartCoroutine(FadeCanvas(0f, 1f));
 
         if (playerController != null) playerController.LockMovement();
+
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.sendNavigationEvents = true;
+        }
     }
 
     private void CloseDialog()
@@ -239,6 +263,22 @@ public class GazeDialog : MonoBehaviour
             audioSource.Stop();
 
         RestoreBGM();
+
+        // Auto-select pertanyaan pertama agar bisa dikendalikan analog
+        StartCoroutine(SelectFirstQuestionDelay());
+    }
+
+    private IEnumerator SelectFirstQuestionDelay()
+    {
+        yield return null;
+        if (questionListPanel != null && questionListPanel.activeInHierarchy)
+        {
+            Button[] btns = questionListPanel.GetComponentsInChildren<Button>();
+            if (btns.Length > 0 && EventSystem.current != null)
+            {
+                EventSystem.current.SetSelectedGameObject(btns[0].gameObject);
+            }
+        }
     }
 
     private void ShowAnswer(int index)
@@ -262,6 +302,23 @@ public class GazeDialog : MonoBehaviour
                 originalBgmVolume = bgmSource.volume;
                 bgmSource.volume = originalBgmVolume * duckedVolume;
                 isDucking = true;
+            }
+        }
+
+        // Auto-select tombol "Kembali" agar bisa dinavigasi pakai analog
+        StartCoroutine(SelectBackButtonDelay());
+    }
+
+    private IEnumerator SelectBackButtonDelay()
+    {
+        yield return null;
+        if (answerPanel != null && answerPanel.activeInHierarchy)
+        {
+            Button[] btns = answerPanel.GetComponentsInChildren<Button>();
+            if (btns.Length > 0 && EventSystem.current != null)
+            {
+                // Pilih tombol pertama (Biasanya "Kembali ke Pertanyaan")
+                EventSystem.current.SetSelectedGameObject(btns[0].gameObject);
             }
         }
     }
@@ -324,7 +381,7 @@ public class GazeDialog : MonoBehaviour
             buttonSprite, panelColor);
 
         Text hintText = CreateText(hintPanel.transform, "HintText",
-            "Ketuk layar untuk berbicara dengan " + npcName,
+            "Tekan 'C' untuk berbicara dengan " + npcName,
             28, TextAnchor.MiddleCenter, textColor);
         StretchRect(hintText.rectTransform, 15, 5, -15, -5);
         hintPanel.SetActive(false);

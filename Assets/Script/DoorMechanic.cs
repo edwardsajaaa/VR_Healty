@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class DoorMechanic : MonoBehaviour
 {
@@ -47,12 +48,26 @@ public class DoorMechanic : MonoBehaviour
     /// </summary>
     private bool DetectScreenTap()
     {
-        // Android touch
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        // Deteksi gamepad (tombol apapun)
+        if (Gamepad.current != null)
+        {
+            foreach (var control in Gamepad.current.allControls)
+            {
+                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
+                {
+                    return true;
+                }
+            }
+        }
+
+        // Android touch (New Input System)
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
             return true;
 
-        // Editor fallback: klik kiri mouse
-        if (Input.GetMouseButtonDown(0))
+        // Editor fallback: klik kiri mouse / Keyboard C
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+            return true;
+        if (Keyboard.current != null && Keyboard.current.cKey.wasPressedThisFrame)
             return true;
 
         return false;

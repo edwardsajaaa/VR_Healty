@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EditorMouseLook : MonoBehaviour
 {
@@ -10,11 +11,17 @@ public class EditorMouseLook : MonoBehaviour
         // Di HP script ini otomatis mati.
         if (!Application.isEditor) return;
 
+        bool rightClick = Mouse.current != null && Mouse.current.rightButton.isPressed;
+        bool altKey = Keyboard.current != null && Keyboard.current.leftAltKey.isPressed;
+
         // Tahan Klik Kanan (Mouse 1) atau Alt untuk menengok
-        if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.LeftAlt))
+        if (rightClick || altKey)
         {
-            float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
-            float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+            Vector2 delta = Mouse.current != null ? Mouse.current.delta.ReadValue() : Vector2.zero;
+            
+            // New Input System delta nilainya bisa sangat besar, jadi kita kurangi sensitivitasnya (dibagi 10)
+            float mouseX = delta.x * (sensitivity / 10f) * Time.deltaTime;
+            float mouseY = delta.y * (sensitivity / 10f) * Time.deltaTime;
 
             // Putar player/kamera
             // Rotasi Y (Kiri Kanan)

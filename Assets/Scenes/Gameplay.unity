@@ -15231,7 +15231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f444709d6278104c8e25f8a146f4516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcName: Dokter
+  npcName: Ners
   viewDistance: 2
   fadeDuration: 0.2
   canvasDistance: 0.8
