@@ -225,7 +225,7 @@ Transform:
   m_GameObject: {fileID: 15997877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.06, y: -0.689, z: -26.53}
+  m_LocalPosition: {x: -1.06, y: -0.57, z: -24.1}
   m_LocalScale: {x: 0.112895876, y: 0.10362097, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -264,8 +264,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 5b33ee3e-2cb9-46cc-8a98-58aa0427fabc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 01efcd01-1703-40ec-9204-775689377393
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &15997880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -480,8 +499,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: bc7b71fc-524b-4966-9328-5be292110b76
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ab62a443-500c-4519-903b-638ae5e8f9fb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &63517508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -691,8 +729,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 6694914e-99ea-4a48-9f10-e38071c70200
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a106714b-d19f-4bd4-a2dc-7ad472208546
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &80896252
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,8 +1116,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: c4d604b9-a634-405b-b257-e3e1000bb426
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 46bef1af-87c0-4688-a66c-7f9d6fb26286
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &88888441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1551,8 +1627,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 461576d5-7d50-45c4-874f-d1daf36231b5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: aea73924-fa42-442e-bcd8-1b9c7667a0d3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &194133394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,8 +1859,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 76ff1e03-73d5-41c5-885d-c5c853428a3e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2412e353-6bbd-44ee-afb2-1d3c802ff78b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &205497354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,8 +2091,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: de292425-a5b4-4df4-994b-23906896d66e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 463d640b-9ce1-4ded-b0ca-1d0ee19b95dd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &219458593
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,8 +2248,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 7c38e931-ee2e-46dc-9010-d85b4b80bc97
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3be8fde8-9c85-485f-a805-080343035200
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &235582260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3218,8 +3370,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 09168a24-389a-47cf-a85b-fd137f6be1dd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6d5f40fe-2a99-4a26-bf27-f11352d204ea
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &368209603
 GameObject:
   m_ObjectHideFlags: 0
@@ -3287,8 +3458,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: b3014516-6704-4d99-86f1-d3aa71fd43ad
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 37a25825-388f-4ad3-a797-81fde4bdc520
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &368209606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3782,8 +3972,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: e6eb54d0-4933-4a79-badf-d0549229c3d7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9cd79621-8297-40b2-adb9-c35026281af7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &414762847
 GameObject:
   m_ObjectHideFlags: 0
@@ -4641,8 +4850,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 0e19afeb-ec3f-4875-9eb1-fe8c1f31a67c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: eaafb50e-dcaf-4ee1-b35e-1489abcdf875
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &626450405
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4852,8 +5080,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: fe2ce3f6-2e13-40db-b68d-4ce22536180e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 76d442ad-fe67-46a6-8c68-683092e7a8d7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &682387019
 GameObject:
   m_ObjectHideFlags: 0
@@ -5160,8 +5407,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 724b5018-e149-4afd-aa53-508d4a703549
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c1d6210e-3039-4be8-80a6-4e2360fdadfb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &725486162
 GameObject:
   m_ObjectHideFlags: 0
@@ -5432,8 +5698,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: ab288436-eba8-4a09-b482-f551a693d4f2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 16fffe7a-4290-4ae5-beca-62d38f4b613b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &731534572
 GameObject:
   m_ObjectHideFlags: 0
@@ -5633,8 +5918,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 4003036d-3ab7-4b13-92b1-ca898f66f5d7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ffc7787d-1971-41dd-a876-e8dfe49eeb79
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &743829588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5766,7 +6070,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df0599cf65e4daa46b24f236a0fc837b, type: 3}
   posterTitle: Dukungan Keluarga
   floatingTitleObject: {fileID: 1446989648}
-  interactionDistance: 1
+  interactionDistance: 2
   fadeDuration: 0.25
   canvasDistance: 1
   canvasScale: 0.001
@@ -5780,8 +6084,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: d560007b-0c2a-4c96-951f-24ad66f82956
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7b2d9e52-d264-4251-b779-1e7d66144e06
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &749587636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5958,13 +6281,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782628376}
+  - component: {fileID: 782628377}
   m_Layer: 0
-  m_Name: VR Setup Panel
+  m_Name: Alat Test Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &782628376
 Transform:
   m_ObjectHideFlags: 0
@@ -5980,6 +6304,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &782628377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782628375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f3a4b90c0ee392498b3db2442d15a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceDidepanKamera: 3
+  tinggiPanel: 0.04
 --- !u!1 &806264944
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,8 +6454,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 4a4ffb1d-ce45-4e0e-8cd5-c8e4fe66b756
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4d6eddcf-fcba-45af-bbc4-c5f61963f837
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &825636547
 GameObject:
   m_ObjectHideFlags: 0
@@ -6464,8 +6821,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 984c1711-75d1-42d0-892f-2964a83ca6c6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8fec4e95-0ffe-4578-b704-6dd4b28f4912
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &930995561
 GameObject:
   m_ObjectHideFlags: 0
@@ -6696,8 +7072,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 617877bc-07c7-4cec-89cb-d645538b4e49
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 77184773-1c6e-4eda-8118-3b09e484a701
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &981471043
 GameObject:
   m_ObjectHideFlags: 0
@@ -6929,7 +7324,6 @@ MonoBehaviour:
   swapAxis: 0
   invertHorizontal: 0
   invertVertical: 0
-  showDebugInfo: 1
 --- !u!143 &1037935208
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6988,7 +7382,7 @@ Transform:
   m_GameObject: {fileID: 1037935206}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.53, y: 2.477, z: -53}
+  m_LocalPosition: {x: -21.55, y: 2.477, z: -49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7195,8 +7589,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 386ba30b-5184-4051-b477-7ae0b998652d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f21f6f23-8fb4-46f7-8682-46ee9a76c248
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &1066420341
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7943,8 +8356,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 0a6475bb-d540-4a21-936c-d8bd316044c2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ff445b73-8402-45e6-aaf7-e56825870a27
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1164795857
 GameObject:
   m_ObjectHideFlags: 0
@@ -8219,8 +8651,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 3df1181f-cf9b-44d6-94b9-a5d41f7ab98d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ce0fde91-6e80-4333-9d0c-b414b056deb2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &1210468826
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8430,8 +8881,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 94f823bc-1d89-463a-a679-90af581e07c3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 27d94310-f8ec-480b-83d1-85767e456b25
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1252180845
 GameObject:
   m_ObjectHideFlags: 0
@@ -8643,8 +9113,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 6d02b195-8410-4990-a67f-0d188d19e115
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9c29caf9-06b9-4cc1-9342-4b18b3f35fc9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1307856770
 GameObject:
   m_ObjectHideFlags: 0
@@ -8781,8 +9270,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 95a171d6-4ddf-4f5e-8f50-67456d799f3b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1dc424ce-9f2a-4c11-9982-c64ffcd88009
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1396311155
 GameObject:
   m_ObjectHideFlags: 0
@@ -9069,8 +9577,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 4fb0a861-ff44-4c50-96f5-0222745c4983
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d1781fae-e8e1-4878-b2ac-abb1f630ee80
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1446989648
 GameObject:
   m_ObjectHideFlags: 0
@@ -9790,8 +10317,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: e34adbcf-c993-4420-876c-d827fa5001ae
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ee8620bd-6db8-4111-9ba5-6c0e76a7495d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1570136253
 GameObject:
   m_ObjectHideFlags: 0
@@ -9928,8 +10474,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 07b0e506-fc32-498d-b58e-13fed9664453
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 28f15877-b9e2-404a-a425-0b95bcfc9eb3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1587948215
 GameObject:
   m_ObjectHideFlags: 0
@@ -10066,8 +10631,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 4ed10636-0390-4b45-b706-e913534388f0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: aa0eb314-0dc0-47af-86a5-ed3bdc425680
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1600745900
 GameObject:
   m_ObjectHideFlags: 0
@@ -10204,8 +10788,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 5380c99e-c77f-4ce9-8c76-3b602cf4ff61
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e5e7303b-ff7a-4be0-a099-4ebd4fa5333f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1639193293
 GameObject:
   m_ObjectHideFlags: 0
@@ -10342,8 +10945,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 7bc2a4bf-2190-40b7-9013-17601e13dac1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: abff8ec8-1329-485b-9635-e2dab32f07ef
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1667196525
 GameObject:
   m_ObjectHideFlags: 0
@@ -10480,8 +11102,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: b78e4430-f59f-4d20-8afe-7ba29cd2c759
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 802fe550-5c09-4f04-8279-80b277533cfa
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1764571772
 GameObject:
   m_ObjectHideFlags: 0
@@ -10618,8 +11259,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 12d61697-7294-40cf-b3c9-41ae7576ae56
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0a7788c1-0fc9-4e03-8c90-037d3fec6e59
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1764914386
 GameObject:
   m_ObjectHideFlags: 0
@@ -10756,8 +11416,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 27421f18-6766-4e69-8cd0-43e74a74041a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ae7e46b4-4fea-4b0d-a797-3ffecd2832c1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1770904227
 GameObject:
   m_ObjectHideFlags: 0
@@ -11138,8 +11817,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: d4a61726-c1ed-460d-8098-2935346e32f6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: da9aebaa-2543-474f-954f-6d9d0002e298
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1800703967
 GameObject:
   m_ObjectHideFlags: 0
@@ -11729,8 +12427,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 061a53bc-e17c-4f11-aebd-17fe73d03162
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 06655f61-d630-48c2-9c87-572f88cb4b9c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1870458298
 GameObject:
   m_ObjectHideFlags: 0
@@ -11867,8 +12584,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 38a0f3a6-a6f5-4a42-a8b1-65104a589907
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2cd66d3d-b4b1-4e81-ae69-75b3922fd234
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1920341016
 GameObject:
   m_ObjectHideFlags: 0
@@ -12005,8 +12741,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: cac17372-713f-4f76-97dd-20bb63ffa7d3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 49b4571d-b902-4981-9c91-eb33d9c90909
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1922023839
 GameObject:
   m_ObjectHideFlags: 0
@@ -12443,8 +13198,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 1d9b7a90-7101-4bb3-bbf7-39d0262af2f2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c9948535-e0cc-4040-9772-42dfef85b08a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &1981172287
 GameObject:
   m_ObjectHideFlags: 0
@@ -12760,8 +13534,27 @@ MonoBehaviour:
   hintBgColor: {r: 0.1, g: 0.12, b: 0.16, a: 0.88}
   cardColor: {r: 0.16, g: 0.18, b: 0.23, a: 1}
   cardPressColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  cardSelectedColor: {r: 0.05, g: 0.06, b: 0.08, a: 1}
   closeBtnColor: {r: 0.75, g: 0.22, b: 0.22, a: 1}
   backBtnColor: {r: 0.22, g: 0.25, b: 0.32, a: 1}
+  interactAction:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: e45ebb67-a63f-4648-a36a-6b07a1106323
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  navigateAction:
+    m_Name: Navigate
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d9f175cd-5800-45f7-a6b8-cfb263381562
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!65 &2011032857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13655,7 +14448,7 @@ Transform:
   m_GameObject: {fileID: 2578007089415859467}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9866915, z: -0, w: -0.16260356}
-  m_LocalPosition: {x: -23.53, y: 2.477, z: -53}
+  m_LocalPosition: {x: -21.55, y: 2.477, z: -49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14403,7 +15196,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4146747304554472418}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83ba8b1f00ca29745b541c4b7589e82e, type: 3}
   m_Name: 
@@ -16470,7 +17263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2fadf230d1919748a9aa21d40f74619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackingType: 0
+  m_TrackingType: 1
   m_UpdateType: 2
   m_IgnoreTrackingState: 0
   m_PositionInput:

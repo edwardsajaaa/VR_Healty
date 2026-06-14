@@ -20,50 +20,71 @@ public class VRWalkController : MonoBehaviour
     private Transform camTransform;
     private CharacterController controller;
 
+    [Header("Input System (Otomatis)")]
+    [Tooltip("Tidak perlu diisi, otomatis mendeteksi VR Controller & Keyboard")]
+    public InputAction moveAction = new InputAction("Move", InputActionType.Value, "Vector2");
+
+    void Awake()
+    {
+        // Setup binding default agar bisa langsung jalan di VR (XR Controller) dan PC (Keyboard WASD/Gamepad)
+        if (moveAction.bindings.Count == 0)
+        {
+            // XR Controller (VR)
+            moveAction.AddBinding("<XRController>/joystick");
+            moveAction.AddBinding("<XRController>/primary2DAxis");
+            moveAction.AddBinding("<XRController>/trackpad");
+            
+            // Gamepad biasa (XBox/PS)
+            moveAction.AddBinding("<Gamepad>/leftStick");
+            moveAction.AddBinding("<Gamepad>/dpad");
+
+            // Keyboard WASD
+            moveAction.AddCompositeBinding("2DVector")
+                .With("Up", "<Keyboard>/w")
+                .With("Down", "<Keyboard>/s")
+                .With("Left", "<Keyboard>/a")
+                .With("Right", "<Keyboard>/d");
+                
+            // Keyboard Arrow Keys
+            moveAction.AddCompositeBinding("2DVector")
+                .With("Up", "<Keyboard>/upArrow")
+                .With("Down", "<Keyboard>/downArrow")
+                .With("Left", "<Keyboard>/leftArrow")
+                .With("Right", "<Keyboard>/rightArrow");
+        }
+    }
+
+    void OnEnable()
+    {
+        moveAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        moveAction.Disable();
+    }
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        camTransform = Camera.main.transform;
+        if (Camera.main != null)
+        {
+            camTransform = Camera.main.transform;
+        }
     }
 
     void Update()
     {
-        if (isMovementLocked)
+        if (isMovementLocked || camTransform == null)
         {
             isWalking = false;
             return;
         }
         
-        float horizontal = 0f;
-        float vertical = 0f;
-
-        // Baca input dari Gamepad (Controller VR)
-        if (Gamepad.current != null)
-        {
-            Vector2 leftStick = Gamepad.current.leftStick.ReadValue();
-            Vector2 rightStick = Gamepad.current.rightStick.ReadValue();
-            Vector2 dpad = Gamepad.current.dpad.ReadValue();
-
-            // Ambil nilai dari input mana saja yang sedang aktif (karena controller murah sering tertukar)
-            if (leftStick.magnitude > 0.05f) {
-                horizontal = leftStick.x;
-                vertical = leftStick.y;
-            } else if (rightStick.magnitude > 0.05f) {
-                horizontal = rightStick.x;
-                vertical = rightStick.y;
-            } else if (dpad.magnitude > 0.05f) {
-                horizontal = dpad.x;
-                vertical = dpad.y;
-            }
-        }
-        // Fallback untuk pengetesan di PC/Editor menggunakan Keyboard WASD/Arrow
-        else if (Keyboard.current != null)
-        {
-            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) horizontal -= 1f;
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) horizontal += 1f;
-            if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed) vertical += 1f;
-            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed) vertical -= 1f;
-        }
+        // Baca nilai Vector2 dari Input Action yang sudah kita setup di Awake
+        Vector2 inputMove = moveAction.ReadValue<Vector2>();
+        float horizontal = inputMove.x;
+        float vertical = inputMove.y;
 
         // Koreksi arah jika diperlukan (berguna untuk controller yang dipegang horizontal/vertikal)
         if (swapAxis)

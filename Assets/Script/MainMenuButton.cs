@@ -22,7 +22,7 @@ using UnityEngine.InputSystem;
 /// - Tap layar → trigger aksi button
 /// - Opsional: gaze timer (otomatis trigger setelah menatap sekian detik)
 /// </summary>
-public class MainMenuButton : MonoBehaviour
+public class MainMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     // ═══════════════════════════════════════════════════════════════════
     //  PENGATURAN AKSI
@@ -31,15 +31,22 @@ public class MainMenuButton : MonoBehaviour
     public enum ButtonAction
     {
         LoadScene,
-        QuitGame
+        QuitGame,
+        SwitchPanel
     }
 
     [Header("Aksi Button")]
     [Tooltip("Pilih aksi yang dilakukan saat button ditekan")]
     public ButtonAction buttonAction = ButtonAction.LoadScene;
 
-    [Tooltip("Nama scene tujuan (hanya untuk LoadScene, harus ada di Build Settings)")]
+    [Tooltip("Nama scene tujuan (hanya untuk LoadScene)")]
     public string sceneName;
+
+    [Tooltip("Panel yang akan diaktifkan (hanya untuk SwitchPanel)")]
+    public GameObject panelToOpen;
+
+    [Tooltip("Panel yang akan dinonaktifkan (hanya untuk SwitchPanel)")]
+    public GameObject panelToClose;
 
     // ═══════════════════════════════════════════════════════════════════
     //  PENGATURAN HOVER / VISUAL
@@ -80,6 +87,9 @@ public class MainMenuButton : MonoBehaviour
     [Tooltip("Fill image untuk progress lingkaran (opsional)")]
     public Image gazeProgressImage;
 
+    [Header("Input System (Otomatis)")]
+    public InputAction interactAction = new InputAction("Interact", InputActionType.Button);
+
     // ═══════════════════════════════════════════════════════════════════
     //  STATE INTERNAL
     // ═══════════════════════════════════════════════════════════════════
@@ -100,6 +110,17 @@ public class MainMenuButton : MonoBehaviour
 
     void Awake()
     {
+        if (interactAction.bindings.Count == 0)
+        {
+            interactAction.AddBinding("<XRController>/triggerPressed");
+            interactAction.AddBinding("<XRController>/primaryButton");
+            interactAction.AddBinding("<Gamepad>/buttonSouth");
+            interactAction.AddBinding("<Gamepad>/rightTrigger");
+            interactAction.AddBinding("<Keyboard>/c");
+            interactAction.AddBinding("<Keyboard>/space");
+            interactAction.AddBinding("<Mouse>/leftButton");
+        }
+
         buttonImage = GetComponent<Image>();
         originalScale = transform.localScale;
         mainCamera = Camera.main;
@@ -110,7 +131,21 @@ public class MainMenuButton : MonoBehaviour
             BoxCollider col = gameObject.AddComponent<BoxCollider>();
             RectTransform rt = GetComponent<RectTransform>();
             if (rt != null)
-                col.size = new Vector3(rt.rect.width, rt.rect.height, 1f);
+            {
+                // Memperbesar ukuran BoxCollider secara signifikan!
+                // Karena script ini dipasang di objek Text yang ukurannya pas dengan huruf,
+                // kita harus melebarkan collidernya agar seluruh area "kartu putih" bisa ditatap.
+                float expandedWidth = rt.rect.width + 120f;
+                float expandedHeight = rt.rect.height + 60f;
+                col.size = new Vector3(expandedWidth, expandedHeight, 20f);
+            }
+        }
+
+        // Fix otomatis Event Camera untuk Canvas World Space
+        Canvas parentCanvas = GetComponentInParent<Canvas>();
+        if (parentCanvas != null && parentCanvas.renderMode == RenderMode.WorldSpace && parentCanvas.worldCamera == null)
+        {
+            parentCanvas.worldCamera = mainCamera;
         }
 
         // Inisialisasi warna
@@ -144,7 +179,7 @@ public class MainMenuButton : MonoBehaviour
             OnGazeExit();
         }
 
-        // Saat sedang di-gaze
+        // Aktifkan interaksi HANYA jika button ini sedang ditatap oleh cursor/pointer
         if (isGazing && !hasTriggeredThisGaze)
         {
             // Gaze timer (opsional)
@@ -161,10 +196,40 @@ public class MainMenuButton : MonoBehaviour
                 }
             }
 
-            // Tap layar
+            // Tap manual via controller/mouse
             if (DetectTap())
                 ExecuteAction();
         }
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    //  EVENT SYSTEM POINTERS (UNTUK VR LASER POINTER CONTROLLER)
+    // ═══════════════════════════════════════════════════════════════════
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!isGazing)
+        {
+            isGazing = true;
+            hasTriggeredThisGaze = false;
+            gazeTimer = 0f;
+            OnGazeEnter();
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isGazing)
+        {
+            isGazing = false;
+            gazeTimer = 0f;
+            OnGazeExit();
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        ExecuteAction();
     }
 
     // ═══════════════════════════════════════════════════════════════════
@@ -191,57 +256,21 @@ public class MainMenuButton : MonoBehaviour
 
     private bool DetectTap()
     {
-        // Controller VR Park bisa terdeteksi sebagai Gamepad, Joystick, atau device lain.
-        // Kita cek SEMUA kemungkinan:
-
-        // 1. Cek Gamepad
-        if (Gamepad.current != null)
-        {
-            foreach (var control in Gamepad.current.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
-        }
-
-        // 2. Cek Joystick (VR Park sering terdeteksi sebagai ini!)
-        if (Joystick.current != null)
-        {
-            foreach (var control in Joystick.current.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
-        }
-
-        // 3. Cek semua device lain yang terhubung
-        foreach (var device in InputSystem.devices)
-        {
-            if (device is Gamepad || device is Joystick || device is Keyboard || device is Mouse || device is Touchscreen)
-                continue;
-            foreach (var control in device.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
-        }
-
-        // Android touch (menggunakan New Input System)
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
-        {
-            int fingerId = Touchscreen.current.primaryTouch.touchId.ReadValue();
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
-                return false;
+        // Input universal (keyboard/mouse/controller joystick)
+        if (Input.anyKeyDown)
             return true;
-        }
+
+        // New Input System
+        if (interactAction != null && interactAction.WasPressedThisFrame())
+            return true;
+
+        // Android Touch / Layar
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == UnityEngine.TouchPhase.Began)
+            return true;
 
         // Editor fallback: klik kiri mouse
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return false;
+        if (Input.GetMouseButtonDown(0))
             return true;
-        }
 
         return false;
     }
@@ -271,6 +300,7 @@ public class MainMenuButton : MonoBehaviour
 
     private void ExecuteAction()
     {
+        if (hasTriggeredThisGaze) return;
         hasTriggeredThisGaze = true;
         StartCoroutine(PressAndExecute());
     }
@@ -297,7 +327,22 @@ public class MainMenuButton : MonoBehaviour
             case ButtonAction.QuitGame:
                 QuitGame();
                 break;
+
+            case ButtonAction.SwitchPanel:
+                SwitchPanel();
+                break;
         }
+    }
+
+    // ─── Switch Panel ──────────────────────────────────────────────────
+
+    /// <summary>
+    /// Membuka dan menutup panel (untuk menu About, Setting, dsb)
+    /// </summary>
+    public void SwitchPanel()
+    {
+        if (panelToClose != null) panelToClose.SetActive(false);
+        if (panelToOpen != null) panelToOpen.SetActive(true);
     }
 
     // ─── Load Scene ───────────────────────────────────────────────────
@@ -411,8 +456,15 @@ public class MainMenuButton : MonoBehaviour
     //  CLEANUP
     // ═══════════════════════════════════════════════════════════════════
 
+    void OnEnable()
+    {
+        interactAction.Enable();
+    }
+
     void OnDisable()
     {
+        interactAction.Disable();
+        
         transform.localScale = originalScale;
         if (buttonImage != null) buttonImage.color = normalColor;
         if (gazeProgressImage != null) gazeProgressImage.fillAmount = 0f;

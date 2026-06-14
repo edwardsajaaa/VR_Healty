@@ -51,46 +51,23 @@ public class DoorMechanic : MonoBehaviour
         // Controller VR Park bisa terdeteksi sebagai Gamepad, Joystick, atau device lain.
         // Kita cek SEMUA kemungkinan:
 
-        // 1. Cek Gamepad
-        if (Gamepad.current != null)
+        // === KEMBALI MENGGUNAKAN LEGACY INPUT MANAGER ===
+        // Controller VR Park sering diabaikan oleh New Input System di Android.
+        // Legacy Input Manager mendeteksinya sebagai Joystick standar.
+
+        // Cek semua tombol joystick (0-19)
+        for (int i = 0; i < 20; i++)
         {
-            foreach (var control in Gamepad.current.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
+            if (Input.GetKeyDown((KeyCode)((int)KeyCode.JoystickButton0 + i)))
+                return true;
         }
 
-        // 2. Cek Joystick (VR Park sering terdeteksi sebagai ini!)
-        if (Joystick.current != null)
-        {
-            foreach (var control in Joystick.current.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
-        }
-
-        // 3. Cek semua device lain yang terhubung
-        foreach (var device in InputSystem.devices)
-        {
-            if (device is Gamepad || device is Joystick || device is Keyboard || device is Mouse || device is Touchscreen)
-                continue;
-            foreach (var control in device.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
-        }
-
-        // Android touch (New Input System)
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        // Android Touch / Layar
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == UnityEngine.TouchPhase.Began)
             return true;
 
         // Editor fallback: klik kiri mouse / Keyboard C
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-            return true;
-        if (Keyboard.current != null && Keyboard.current.cKey.wasPressedThisFrame)
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.C))
             return true;
 
         return false;

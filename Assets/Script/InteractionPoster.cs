@@ -34,6 +34,7 @@ public class InteractionPoster : MonoBehaviour
     [SerializeField] private Color hintBgColor = new Color(0.10f, 0.12f, 0.16f, 0.88f);
     [SerializeField] private Color cardColor = new Color(0.16f, 0.18f, 0.23f, 1.0f);
     [SerializeField] private Color cardPressColor = new Color(0.22f, 0.25f, 0.32f, 1.0f);
+    [SerializeField] private Color cardSelectedColor = new Color(0f, 0f, 0f, 0.45f); // Hitam transparan agar gambar tetap terlihat
     [SerializeField] private Color closeBtnColor = new Color(0.75f, 0.22f, 0.22f, 1.0f);
     [SerializeField] private Color backBtnColor = new Color(0.22f, 0.25f, 0.32f, 1.0f);
 
@@ -106,18 +107,111 @@ public class InteractionPoster : MonoBehaviour
             ClosePoster();
         }
 
-        // Tap untuk menutup poster — HANYA di Gallery View.
-        // Di Detail View, player harus gunakan tombol "Kembali" atau "Tutup".
-        // Buka poster dengan tombol controller saat player dekat.
-        if (isPosterOpen && !isDetailView && !isClosing && DetectControllerInteract())
+        // Handle Cancel / Back (Tombol B)
+        bool cancelPressed = false;
+        if (cancelAction != null && cancelAction.WasPressedThisFrame()) cancelPressed = true;
+        if (Input.GetKeyDown(KeyCode.JoystickButton1)) cancelPressed = true;
+
+        if (isPosterOpen && !isClosing && cancelPressed)
         {
-            ClosePoster();
+            if (isDetailView && posterImages != null && posterImages.Length > 1)
+            {
+                ShowGalleryView(); // Kembali ke gallery jika di detail
+            }
+            else
+            {
+                ClosePoster(); // Tutup jika di gallery
+            }
         }
 
         // Buka poster dengan tombol controller saat player dekat.
         // Guard: tidak membuka jika sedang menutup ATAU ada poster lain sedang terbuka.
         if (isPlayerNearby && !isPosterOpen && !isClosing && !anyPosterIsOpen && DetectControllerInteract())
             OpenPoster();
+
+        // Panggil sistem navigasi UI jika poster terbuka (Gallery View)
+        if (isPosterOpen && !isDetailView && !isClosing)
+        {
+            HandleUINavigation();
+        }
+    }
+
+    [Header("Input System (Otomatis)")]
+    [Tooltip("Tidak perlu diisi, otomatis mendeteksi klik dari VR Controller, Gamepad & Keyboard")]
+    public InputAction interactAction = new InputAction("Interact", InputActionType.Button);
+    public InputAction navigateAction = new InputAction("Navigate", InputActionType.Value);
+    public InputAction cancelAction = new InputAction("Cancel", InputActionType.Button);
+
+    void Awake()
+    {
+        // Setup binding default agar otomatis mendeteksi tombol VR/Gamepad/Keyboard
+        if (interactAction.bindings.Count == 0)
+        {
+            // VR Controller (Tombol trigger / tombol A)
+            interactAction.AddBinding("<XRController>/triggerPressed");
+            interactAction.AddBinding("<XRController>/primaryButton");
+            
+            // Gamepad (Tombol A / X / Trigger)
+            interactAction.AddBinding("<Gamepad>/buttonSouth");
+            interactAction.AddBinding("<Gamepad>/rightTrigger");
+
+            // Keyboard & Mouse (Tombol C / Spasi / Klik Kiri)
+            interactAction.AddBinding("<Keyboard>/c");
+            interactAction.AddBinding("<Keyboard>/space");
+            interactAction.AddBinding("<Mouse>/leftButton");
+        }
+
+        if (cancelAction.bindings.Count == 0)
+        {
+            // Tombol B / Lingkaran / Secondary / Escape
+            cancelAction.AddBinding("<Gamepad>/buttonEast");
+            cancelAction.AddBinding("<XRController>/secondaryButton");
+            cancelAction.AddBinding("<Keyboard>/escape");
+            cancelAction.AddBinding("<Keyboard>/backspace");
+        }
+
+        if (navigateAction.bindings.Count == 0)
+        {
+            navigateAction.AddCompositeBinding("2DVector")
+                .With("Up", "<Keyboard>/w")
+                .With("Down", "<Keyboard>/s")
+                .With("Left", "<Keyboard>/a")
+                .With("Right", "<Keyboard>/d")
+                .With("Up", "<Keyboard>/upArrow")
+                .With("Down", "<Keyboard>/downArrow")
+                .With("Left", "<Keyboard>/leftArrow")
+                .With("Right", "<Keyboard>/rightArrow")
+                .With("Up", "<Gamepad>/dpad/up")
+                .With("Down", "<Gamepad>/dpad/down")
+                .With("Left", "<Gamepad>/dpad/left")
+                .With("Right", "<Gamepad>/dpad/right")
+                .With("Up", "<Gamepad>/leftStick/up")
+                .With("Down", "<Gamepad>/leftStick/down")
+                .With("Left", "<Gamepad>/leftStick/left")
+                .With("Right", "<Gamepad>/leftStick/right")
+                .With("Up", "<XRController>/thumbstick/up")
+                .With("Down", "<XRController>/thumbstick/down")
+                .With("Left", "<XRController>/thumbstick/left")
+                .With("Right", "<XRController>/thumbstick/right")
+                .With("Up", "<XRController>/primary2DAxis/up")
+                .With("Down", "<XRController>/primary2DAxis/down")
+                .With("Left", "<XRController>/primary2DAxis/left")
+                .With("Right", "<XRController>/primary2DAxis/right");
+        }
+    }
+
+    void OnEnable()
+    {
+        interactAction.Enable();
+        navigateAction.Enable();
+        cancelAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        interactAction.Disable();
+        navigateAction.Disable();
+        cancelAction.Disable();
     }
 
     /// <summary>
@@ -126,61 +220,20 @@ public class InteractionPoster : MonoBehaviour
     /// </summary>
     private bool DetectControllerInteract()
     {
-        // Controller VR Park bisa terdeteksi sebagai Gamepad, Joystick, atau device lain.
-        // Kita cek SEMUA kemungkinan:
-
-        // 1. Cek Gamepad
-        if (Gamepad.current != null)
+        // Menggunakan New Input System yang sudah kita setup di Awake
+        if (interactAction.WasPressedThisFrame())
         {
-            foreach (var control in Gamepad.current.allControls)
+            // Jika ini klik mouse / touch, kita abaikan jika sedang mengklik tombol UI
+            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
             {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                    return false;
             }
-        }
-
-        // 2. Cek Joystick (VR Park sering terdeteksi sebagai ini!)
-        if (Joystick.current != null)
-        {
-            foreach (var control in Joystick.current.allControls)
+            if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
             {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
+                if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(Touchscreen.current.primaryTouch.touchId.ReadValue()))
+                    return false;
             }
-        }
-
-        // 3. Cek semua device lain yang terhubung
-        foreach (var device in InputSystem.devices)
-        {
-            if (device is Gamepad || device is Joystick || device is Keyboard || device is Mouse || device is Touchscreen)
-                continue;
-            foreach (var control in device.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
-        }
-
-        // Fallback Keyboard (tekan C)
-        if (Keyboard.current != null && Keyboard.current.cKey.wasPressedThisFrame)
-        {
-            return true;
-        }
-
-        // Editor / PC fallback: klik kiri mouse di luar UI
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return false;
-            return true;
-        }
-
-        // Android Touch fallback: tap di luar UI
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
-        {
-            int fingerId = Touchscreen.current.primaryTouch.touchId.ReadValue();
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
-                return false;
             return true;
         }
 
@@ -237,6 +290,78 @@ public class InteractionPoster : MonoBehaviour
         if (playerController != null) playerController.LockMovement();
     }
 
+    private float navCooldown = 0f;
+
+    private void HandleUINavigation()
+    {
+        if (navCooldown > 0)
+        {
+            navCooldown -= Time.deltaTime;
+            return;
+        }
+
+        Vector2 navInput = Vector2.zero;
+        if (navigateAction != null && navigateAction.enabled)
+        {
+            navInput = navigateAction.ReadValue<Vector2>();
+        }
+        
+        // Fallback ke sistem lawas (Sangat penting untuk VR Remote generik / Bluetooth Joystick)
+        if (navInput.sqrMagnitude < 0.1f)
+        {
+            try 
+            {
+                navInput.x = Input.GetAxisRaw("Horizontal");
+                navInput.y = Input.GetAxisRaw("Vertical");
+            } 
+            catch {}
+        }
+
+        if (navInput.magnitude > 0.5f)
+        {
+            if (EventSystem.current == null) return;
+
+            GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
+            if (currentSelected != null && currentSelected.activeInHierarchy)
+            {
+                Selectable currentSelectable = currentSelected.GetComponent<Selectable>();
+                if (currentSelectable != null)
+                {
+                    // Gunakan index berurutan dari Grid agar tidak meloncat/skip
+                    Transform contentParent = currentSelectable.transform.parent;
+                    if (contentParent != null)
+                    {
+                        int currentIndex = currentSelectable.transform.GetSiblingIndex();
+                        int nextIndex = currentIndex;
+
+                        if (navInput.x > 0.5f) nextIndex = currentIndex + 1;
+                        else if (navInput.x < -0.5f) nextIndex = currentIndex - 1;
+                        else if (navInput.y > 0.5f) nextIndex = currentIndex - 3; // Ke atas
+                        else if (navInput.y < -0.5f) nextIndex = currentIndex + 3; // Ke bawah
+
+                        if (nextIndex != currentIndex && nextIndex >= 0 && nextIndex < contentParent.childCount)
+                        {
+                            GameObject nextObj = contentParent.GetChild(nextIndex).gameObject;
+                            EventSystem.current.SetSelectedGameObject(nextObj);
+                            navCooldown = 0.2f; // Delay animasi
+                            SnapToSelected(nextObj.GetComponent<RectTransform>());
+                        }
+                    }
+                }
+            }
+            else 
+            {
+                // Jika tidak ada yang di-select, otomatis select card pertama
+                if (galleryView != null && galleryView.activeInHierarchy)
+                    StartCoroutine(SelectFirstCardDelay());
+                else if (backButton != null && backButton.activeInHierarchy)
+                    EventSystem.current.SetSelectedGameObject(backButton);
+                    
+                navCooldown = 0.2f;
+            }
+        }
+    }
+
     private void ShowGalleryView()
     {
         isDetailView = false;
@@ -260,10 +385,13 @@ public class InteractionPoster : MonoBehaviour
                 if (firstBtn != null && EventSystem.current != null)
                 {
                     EventSystem.current.SetSelectedGameObject(firstBtn.gameObject);
+                    yield return null; // Tunggu 1 frame lagi agar layout terbentuk sempurna
+                    SnapToSelected(firstBtn.GetComponent<RectTransform>());
                 }
             }
         }
     }
+
 
     private void ShowDetailView(int index)
     {
@@ -393,9 +521,10 @@ public class InteractionPoster : MonoBehaviour
         hintShadow.effectColor = new Color(0, 0, 0, 0.4f);
         hintShadow.effectDistance = new Vector2(2, -2);
 
+        // Memaksa warna menjadi Putih (Color.white) agar mengabaikan pengaturan Inspector yang mungkin gelap
         Text hintText = CreateText(hintPanel.transform, "HintText",
-            "\u25C9 Tekan 'C' untuk melihat poster",
-            20, TextAnchor.MiddleCenter, hintTextColor);
+            "\u25C9 Tekan 'A' untuk melihat poster",
+            20, TextAnchor.MiddleCenter, Color.white);
         StretchRect(hintText.rectTransform, 20, 5, -20, -5);
 
         hintPanel.SetActive(false);
@@ -454,6 +583,7 @@ public class InteractionPoster : MonoBehaviour
         bcb.normalColor = backBtnColor;
         bcb.highlightedColor = backBtnColor * 1.2f;
         bcb.pressedColor = backBtnColor * 0.8f;
+        bcb.selectedColor = cardSelectedColor;
         backBtnComp.colors = bcb;
         backBtnComp.targetGraphic = backBtnImg;
         backBtnComp.onClick.AddListener(() => ShowGalleryView());
@@ -470,8 +600,8 @@ public class InteractionPoster : MonoBehaviour
         RectTransform ttRect = titleText.rectTransform;
         ttRect.anchorMin = Vector2.zero;
         ttRect.anchorMax = Vector2.one;
-        ttRect.offsetMin = new Vector2(340, 0);
-        ttRect.offsetMax = new Vector2(-15, 0);
+        ttRect.offsetMin = Vector2.zero;
+        ttRect.offsetMax = Vector2.zero;
 
         // (Tombol Close ✕ pojok kanan dihapus — cukup gunakan tombol besar di bawah)
 
@@ -584,23 +714,6 @@ public class InteractionPoster : MonoBehaviour
         cardShadow.effectColor = new Color(0, 0, 0, 0.35f);
         cardShadow.effectDistance = new Vector2(2, -2);
 
-        // ── Button behavior (tap untuk masuk Detail View) ──
-        Button cardBtn = card.AddComponent<Button>();
-        Image cardBgImg = card.GetComponent<Image>();
-        ColorBlock cb = cardBtn.colors;
-        cb.normalColor = cardColor;
-        cb.highlightedColor = cardPressColor;
-        cb.pressedColor = new Color(
-            accentColor.r * 0.5f,
-            accentColor.g * 0.5f,
-            accentColor.b * 0.5f, 0.8f);
-        cb.selectedColor = cardColor;
-        cardBtn.colors = cb;
-        cardBtn.targetGraphic = cardBgImg;
-
-        int capturedIndex = index;
-        cardBtn.onClick.AddListener(() => ShowDetailView(capturedIndex));
-
         // ── Poster thumbnail image ──
         GameObject imgObj = new GameObject("Thumbnail");
         imgObj.transform.SetParent(card.transform, false);
@@ -613,6 +726,49 @@ public class InteractionPoster : MonoBehaviour
         imgRect.anchorMax = Vector2.one;
         imgRect.offsetMin = new Vector2(6, 28);  // Ruang untuk badge di bawah
         imgRect.offsetMax = new Vector2(-6, -6);
+
+        // ── Overlay Highlight (Tampilan gelap saat dipilih menutupi poster) ──
+        GameObject overlayObj = new GameObject("HighlightOverlay");
+        overlayObj.transform.SetParent(card.transform, false);
+        Image overlayImg = overlayObj.AddComponent<Image>();
+        overlayImg.sprite = buttonSprite;
+        overlayImg.type = Image.Type.Sliced;
+        overlayImg.color = Color.white;
+        overlayImg.raycastTarget = false;
+        RectTransform overlayRect = overlayObj.GetComponent<RectTransform>();
+        overlayRect.anchorMin = Vector2.zero;
+        overlayRect.anchorMax = Vector2.one;
+        overlayRect.offsetMin = Vector2.zero;
+        overlayRect.offsetMax = Vector2.zero;
+
+        // ── Garis Pinggir (Outline) untuk penanda seleksi ──
+        Outline outline = overlayObj.AddComponent<Outline>();
+        outline.effectColor = new Color(0.5f, 0.8f, 1f, 0.7f); // Warna biru muda lebih soft
+        outline.effectDistance = new Vector2(3, -3);
+
+        // ── Button behavior (tap untuk masuk Detail View) ──
+        Button cardBtn = card.AddComponent<Button>();
+        
+        // Matikan native navigation Unity agar tidak double-jump
+        Navigation nav = cardBtn.navigation;
+        nav.mode = Navigation.Mode.None;
+        cardBtn.navigation = nav;
+
+        ColorBlock cb = cardBtn.colors;
+        cb.colorMultiplier = 1f;
+        cb.fadeDuration = 0.25f; // Memberikan efek transisi (fade) saat terpilih
+        cb.normalColor = new Color(0, 0, 0, 0f);        // Normal: transparan
+        cb.highlightedColor = new Color(0, 0, 0, 0.15f); // Hover: sedikit gelap
+        cb.pressedColor = new Color(0, 0, 0, 0.6f);     // Ditekan: agak gelap
+        
+        // Memaksa opasitas 50% lewat kode (mengabaikan nilai lama yang mungkin tersimpan di Inspector Unity)
+        cb.selectedColor = new Color(0f, 0f, 0f, 0.5f); 
+        
+        cardBtn.colors = cb;
+        cardBtn.targetGraphic = overlayImg; // Targetkan warna ke overlay
+
+        int capturedIndex = index;
+        cardBtn.onClick.AddListener(() => ShowDetailView(capturedIndex));
 
         // ── Number badge (pojok kiri bawah) ──
         GameObject badge = CreatePanel(card.transform, "Badge",
@@ -677,6 +833,7 @@ public class InteractionPoster : MonoBehaviour
         ccb.normalColor = closeBtnColor;
         ccb.highlightedColor = closeBtnColor * 1.15f;
         ccb.pressedColor = closeBtnColor * 0.85f;
+        ccb.selectedColor = closeBtnColor * 0.6f;
         closeBtnComp.colors = ccb;
         closeBtnComp.targetGraphic = closeBtnImg;
         closeBtnComp.onClick.AddListener(() => ClosePoster());
@@ -685,6 +842,81 @@ public class InteractionPoster : MonoBehaviour
             "\u2715  Tutup", 28, TextAnchor.MiddleCenter, Color.white);
         closeBtnLabel.fontStyle = FontStyle.Bold;
         StretchRect(closeBtnLabel.rectTransform, 10, 4, -10, -4);
+    }
+
+    // ─── Fitur Auto-Scroll ke Card yang Dipilih ───
+    private void SnapToSelected(RectTransform target)
+    {
+        if (galleryView == null || !galleryView.activeInHierarchy) return;
+        ScrollRect scrollRect = galleryView.GetComponentInChildren<ScrollRect>();
+        if (scrollRect == null) return;
+
+        // Pastikan UI layout di-refresh agar ukurannya valid
+        Canvas.ForceUpdateCanvases();
+
+        RectTransform content = scrollRect.content;
+        float contentHeight = content.rect.height;
+        float viewportHeight = scrollRect.viewport.rect.height;
+
+        if (contentHeight <= viewportHeight) return; // Tidak perlu scroll jika konten muat
+
+        // Hitung posisi Y target menggunakan local space content (aman dari error anchor)
+        Vector2 localTarget = content.InverseTransformPoint(target.position);
+        
+        // localTarget.y bernilai negatif karena posisinya di bawah origin (atas)
+        float targetCenterY = -localTarget.y; 
+        float targetHalfHeight = target.rect.height * 0.5f;
+
+        float padding = 40f; // Jarak ekstra agar tidak terlalu mepet
+        float targetTop = targetCenterY - targetHalfHeight - padding;
+        float targetBottom = targetCenterY + targetHalfHeight + padding;
+
+        float scrollY = content.anchoredPosition.y;
+        float visibleTop = scrollY;
+        float visibleBottom = scrollY + viewportHeight;
+
+        bool needScroll = false;
+
+        if (targetBottom > visibleBottom)
+        {
+            scrollY = targetBottom - viewportHeight;
+            needScroll = true;
+        }
+        else if (targetTop < visibleTop)
+        {
+            scrollY = targetTop;
+            needScroll = true;
+        }
+
+        if (needScroll)
+        {
+            scrollRect.velocity = Vector2.zero; // Hentikan momentum scroll lama
+            // Pastikan tidak overscroll
+            scrollY = Mathf.Clamp(scrollY, 0f, contentHeight - viewportHeight);
+            
+            if (scrollCoroutine != null) StopCoroutine(scrollCoroutine);
+            scrollCoroutine = StartCoroutine(SmoothScrollTo(content, scrollY));
+        }
+    }
+
+    private Coroutine scrollCoroutine;
+    private IEnumerator SmoothScrollTo(RectTransform content, float targetY)
+    {
+        float startY = content.anchoredPosition.y;
+        float elapsed = 0f;
+        float duration = 0.2f; // Durasi animasi lebih halus (0.2 detik)
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            // Animasi easing out kubik
+            t = 1f - Mathf.Pow(1f - t, 3f);
+            
+            content.anchoredPosition = new Vector2(content.anchoredPosition.x, Mathf.Lerp(startY, targetY, t));
+            yield return null;
+        }
+        content.anchoredPosition = new Vector2(content.anchoredPosition.x, targetY);
     }
 
     // ═════════════════════════════════════════════

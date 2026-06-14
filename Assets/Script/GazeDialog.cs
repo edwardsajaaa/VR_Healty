@@ -137,46 +137,20 @@ public class GazeDialog : MonoBehaviour
         // Controller VR Park bisa terdeteksi sebagai Gamepad, Joystick, atau device lain.
         // Kita cek SEMUA kemungkinan:
 
-        // 1. Cek Gamepad
-        if (Gamepad.current != null)
+        // === KEMBALI MENGGUNAKAN LEGACY INPUT MANAGER ===
+        // Cek semua tombol joystick (0-19)
+        for (int i = 0; i < 20; i++)
         {
-            foreach (var control in Gamepad.current.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
-        }
-
-        // 2. Cek Joystick (VR Park sering terdeteksi sebagai ini!)
-        if (Joystick.current != null)
-        {
-            foreach (var control in Joystick.current.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
-        }
-
-        // 3. Cek semua device lain yang terhubung
-        foreach (var device in InputSystem.devices)
-        {
-            if (device is Gamepad || device is Joystick || device is Keyboard || device is Mouse || device is Touchscreen)
-                continue;
-            foreach (var control in device.allControls)
-            {
-                if (control is UnityEngine.InputSystem.Controls.ButtonControl button && button.wasPressedThisFrame)
-                    return true;
-            }
+            if (Input.GetKeyDown((KeyCode)((int)KeyCode.JoystickButton0 + i)))
+                return true;
         }
 
         // Fallback Keyboard (tekan C)
-        if (Keyboard.current != null && Keyboard.current.cKey.wasPressedThisFrame)
-        {
+        if (Input.GetKeyDown(KeyCode.C))
             return true;
-        }
 
         // Editor / PC fallback: klik kiri mouse
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        if (Input.GetMouseButtonDown(0))
         {
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return false;
@@ -184,9 +158,9 @@ public class GazeDialog : MonoBehaviour
         }
 
         // Android Touch fallback
-        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == UnityEngine.TouchPhase.Began)
         {
-            int fingerId = Touchscreen.current.primaryTouch.touchId.ReadValue();
+            int fingerId = Input.GetTouch(0).fingerId;
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
                 return false;
             return true;
