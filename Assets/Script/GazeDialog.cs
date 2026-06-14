@@ -61,6 +61,10 @@ public class GazeDialog : MonoBehaviour
     private Coroutine fadeCoroutine;
     private Coroutine typingCoroutine;
 
+    [Header("Input System")]
+    public InputAction interactAction = new InputAction("Interact", InputActionType.Button);
+    public InputAction cancelAction = new InputAction("Cancel", InputActionType.Button);
+
     private List<QAData> qaList = new List<QAData>();
 
     [System.Serializable]
@@ -69,6 +73,36 @@ public class GazeDialog : MonoBehaviour
         public string question;
         public string answer;
         public QAData(string q, string a) { question = q; answer = a; }
+    }
+
+    void Awake()
+    {
+        if (cancelAction.bindings.Count == 0)
+        {
+            cancelAction.AddBinding("<Gamepad>/buttonEast"); // Tombol B
+            cancelAction.AddBinding("<XRController>/secondaryButton");
+            cancelAction.AddBinding("<Keyboard>/escape");
+            cancelAction.AddBinding("<Keyboard>/b");
+        }
+        if (interactAction.bindings.Count == 0)
+        {
+            interactAction.AddBinding("<XRController>/triggerPressed");
+            interactAction.AddBinding("<XRController>/primaryButton"); // Tombol A
+            interactAction.AddBinding("<Gamepad>/buttonSouth"); // Tombol A
+            interactAction.AddBinding("<Keyboard>/c");
+        }
+    }
+
+    void OnEnable()
+    {
+        interactAction.Enable();
+        cancelAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        interactAction.Disable();
+        cancelAction.Disable();
     }
 
     void Start()
@@ -112,6 +146,12 @@ public class GazeDialog : MonoBehaviour
         if (isGazingAtNPC && !isDialogOpen && DetectControllerInteract())
             OpenDialog();
 
+        // Tutup dialog dengan tombol B / Cancel
+        if (isDialogOpen && cancelAction != null && cancelAction.WasPressedThisFrame())
+        {
+            CloseDialog();
+        }
+
         // Kembalikan volume BGM jika suara ners sudah selesai bicara
         if (isDucking && audioSource != null && !audioSource.isPlaying)
         {
@@ -128,43 +168,22 @@ public class GazeDialog : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Mendeteksi penekanan tombol Controller VR.
-    /// Tombol 'C' pada remote VR murah biasanya adalah JoystickButton2.
-    /// </summary>
     private bool DetectControllerInteract()
     {
-        // Controller VR Park bisa terdeteksi sebagai Gamepad, Joystick, atau device lain.
-        // Kita cek SEMUA kemungkinan:
+        // Universal fallback: tekan tombol apa saja di gamepad/joystick
+        if (Input.anyKeyDown && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
+            return true;
 
-        // === KEMBALI MENGGUNAKAN LEGACY INPUT MANAGER ===
-        // Cek semua tombol joystick (0-19)
-        for (int i = 0; i < 20; i++)
-        {
-            if (Input.GetKeyDown((KeyCode)((int)KeyCode.JoystickButton0 + i)))
-                return true;
-        }
-
-        // Fallback Keyboard (tekan C)
-        if (Input.GetKeyDown(KeyCode.C))
+        if (interactAction != null && interactAction.WasPressedThisFrame())
             return true;
 
         // Editor / PC fallback: klik kiri mouse
         if (Input.GetMouseButtonDown(0))
-        {
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
-                return false;
             return true;
-        }
 
         // Android Touch fallback
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == UnityEngine.TouchPhase.Began)
-        {
-            int fingerId = Input.GetTouch(0).fingerId;
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(fingerId))
-                return false;
             return true;
-        }
 
         return false;
     }
