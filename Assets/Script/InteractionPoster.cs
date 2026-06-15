@@ -492,8 +492,9 @@ public class InteractionPoster : MonoBehaviour
         canvasObj.transform.localPosition = new Vector3(0, 0, canvasDistance);
         canvasObj.transform.localRotation = Quaternion.identity;
 
-        // Skala lebih besar agar UI nyaman dibaca
-        canvasObj.transform.localScale = new Vector3(canvasScale, canvasScale, canvasScale);
+        // Skala diperbesar agar poster raksasa di VR
+        float finalScale = 0.0013f; 
+        canvasObj.transform.localScale = new Vector3(finalScale, finalScale, finalScale);
 
         posterCanvas.sortingOrder = 100;
 
@@ -533,13 +534,17 @@ public class InteractionPoster : MonoBehaviour
     // ─── Poster Panel Utama ───
     private void BuildPosterPanel(Transform parent)
     {
-        float panelW = 1200f;
-        float panelH = 850f;
+        // Panel dikembalikan ke ukuran lebar (widescreen)
+        float panelW = 1920f;
+        float panelH = 1080f;
+
+        // Warna panel sedikit lebih transparan untuk kesan minimalis
+        Color minPanelColor = new Color(0.11f, 0.13f, 0.17f, 0.85f);
 
         posterPanel = CreatePanel(parent, "PosterPanel",
             new Vector2(panelW, panelH),
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
-            panelSprite, panelColor);
+            panelSprite, minPanelColor);
 
         // Bayangan panel utama
         Shadow panelShadow = posterPanel.AddComponent<Shadow>();
@@ -568,11 +573,12 @@ public class InteractionPoster : MonoBehaviour
         hbRect.anchorMin = new Vector2(0, 1);
         hbRect.anchorMax = new Vector2(1, 1);
         hbRect.pivot = new Vector2(0.5f, 1);
-        hbRect.sizeDelta = new Vector2(0, 100);
+        // Header dibuat lebih tipis (minimalis)
+        hbRect.sizeDelta = new Vector2(0, 80);
         hbRect.anchoredPosition = Vector2.zero;
 
         backButton = CreatePanel(headerBar.transform, "BackBtn",
-            new Vector2(300, 75),
+            new Vector2(250, 60),
             new Vector2(0, 0.5f), new Vector2(0, 0.5f),
             buttonSprite, backBtnColor);
         backButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(20, 0);
@@ -589,13 +595,13 @@ public class InteractionPoster : MonoBehaviour
         backBtnComp.onClick.AddListener(() => ShowGalleryView());
 
         Text backLabel = CreateText(backButton.transform, "BackLabel",
-            "\u2190 Kembali", 32, TextAnchor.MiddleCenter, Color.white);
+            "\u2190 Kembali", 28, TextAnchor.MiddleCenter, Color.white);
         StretchRect(backLabel.rectTransform, 5, 2, -5, -2);
         backButton.SetActive(false);
 
         // ─ Judul poster (tengah) ─
         Text titleText = CreateText(headerBar.transform, "TitleText",
-            posterTitle, 32, TextAnchor.MiddleCenter, headerTextColor);
+            posterTitle, 28, TextAnchor.MiddleCenter, headerTextColor);
         titleText.fontStyle = FontStyle.Bold;
         RectTransform ttRect = titleText.rectTransform;
         ttRect.anchorMin = Vector2.zero;
@@ -625,8 +631,8 @@ public class InteractionPoster : MonoBehaviour
         RectTransform gvRect = galleryView.AddComponent<RectTransform>();
         gvRect.anchorMin = Vector2.zero;
         gvRect.anchorMax = Vector2.one;
-        gvRect.offsetMin = new Vector2(10, 58);   // di atas tombol tutup
-        gvRect.offsetMax = new Vector2(-10, -108);  // di bawah header + accent
+        gvRect.offsetMin = new Vector2(10, 80);   // ruang untuk tombol tutup tipis
+        gvRect.offsetMax = new Vector2(-10, -80);  // ruang untuk header tipis
 
         // ── ScrollRect (scroll vertikal) ──
         ScrollRect scrollRect = galleryView.AddComponent<ScrollRect>();
@@ -660,12 +666,12 @@ public class InteractionPoster : MonoBehaviour
         cRect.sizeDelta = new Vector2(0, 0);
         scrollRect.content = cRect;
 
-        // Grid: 3 kolom, ukuran cell otomatis
+        // Grid: 2 kolom (baris) agar gambar kotak sangat besar dan jelas
         GridLayoutGroup grid = content.AddComponent<GridLayoutGroup>();
         grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-        grid.constraintCount = 3;
-        grid.cellSize = new Vector2(350f, 490f);
-        grid.spacing = new Vector2(20, 20);
+        grid.constraintCount = 2;
+        grid.cellSize = new Vector2(550f, 770f);
+        grid.spacing = new Vector2(40, 40);
         grid.padding = new RectOffset(16, 16, 16, 16);
         grid.childAlignment = TextAnchor.UpperCenter;
 
@@ -772,7 +778,7 @@ public class InteractionPoster : MonoBehaviour
 
         // ── Number badge (pojok kiri bawah) ──
         GameObject badge = CreatePanel(card.transform, "Badge",
-            new Vector2(40, 30),
+            new Vector2(60, 45),
             new Vector2(0, 0), new Vector2(0, 0),
             null, accentColor);
         badge.GetComponent<RectTransform>().anchoredPosition = new Vector2(6, 6);
@@ -780,7 +786,7 @@ public class InteractionPoster : MonoBehaviour
 
         Text badgeText = CreateText(badge.transform, "BadgeNum",
             (index + 1).ToString(),
-            16, TextAnchor.MiddleCenter, Color.white);
+            28, TextAnchor.MiddleCenter, Color.white);
         badgeText.fontStyle = FontStyle.Bold;
         badgeText.raycastTarget = false;
         StretchRect(badgeText.rectTransform, 0, 0, 0, 0);
@@ -794,12 +800,12 @@ public class InteractionPoster : MonoBehaviour
         RectTransform dvRect = detailView.AddComponent<RectTransform>();
         dvRect.anchorMin = Vector2.zero;
         dvRect.anchorMax = Vector2.one;
-        dvRect.offsetMin = new Vector2(15, 58);
-        dvRect.offsetMax = new Vector2(-15, -108);
+        dvRect.offsetMin = new Vector2(10, 80);
+        dvRect.offsetMax = new Vector2(-10, -80);
 
-        // Background area detail (sedikit lebih gelap)
+        // Background area detail dikembalikan namun lebih transparan (minimalis)
         Image dvBg = detailView.AddComponent<Image>();
-        dvBg.color = new Color(0.08f, 0.09f, 0.12f, 0.5f);
+        dvBg.color = new Color(0.05f, 0.05f, 0.08f, 0.6f);
         dvBg.raycastTarget = false;
 
         // Gambar poster detail (besar, preserve aspect)
@@ -820,9 +826,9 @@ public class InteractionPoster : MonoBehaviour
     // ─── Tombol Tutup (bawah panel) ───
     private void BuildBottomClose(Transform parent)
     {
-        // Tombol besar agar mudah ditekan di VR
+        // Tombol dibuat lebih tipis dan memanjang sedikit (minimalis)
         GameObject closeBtn = CreatePanel(parent, "CloseBtn",
-            new Vector2(400, 80),
+            new Vector2(300, 60),
             new Vector2(0.5f, 0), new Vector2(0.5f, 0),
             buttonSprite, closeBtnColor);
         closeBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 10);
@@ -839,7 +845,7 @@ public class InteractionPoster : MonoBehaviour
         closeBtnComp.onClick.AddListener(() => ClosePoster());
 
         Text closeBtnLabel = CreateText(closeBtn.transform, "CloseBtnLabel",
-            "\u2715  Tutup", 28, TextAnchor.MiddleCenter, Color.white);
+            "\u2715  Tutup", 24, TextAnchor.MiddleCenter, Color.white);
         closeBtnLabel.fontStyle = FontStyle.Bold;
         StretchRect(closeBtnLabel.rectTransform, 10, 4, -10, -4);
     }

@@ -170,10 +170,6 @@ public class GazeDialog : MonoBehaviour
 
     private bool DetectControllerInteract()
     {
-        // Universal fallback: tekan tombol apa saja di gamepad/joystick
-        if (Input.anyKeyDown && !Input.GetMouseButtonDown(0) && !Input.GetMouseButtonDown(1) && !Input.GetMouseButtonDown(2))
-            return true;
-
         if (interactAction != null && interactAction.WasPressedThisFrame())
             return true;
 
@@ -396,7 +392,7 @@ public class GazeDialog : MonoBehaviour
             buttonSprite, panelColor);
 
         Text hintText = CreateText(hintPanel.transform, "HintText",
-            "Tekan 'C' untuk berbicara dengan " + npcName,
+            "Tekan 'A' untuk berbicara dengan " + npcName,
             28, TextAnchor.MiddleCenter, textColor);
         StretchRect(hintText.rectTransform, 15, 5, -15, -5);
         hintPanel.SetActive(false);
