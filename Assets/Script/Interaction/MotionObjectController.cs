@@ -21,6 +21,7 @@ public class MotionObjectController : MonoBehaviour
     private bool isGrounded;        // Check if grounded
 
     private CharacterController controller; // For motion collision
+    private bool isMovementLocked = false;
 
     void Start()
     {
@@ -31,6 +32,8 @@ public class MotionObjectController : MonoBehaviour
 
     void Update()
     {
+        if (isMovementLocked || controller == null) return;
+
         isGrounded = controller.isGrounded;
 
         if (isGrounded && velocity.y < 0)
@@ -75,5 +78,15 @@ public class MotionObjectController : MonoBehaviour
         {
             playerTransform.position = transform.position;
         }
+    }
+
+    public void LockMovement()
+    {
+        isMovementLocked = true;
+    }
+
+    public void UnlockMovement()
+    {
+        isMovementLocked = false;
     }
 }

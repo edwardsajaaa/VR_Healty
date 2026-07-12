@@ -48,6 +48,20 @@ public class GazeDialog : MonoBehaviour
 
     private bool isGazingAtNPC = false;
     private bool isDialogOpen = false;
+
+    public bool IsGazingAtNPC => isGazingAtNPC;
+    public bool IsDialogOpen => isDialogOpen;
+
+    public static bool IsAnyNPCGazedOrOpen()
+    {
+        GazeDialog[] dialogs = FindObjectsOfType<GazeDialog>();
+        foreach (var d in dialogs)
+        {
+            if (d.IsGazingAtNPC || d.IsDialogOpen) return true;
+        }
+        return false;
+    }
+
     private Camera mainCamera;
     private VRWalkController playerController;
 
